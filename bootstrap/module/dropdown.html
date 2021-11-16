@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap下拉菜单</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 单一按钮 -->
+        <div class="row pt-3">
+            <!-- 单一按钮-button元素触发 -->
+            <div class="col-3">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">单一按钮</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 单一按钮-a元素触发 -->
+            <div class="col-3">
+                <div class="dropdown">
+                    <a href="javascript:;" class="btn btn-success dropdown-toggle" data-toggle="dropdown">单一按钮</a>
+                    <div class="dropdown-menu">
+                        <a href="javascript:;" class="dropdown-item">菜单1</a>
+                        <a href="javascript:;" class="dropdown-item">菜单2</a>
+                        <a href="javascript:;" class="dropdown-item">菜单3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 按钮展示效果 -->
+        <div class="row mt-5 justify-content-between">
+            <div class="col-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">primary</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">secondary</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">success</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">info</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">warning</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">danger</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 分离按钮 -->
+        <div class="row mt-5 justify-content-between">
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">primary</button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary">secondary</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success">success</button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info">info</button>
+                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-warning">warning</button>
+                    <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger">danger</button>
+                    <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 下拉菜单尺寸 -->
+        <div class="row mt-5">
+            <!-- 大尺寸 -->
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary btn-lg">primary</button>
+                    <button type="button" class="btn btn-secondary btn-lg dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 正常尺寸 -->
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary">primary</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 小尺寸 -->
+            <div class="col-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary btn-sm">primary</button>
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 下拉菜单指向 -->
+        <div class="row mt-5">
+            <!-- 上 -->
+            <div class="col-auto">
+                <div class="dropdown dropup">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">dropdown</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 右 -->
+            <div class="col-auto">
+                <div class="dropdown dropright">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">dropdown</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 下 -->
+            <div class="col-auto">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">dropdown</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 左 -->
+            <div class="col-auto">
+                <div class="dropdown dropleft">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">dropdown</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 非交互式下拉菜单 -->
+        <div class="row mt-5">
+            <div class="col-auto">
+                <div class="dropdown-menu show">
+                    <h6 class="dropdown-header">下拉表头</h6>
+                    <span class="dropdown-item-text">dropdown item text</span>
+                    <a href="#" class="dropdown-item">菜单1</a>
+                    <a href="#" class="dropdown-item active">菜单2</a><!-- 激活 -->
+                    <a href="#" class="dropdown-item disabled">菜单3</a><!-- 禁用 -->
+                    <div class="dropdown-divider"></div><!-- 分隔线 -->
+                    <a href="#" class="dropdown-item">菜单4</a>
+                    <a href="#" class="dropdown-item">菜单5</a>
+                </div>
+            </div>
+        </div>
+        <!-- 下拉菜单对齐 -->
+        <div class="row mt-5 d-block clearfix">
+            <!-- 默认，左键对齐 -->
+            <div class="col-auto float-right">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">左键对齐</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 右键对齐 -->
+            <div class="col-auto float-right">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">右键对齐</button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 下拉菜单偏移位置 -->
+        <div class="row mt-5 d-block clearfix">
+            <div class="col-auto float-right">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">默认偏移</button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto float-right">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-offset="10, 20">偏移(10, 20)</button>
+                    <div class="dropdown-menu" data-reference="parent">
+                        <!-- parent默认，指定偏移参考元素 -->
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- JS方法和事件 -->
+        <div class="row mt-5 d-block clearfix">
+            <div class="col-auto float-right">
+                <div class="dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id="methods_btn">JS方法</button>
+                    <div class="dropdown-menu" id="methods_menu" data-reference="parent">
+                        <!-- parent默认，指定偏移参考元素 -->
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-auto float-right">
+                <div class="dropdown" id="events_dropdown">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id="events_btn" data-toggle="dropdown">JS事件</button>
+                    <div class="dropdown-menu">
+                        <!-- parent默认，指定偏移参考元素 -->
+                        <button type="button" class="dropdown-item">菜单1</button>
+                        <button type="button" class="dropdown-item">菜单2</button>
+                        <button type="button" class="dropdown-item">菜单3</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        <!-- JS方法 -->
+        $('#methods_btn').click(function() {
+            // 显示
+            // $('#methods_menu').dropdown('show');
+            // 隐藏
+            // $('#methods_menu').dropdown('hide');
+            // 切换
+            // $('#methods_menu').dropdown('toggle'); // 存在bug，无法隐藏
+            // 解决无法切换隐藏bug
+            $('#methods_menu').toggle();
+        });
+        // JS事件
+        $('#events_dropdown').on('show.bs.dropdown', function(e) { // 当下拉菜单开始显示时，触发此事件
+            console.log('开始显示');
+        });
+        $('#events_dropdown').on('shown.bs.dropdown', function() { // 当下拉菜单显示完时，触发此事件
+            console.log('显示完');
+        });
+        $('#events_dropdown').on('hide.bs.dropdown', function() { // 当下拉菜单开始隐藏时，触发此事件
+            console.log('开始隐藏');
+        });
+        $('#events_dropdown').on('hidden.bs.dropdown', function() { // 当下拉菜单隐藏完时，触发此事件
+            console.log('隐藏完');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        .wrapper {
+            position: absolute;
+            top: 2000px;
+            left: 100px;
+            width: 400px;
+            height: 300px;
+            background-color: #ccc;
+            border: 1px solid #888;
+        }
+        .wrapper img {
+            width: 100%;
+            height: 100%;
+        }
+        img {
+            vertical-align: top;
+            /*去掉图片底侧默认间隙*/
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="wrapper"></div>
+    <script>
+        // 获取窗口滚动距离
+        function getScroll() {
+            // IE9+等最新浏览器
+            if (window.pageXOffset != null) {
+                return {
+                    left: window.pageXOffset,
+                    top: window.pageYOffset
+                };
+            }
+            // 标准模式浏览器(已声明DTD): Firefox、其他浏览器
+            if (document.compatMode === 'CSS1Compat') {
+                // CSS1Compat: 标准模式(已声明DTD)
+                // BackCompat: 混杂模式(未声明DTD)
+                return {
+                    left: document.documentElement.scrollLeft,
+                    top: document.documentElement.scrollTop
+                };
+            }
+            // 混杂模式浏览器(未声明DTD)、Chrome(自认为未声明DTD)
+            return {
+                left: document.body.scrollLeft,
+                top: document.body.scrollTop
+            };
+        }
+        // 获取浏览器可视区域的宽度、高度
+        function getClient() {
+            // IE9+等最新浏览器
+            if (window.innerWidth != null) {
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                };
+            }
+            // 标准模式浏览器(已声明DTD): Firefox、其他浏览器
+            if (document.compatMode === 'CSS1Compat') {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                };
+            }
+            // 混杂模式浏览器(未声明DTD)、Chrome(自认为未声明DTD)
+            return {
+                width: document.body.clientWidth,
+                height: document.body.clientHeight
+            };
+        }
+
+        var wrapper = document.getElementById('wrapper');
+        // HTMLDivElement扩展-预加载+懒加载
+        HTMLDivElement.prototype.checkSelf = function(url) {
+            if (this.offsetTop < getScroll().top + getClient().height) {
+                if (!this.lock) { //锁
+                    this.lock = true; //上锁
+                    var that = this;
+                    setTimeout(function() { //延时1500ms, 实际开发不需要
+                        var oImg = new Image(); //在内存中创建一个img元素
+                        oImg.src = url; //设置加载图片地址，并开始加载
+                        oImg.onload = function() { //图片加载完那一瞬触发
+                            that.appendChild(this);
+                        };
+                    }, 1500);
+                }
+            }
+        };
+        window.onscroll = function (){
+        	wrapper.checkSelf('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2187922730,604631233&fm=27&gp=0.jpg');	
+        };
+    </script>
+</body>
+
+</html>

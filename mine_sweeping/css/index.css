@@ -1,0 +1,27 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-03-06 18:05:41
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-03-06 18:19:53
+*/
+.mine-sweeping {
+    margin-top: 50px;
+    text-align: center;
+}
+.mine-sweeping .btn-level {
+    margin: 10px 0;
+}
+.mine-sweeping .btn-level button {
+    padding: 5px 15px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    background-color: #02a4ad;
+}
+.mine-sweeping .btn-level button.active {
+    background-color: #00abff;
+}
+.mine-sweeping .info {
+    margin: 10px 0;
+}

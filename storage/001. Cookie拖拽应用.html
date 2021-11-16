@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body {
+    		margin: 0;
+    	}
+    	.drag {
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		width: 100px;
+    		height: 100px;
+    		background-color: #1d9b45;
+    		cursor: pointer;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="drag" id="drag"></div>
+    <script type="text/javascript">
+        // 操作cookie工具
+        var ManageCookie = {
+            /**
+             * [新增、修改cookie]
+             * @param {[String]} name  [cookie的name属性]
+             * @param {[String]} value [cookie的value属性]
+             * @param {[Number]} date  [cookie的max-age属性]
+             */
+            set: function(name, value, date) {
+                // 通过expires设置到期日期时间
+                /*var endDate = new Date();
+                endDate.setSeconds(endDate.getSeconds()+date);
+                document.cookie = name+'='+value+'; expires='+endDate;*/
+                // 通过max-age设置存活秒数
+                document.cookie = name + '=' + value + '; max-age=' + date;
+            },
+            /**
+             * [删除指定name的cookie]
+             * @param  {[String]} name [cookie的name属性]
+             */
+            remove: function(name) {
+                // max-age等于0，表示失效cookie，浏览器会自动删除
+                this.set(name, '', 0);
+            },
+            /**
+             * [获取指定name的cookie]
+             * @param  {[String]} name [cookie的name属性]
+             * @return {[String]}      [cookie的value属性值，没有返回undefined]
+             */
+            get: function(name) {
+                return this.all()[name];
+            },
+            // 获取所有cookie，对象
+            all: function() {
+                var cookies = document.cookie.split('; '),
+                    obj = {};
+                for (var i = 0, len = cookies.length; i < len; i++) {
+                    var item = cookies[i].split('=');
+                    obj[item[0]] = item[1];
+                }
+                return obj;
+            }
+        };
+        /*// 测试：新增cookie
+        ManageCookie.set('key', 'value', 100);
+        ManageCookie.set('key1', 'value1', 100);
+        ManageCookie.set('key2', 'value2', 100);
+        ManageCookie.set('key3', 'value3', 100);
+        ManageCookie.set('key4', 'value4', 100);
+        ManageCookie.set('key5', 'value5', 100);
+        // 测试：修改cookie
+        ManageCookie.set('key', 'lsx', 1000);
+        // 检测：删除cookie
+        ManageCookie.remove('key');
+        // 测试：获取所有cookie，返回为对象
+        console.log(ManageCookie.all());
+        // 测试：获取指定name的cookie值
+        console.log(ManageCookie.get('key'));*/
+    </script>
+    <script>
+        // 拖拽工具
+        var Drag = {
+            init: function(dom) {
+                this.dom = dom;
+                this.bindEvent();
+
+                // 初始化方块位置
+                var l = ManageCookie.get('newLeft') || 0;
+                var t = ManageCookie.get('newTop') || 0;
+
+                this.dom.style.left = l + 'px';
+                this.dom.style.top = t + 'px';
+            },
+            bindEvent: function() {
+                this.dom.onmousedown = this.mouseDown.bind(this); //鼠标按下
+            },
+            mouseDown: function(e) {
+                console.log(0);
+                this.fixedX = e.clientX - this.dom.offsetLeft; //光标在方块内水平位置
+                this.fixedY = e.clientY - this.dom.offsetTop; //光标在方块内垂直位置
+
+                document.onmousemove = this.mouseMove.bind(this); //鼠标移动
+                document.onmouseup = this.mouseUp.bind(this); //鼠标弹起
+            },
+            mouseMove: function(e) {
+                console.log(1);
+                this.newLeft = e.clientX - this.fixedX;
+                this.newTop = e.clientY - this.fixedY;
+
+                this.dom.style.left = this.newLeft + 'px';
+                this.dom.style.top = this.newTop + 'px';
+            },
+            mouseUp: function() {
+                console.log(2);
+                document.onmousemove = null;
+                document.onmouseup = null;
+                // 记录cookie
+                ManageCookie.set('newLeft', this.newLeft, 10000);
+                ManageCookie.set('newTop', this.newTop, 10000);
+            }
+        };
+        Drag.init(document.getElementById('drag'));
+    </script>
+</body>
+
+</html>

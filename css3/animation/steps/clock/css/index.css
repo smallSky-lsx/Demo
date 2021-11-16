@@ -1,0 +1,63 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2020-12-18 14:52:04
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-03-05 14:45:23
+*/
+
+.clock {
+    position: relative;
+    width: 490px;
+    height: 490px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #ddd url(../imgs/clock.png) no-repeat center;
+}
+.clock .hour,
+.clock .minute,
+.clock .second {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.clock .hour {
+    z-index: 3;
+    animation: hourRotate 43200s steps(120, end) both infinite;
+    background: url('../imgs/hour.png') no-repeat center bottom 33%;
+}
+.clock .minute {
+    z-index: 2;
+    animation: minuteRotate 3600s steps(120, end) both infinite;
+    background: url('../imgs/minute.png') no-repeat center bottom 15.5%;
+}
+.clock .second {
+    z-index: 1;
+    animation: secondRotate 60s steps(120, end) both infinite;
+    background: url('../imgs/second.png') no-repeat center bottom 20%;
+}
+@keyframes hourRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes minuteRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes secondRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

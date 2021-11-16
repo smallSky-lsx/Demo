@@ -1,0 +1,264 @@
+@charset 'urf-8';
+
+/* 统一样式+特殊样式 */
+
+body {
+    line-height: 1.5;
+}
+
+.reg-form a {
+    color: #00a1d6;
+}
+
+.fl {
+    float: left;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /*IE67兼容性处理*/
+}
+
+
+/* 统一定义单行文本框+密码框样式 */
+
+input[type="text"],
+input[type="password"] {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    font: 14px "PingFangSC-Medium";
+    text-indent: 1em;
+    color: #606266;
+}
+
+
+/* ::placeholder伪元素，兼容firefox/chrome/safari浏览器 */
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+    color: #ccc;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border-color: #c0c4cc;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #00a1d6;
+}
+
+
+/* 统一定义按钮样式 */
+
+button {
+    box-sizing: border-box;
+    height: 40px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #00a1d6;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #33b4de;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    border: 1px solid #dcdfe6;
+    color: rgba(0, 0, 0, .25);
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+
+/* 注册标题区域开始-- */
+
+.reg-form {
+    width: 980px;
+    margin: 1em auto;
+}
+
+.reg-form h2 {
+    height: 30px;
+    margin-bottom: 60px;
+    text-align: center;
+    font-size: 38px;
+    border-bottom: 1px solid #ddd;
+}
+
+.reg-form h2 span {
+    padding: 0 20px;
+    background-color: #ffffff;
+}
+
+
+/* --注册标题区域结束 */
+
+
+/* 注册区域开始-- */
+
+.reg-form .reg-area {
+    width: 423px;
+    margin: 0 auto;
+}
+
+.reg-form .reg-area .reg-item {
+    position: relative;
+    margin: 50px 0;
+}
+
+.reg-item .select .select-item {
+    position: relative;
+    box-sizing: border-box;
+    width: 140px;
+    height: 40px;
+    border: 1px solid #dcdfe6;
+    border-right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.reg-item .select .select-item .sel-title {
+    line-height: 40px;
+    padding: 0 20px;
+    color: #909399;
+    cursor: pointer;
+}
+
+.reg-item .select .select-item .sel-list {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    max-height: 256px;
+    padding: 10px 0;
+    overflow-y: auto;
+    /*垂直方向上根据需要自动显示滚动条*/
+    display: none;
+}
+
+.reg-item .select .select-item .sel-list li {
+    height: 34px;
+    line-height: 34px;
+    padding: 0 20px;
+    font-size: 14px;
+    color: #606266;
+    /* 单行文本溢出处理 */
+    white-space: nowrap;
+    /*强制文本在一行显示*/
+    text-overflow: ellipsis;
+    /*对于溢出容器的文本使用省略号代替*/
+    overflow: hidden;
+}
+
+.reg-item .select .select-item .sel-list li.selected {
+    font-weight: bold;
+    color: #00a1d6;
+}
+
+.reg-item .select .telephone {
+    width: 283px;
+}
+
+.reg-item .select .telephone input {
+    border-radius: 0 4px 4px 0;
+}
+
+.reg-form .reg-area .reg-item .btn-sncode {
+    position: absolute;
+    height: 36px;
+    right: 2px;
+    top: 2px;
+    width: 130px;
+}
+
+.reg-form .reg-area .reg-item .fill {
+    width: 100%;
+}
+
+.reg-form .reg-area .readme,
+.reg-form .reg-area .tip {
+    user-select: none;
+    margin: -40px 0;
+    font-size: 12px;
+}
+
+.reg-form .reg-area .readme .dfn-checkbox {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #767676;
+    border-radius: 2px;
+    background-color: #ffffff;
+    vertical-align: -2px;
+}
+
+.reg-form .reg-area .readme input:checked+.dfn-checkbox {
+    position: relative;
+    background-color: #00A1D6;
+    border-color: #00A1D6;
+}
+
+.reg-form .reg-area .readme input:checked+.dfn-checkbox::before {
+    content: '';
+    display: block;
+    width: 3px;
+    height: 7px;
+    border: 2px solid #fff;
+    transform: rotate(-135deg) translate(-2px, 2px);
+    border-bottom: 0;
+    border-right: 0;
+}
+
+.reg-form .reg-area .readme input {
+    display: none;
+}
+
+.reg-form .reg-area .tip {
+    text-align: right;
+}
+
+
+/* --注册区域结束 */
+
+
+/* 表单验证样式开始-- */
+
+.reg-form .reg-area .reg-item .error {
+    position: absolute;
+    top: 10px;
+    right: -250px;
+    width: 240px;
+    font-size: 12px;
+    color: #f45d90;
+    display: none;
+}
+
+.reg-form .reg-area .reg-item.haserror .error {
+    display: block;
+}
+
+.reg-form .reg-area .reg-item.haserror input {
+    border-color: #f45d90;
+}
+
+
+/* --表单验证样式结束 */

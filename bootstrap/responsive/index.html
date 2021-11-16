@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式原理</title>
+    <style>
+        /* 200-400, 1 */
+        /* 400-600, 2 */
+        /* 600-800, 3 */
+        /* 800-1000, 4 */
+        /* 1000以上，5 */
+        body {
+            margin: 0;
+        }
+        div {
+            /* 默认尺寸 */
+            width: 100%;
+            height: 100px;
+            background-color: #f40;
+            border: 1px solid #000;
+            float: left;
+            box-sizing: border-box;
+        }
+        /* 最小视口宽度为200px， >= 200 */
+        @media all and (min-width: 200px),{
+            div {
+                width: calc(100% / 1)
+            }
+        }
+        /* 最小视口宽度为400px， >= 400 */
+        @media all and (min-width: 400px) {
+            div {
+                width: calc(100% / 2)
+            }
+        }
+        /* 最小视口宽度为600px， >= 600 */
+        @media all and (min-width: 600px) {
+            div {
+                width: calc(100% / 3)
+            }
+        }
+        /* 最小视口宽度为800px， >= 800 */
+        @media all and (min-width: 800px) {
+            div {
+                width: calc(100% / 4)
+            }
+        }
+        /* 最小视口宽度为1000px， >= 1000 */
+        @media all and (min-width: 1000px) {
+            div {
+                width: calc(100% / 5)
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap折叠面板</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 基础折叠面板 -->
+        <div class="row pt-3">
+            <div class="col-12">
+                <p>
+                    <a href="#base_collapse" class="btn btn-primary" data-toggle="collapse">面板1</a>
+                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target=".mycollpase">面板2</button>
+                </p>
+            </div>
+            <div class="col-6">
+                <div class="collapse show" id="base_collapse">
+                    <div class="card card-body">
+                        基本传奇收入职工编辑公告条例网上显示想法留下，至少风云对不起只不过动画出台手机，农民考察可惜命令看起来厂家。
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapse mycollpase">
+                    <div class="card card-body">
+                        不论为什么下去国外的话较高档案官员刷新重大走了信心本站详细内，攻击我很目光事实网际快车硬件共和，原因那么固定豪华设定原本字体结合，走出春节意见刚刚也许性别放，打造一看解压密码结婚眼神垃圾，每个加油动漫任务宽带首页展开自然当前位置包。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 多个目标 -->
+        <div class="row mt-5">
+            <div class="col-12 mb-3">
+                <button type="button" class="btn btn-primary" data-target="#item1" data-toggle="collapse">first</button>
+                <button type="button" class="btn btn-primary" data-target="#item2" data-toggle="collapse">second</button>
+                <button type="button" class="btn btn-primary" data-target=".item-all" data-toggle="collapse">all</button>
+            </div>
+            <div class="col-6">
+                <div class="collapse item-all" id="item1">
+                    <div class="card card-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati animi incidunt perspiciatis inventore officiis, exercitationem eos mollitia assumenda facilis, quod eum nisi. Dicta error numquam iste voluptatum, veniam quo repudiandae!
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapse item-all" id="item2">
+                    <div class="card card-body">
+                        网吧住宅故意竞争没有故事色情驱动人，第二次也许怪物眼前否则期间无人人生请求什么是以来预期，初步给我也有支撑资产上次有一最好一股相应小游戏骑士资讯鼓励，刚刚国产后面生物共有版主增强还。
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 手风琴 -->
+        <div class="row mt-5 d-block">
+            <div class="accordion" id="accordion">
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" class="btn btn-link" data-target="#accordion_item1" data-toggle="collapse">Lorem ipsum dolor sit.</button>
+                    </div>
+                    <div class="collapse show" id="accordion_item1" data-parent="#accordion">
+                        <div class="card-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti hic, ratione excepturi mollitia, pariatur magni, earum laudantium, ea nostrum molestias magnam quisquam sed consectetur. Iure nisi accusantium animi, necessitatibus beatae?
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" class="btn btn-link" data-target="#accordion_item2" data-toggle="collapse">Lorem ipsum dolor sit.</button>
+                    </div>
+                    <div class="collapse" id="accordion_item2" data-parent="#accordion">
+                        <div class="card-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti hic, ratione excepturi mollitia, pariatur magni, earum laudantium, ea nostrum molestias magnam quisquam sed consectetur. Iure nisi accusantium animi, necessitatibus beatae?
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <button type="button" class="btn btn-link" data-target="#accordion_item3" data-toggle="collapse">Lorem ipsum dolor sit.</button>
+                    </div>
+                    <div class="collapse" id="accordion_item3" data-parent="#accordion">
+                        <div class="card-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti hic, ratione excepturi mollitia, pariatur magni, earum laudantium, ea nostrum molestias magnam quisquam sed consectetur. Iure nisi accusantium animi, necessitatibus beatae?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- JS和事件 -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <p>
+                    <a href="#base_collapse" class="btn btn-primary btn-item1">面板1</a>
+                    <button type="button" class="btn btn-primary btn-item2">面板2</button>
+                </p>
+            </div>
+            <div class="col-6">
+                <div class="collapse show collapse-item1">
+                    <div class="card card-body">
+                        基本传奇收入职工编辑公告条例网上显示想法留下，至少风云对不起只不过动画出台手机，农民考察可惜命令看起来厂家。
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="collapse collapse-item2">
+                    <div class="card card-body">
+                        不论为什么下去国外的话较高档案官员刷新重大走了信心本站详细内，攻击我很目光事实网际快车硬件共和，原因那么固定豪华设定原本字体结合，走出春节意见刚刚也许性别放，打造一看解压密码结婚眼神垃圾，每个加油动漫任务宽带首页展开自然当前位置包。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        // 显示折叠内容
+        $('.btn-item2').click(function() {
+            $('.collapse-item2').collapse('show');
+        });
+        // 隐藏折叠内容
+        $('.btn-item1').click(function(e){
+            $('.collapse-item1').collapse('hide');
+            e.preventDefault();
+        })
+        // 切换折叠内容
+         $('.btn-item2').click(function() {
+            $('.collapse-item2').collapse('toggle');
+        });
+
+        // 当调用show方法时，触发此事件，开始显示折叠内容时
+        $('.collapse-item2').on('show.bs.collapse', function(){
+            console.log('开始显示');
+        });
+        // 当调用hide方法时，触发此事件，开始隐藏折叠内容时
+        $('.collapse-item2').on('hide.bs.collapse', function(){
+            console.log('开始隐藏');
+        });
+        // 当完全显示折叠内容时，触发此事件
+        $('.collapse-item2').on('shown.bs.collapse', function(){
+            console.log('显示完');
+        });
+        // 当完全隐藏折叠内容时，触发此事件
+        $('.collapse-item2').on('hidden.bs.collapse', function(){
+            console.log('隐藏完');
+        });
+    </script>
+</body>
+
+</html>

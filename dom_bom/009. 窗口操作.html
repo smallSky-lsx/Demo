@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <button type="button" id="btnNew">打开新空白窗口</button>
+    <hr>
+    <button type="button" id="btnNewCon">往空白窗口输入内容</button>
+    <hr>
+    <button type="button" id="btnNewPage">往空白窗口输入一个页面</button>
+    <hr>
+    <button type="button" id="btnNewBlank">在新窗口打开百度页面</button>
+    <hr>
+    <button type="button" id="btnNewSelf">在当前窗口打开百度页面</button>
+    <hr>
+    <button type="button" id="btnClose">关闭窗口</button>
+    <script>
+        /**
+         * 窗口操作————
+         * 打开窗口：window.open(url ,target);
+         * 1. 参数：url和target更为常用
+         * 		url: 新窗口地址。为空时，打开一个空白窗口。
+         * 		target: 打开窗口方式，默认值为_blank。属性值：
+         * 				_blank: 打开新窗口
+         * 				_self: 打开当前窗口
+         * 2. 返回值：返回打开窗口的window对象
+         * 3. 能否操作新窗口：
+         * 		a. 若是打开空白窗口或同域窗口，能操作此窗口。
+         * 		b. 若是打开跨域窗口，存在跨域权限问题，不能操作此窗口。
+         * 	var opener = window.open();//打开新空白窗口
+         *
+         * 关闭窗口: window.close();
+         * 注意: 非IE浏览器仅能关闭脚本打开窗口。
+         */
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // window.open()
+        // 1. 打开新的空白窗口
+        $id('btnNew').onclick = function() {
+            window.open();
+        };
+        // 2. 往空白窗口输入内容
+        $id('btnNewCon').onclick = function() {
+            var opener = window.open(); //获取新窗口window对象
+            opener.document.title = '往空白窗口输入内容';
+            opener.document.body.innerText = '往空白窗口输入内容';
+            opener.document.body.style.backgroundColor = '#f40';
+            // 此处可以搭配document.write();//会覆盖原有html页面内容
+        };
+        // 3. 往空白窗口输入一个页面
+        $id('btnNewPage').onclick = function() {
+            var opener = window.open();
+            var pageCon = '<!DOCTYPE html>' +
+                '<html>' +
+                '<head>' +
+                '<meta charset="utf-8">' +
+                '<title>往空白窗口输入一个页面</title>' +
+                '</head>' +
+                '<body>往空白窗口输入一个页面</body>' +
+                '</html>'
+            opener.document.write(pageCon);
+        };
+        // 4. 在新窗口打开百度页面，跨域窗口不可操作
+        $id('btnNewBlank').onclick = function() {
+            window.open('https://www.baidu.com');
+            window.open('https://www.baidu.com', '_blank');
+        };
+        // 5. 在当前窗口打开百度页面
+        $id('btnNewSelf').onclick = function() {
+            window.open('https://www.baidu.com', '_self');
+        };
+        // 关闭窗口
+        $id('btnClose').onclick = function() {
+            window.close();//window指向当前窗口对象，只能关闭当前窗口
+            /**
+             * 1. IE浏览器能关闭所有打开窗口
+             * 2. 非IE浏览器仅能关闭脚本打开窗口
+             */
+        };
+    </script>
+</body>
+
+</html>

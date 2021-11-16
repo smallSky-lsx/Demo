@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+        span {
+            position: absolute;
+            top: 0;
+            left: 300px;
+            width: 1px;
+            height: 160px;
+            background-color: #000;
+        }
+        button {
+            position: absolute;
+            top: 200px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <span></span>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 兼容window.getComputedStyle
+        function getEleStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+        $id('box').onclick = function() {
+            !this.flag && startMove(this, 'left', 300);
+        };
+
+        function startMove(ele, attr, targetValue) {
+            // 清除定时器
+            if (ele.timerId) {
+                clearInterval(ele.timerId);
+                ele.timerId = null;
+            }
+            var a = 3, //加速度
+                iSpeed = 0, //初速度
+                loss = 0.8, //每次运动，速度损耗值
+                currentValue = parseFloat(getEleStyle(ele, attr)); //当前值
+            (currentValue != targetValue) && (ele.timerId = setInterval(function() {
+                ele.flag = true; //上锁
+                /**
+                 * 向左运动 : ==>, a为正，v为正
+                 * 向右运动 : <==, a为负，v为负
+                 * 1. 以目标位置为参考点，参考点左边a为正，参考点右边a为负。
+                 * 		a. 刚开始a减小，v增大。当物体越过目标位置，a为负，a增大，v开始减少到0为止，开始反向运动。
+                 * 		b. 反向运动，a为负，a减少，v为负不断增大。当越过目标位置，a为正，a增大，v开始减少到0为止，开始正向运动。
+                 * 2. 每次运动，速度都会有损耗。
+                 * 3. 运动什么时候停止，当物体速度接近于0，且物体接近目标位置，此时物体运动停止。
+                 */
+                /*if (currentValue < targetValue) {
+                    a = (targetValue - currentValue) / 5; //为正值
+                } else {
+                    a = (targetValue - currentValue) / 5; //为负值
+                }*/
+                a = (targetValue - currentValue) / 5;
+                iSpeed += a; //当前理想速度
+                iSpeed *= loss; //运动损耗后真实速度
+                currentValue += iSpeed; //当前位置
+                // 检测运动是否可停止,当运动速度的绝对值小于1，且当前位置与目标位置差的绝对值小于1时，物体可停止运动
+                if (Math.abs(iSpeed) < 1 && Math.abs(targetValue - currentValue) < 1) {
+                    clearInterval(ele.timerId);
+                    currentValue = targetValue;
+                    ele.flag = false;
+                    console.log('清除定时器');
+                }
+                ele.style[attr] = currentValue + 'px';
+            }, 50));
+        }
+    </script>
+</body>
+
+</html>

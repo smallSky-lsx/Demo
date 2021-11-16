@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap提示框(警告框)</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 提示框展示效果 -->
+    <div class="container border pt-2">
+        <div class="alert alert-primary">alert-primary</div>
+        <div class="alert alert-secondary">alert-secondary</div>
+        <div class="alert alert-success">alert-success</div>
+        <div class="alert alert-danger">alert-danger</div>
+        <div class="alert alert-warning">alert-warning</div>
+        <div class="alert alert-info">alert-info</div>
+        <div class="alert alert-light">alert-light</div>
+        <div class="alert alert-dark">alert-dark</div>
+    </div>
+    <!-- 提示框中链接 -->
+    <div class="container mt-5 border pt-2">
+        <div class="alert alert-primary">alert-primary<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-secondary">alert-secondary<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-success">alert-success<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-danger">alert-danger<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-warning">alert-warning<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-info">alert-info<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-light">alert-light<a href="#" class="ml-2 alert-link">a link example</a></div>
+        <div class="alert alert-dark">alert-dark<a href="#" class="ml-2 alert-link">a link example</a></div>
+    </div>
+    <!-- 提示框中添加额外内容 -->
+    <div class="container mt-5 border pt-2">
+        <div class="alert alert-success">
+            <h4 class="alert-heading">alert-heading</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, saepe doloribus ipsum officia consequatur, aspernatur.</p>
+            <hr>
+            <p class="mb-0">Lorem, ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem repellendus, provident harum! Illum, alias cum hic aliquam optio consequuntur nesciunt!</p>
+        </div>
+    </div>
+    <!-- 关闭提示框 -->
+    <div class="container mt-5 border pt-2">
+        <div class="alert alert-primary alert-dismissible show fade myalert">
+            <h4 class="alert-heading">Lorem, ipsum, dolor.</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, eos?</p>
+            <hr>
+            <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing, elit. Pariatur iste odio quibusdam officiis hic possimus?</p>
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+        </div>
+        <button type="button" class="close-alert">关闭提示框</button>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        // 关闭提示框
+        $('.close-alert').click(function() {
+            $('.myalert').alert('close');
+        });
+        // 调用close实例方法时，触发close.bs.alert事件
+        $('.myalert').on('close.bs.alert', function() {
+            alert('调用close实例方法');
+        });
+        // 提示框关闭时，会触发此事件closed.bs.alert
+        $('.myalert').on('closed.bs.alert', function() {
+            alert('提示框关闭时');
+        });
+    </script>
+</body>
+
+</html>

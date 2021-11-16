@@ -1,0 +1,161 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-03-04 19:49:48
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-03-04 19:49:57
+*/
+*body {
+    margin: 0;
+    background-color: #000;
+}
+
+.space {
+    height: 500px;
+    background-image: linear-gradient(rgba(50, 127, 207, 1), #fff);
+    animation: spaceChange 20s cubic-bezier(0, 0, 0, 0) 1s infinite both;
+}
+
+@keyframes spaceChange {
+    0% {
+        opacity: 0.2;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    45%, 65% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+.run {
+    position: absolute;
+    left: 20%;
+    top: 480px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 100px 30px #fff,
+        5px 0 80px 50px #ff0;
+    animation: runChange 20s cubic-bezier(0, 0, 0, 0) infinite;
+}
+@keyframes runChange {
+    0% {
+        left: 20%;
+        top: 480px;
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+    }
+    10% {
+        left: 30%;
+        top: 380px;
+        width: 55px;
+        height: 55px;
+        opacity: 0.7;
+    }
+    40% {
+        left: 40%;
+        top: 280px;
+        width: 45px;
+        height: 45px;
+        opacity: 0.8;
+    }
+    45%, 65% {
+        left: 50%;
+        top: 180px;
+        width: 40px;
+        height: 40px;
+        opacity: 1;
+    }
+    80% {
+        left: 60%;
+        top: 250px;
+        width: 50px;
+        height: 50px;
+        opacity: 0.6;
+    }
+    90% {
+        left: 70%;
+        top: 300px;
+        width: 55px;
+        height: 55px;
+        opacity: 0.4;
+    }
+    100% {
+        left: 80%;
+        top: 340px;
+        width: 60px;
+        height: 60px;
+        opacity: 0;
+    }
+}
+.moon {
+    position: absolute;
+    left: 50%;
+    top: 170px;
+    width: 80px;
+    height: 80px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: inset -25px -13px 5px #fff;
+    animation: moonChange 20s cubic-bezier(0, 0, 0, 0) 1s infinite both;
+}
+@keyframes moonChange {
+    0% {
+        left: 50%;
+        top: 170px;
+        opacity: 1;
+    }
+    10% {
+        left: 60%;
+        top: 380px;
+        opacity: 0.7;
+    }
+    30% {
+        left: 70%;
+        top: 430px;
+        opacity: 0.4;
+    }
+    45% {
+        left: 80%;
+        top: 480px;
+        opacity: 0;
+    }
+    60% {
+        left: 20%;
+        top: 450px;
+        opacity: 0;
+    }
+    70% {
+        left: 30%;
+        top: 380px;
+        opacity: 0.4;
+    }
+    80% {
+        left: 40%;
+        top: 310px;
+        opacity: 0.6;
+    }
+    90% {
+        left: 45%;
+        top: 240px;
+        opacity: 0.9;
+    }
+    100% {
+        left: 50%;
+        top: 170px;
+        opacity: 1;
+    }
+}

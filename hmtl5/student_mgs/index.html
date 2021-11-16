@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>学生管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="logo">
+                <img src="imgs/logo.png" alt="">
+                <span class="logo-font">渡</span>
+                <span class="logo-font">一</span>
+                <span class="logo-font">教</span>
+                <span class="logo-font">育</span>
+            </div>
+            <div class="btn">
+                <span class="btn-line"></span>
+                <span class="btn-line"></span>
+                <span class="btn-line"></span>
+            </div>
+            <nav>
+                <ul class="drop-list">
+                    <li class="list-item" data-id="stu-list">学生列表</li>
+                    <li class="list-item" data-id="stu-add">新增学生</li>
+                    <li class="list-item" data-id="stu-echarts">统计图表</li>
+                </ul>
+            </nav>
+        </header>
+        <aside class="aside-menu">
+            <h4 class="title">学生管理</h4>
+            <ul class="aside-list">
+                <li class="list-item stu-list show-list" data-id="stu-list">学生列表</li>
+                <li class="list-item stu-add" data-id="stu-add">新增学生</li>
+                <li class="list-item stu-echarts" data-id="stu-echarts">统计图表</li>
+            </ul>
+        </aside>
+        <section class="tab-content">
+            <div class="tab-content-item show-tab" id="stu-list">学生列表</div>
+            <div class="tab-content-item" id="stu-add">新增学生</div>
+            <div class="tab-content-item" id="stu-echarts">统计图表</div>
+        </section>
+    </div>
+    <script src="js/lib/jquery-3.3.1.js"></script>
+    <script src="js/lib/mock.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

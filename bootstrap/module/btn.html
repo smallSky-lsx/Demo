@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap按钮</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container p-3">
+        <!-- 按钮效果 -->
+        <div class="row border rounded p-3">
+            <div class="col">
+                <button type="button" class="btn btn-primary">primary</button>
+                <button type="button" class="btn btn-secondary">secondary</button>
+                <button type="button" class="btn btn-success">success</button>
+                <button type="button" class="btn btn-danger">danger</button>
+                <button type="button" class="btn btn-warning">warning</button>
+                <button type="button" class="btn btn-info">info</button>
+                <button type="button" class="btn btn-light">light</button>
+                <button type="button" class="btn btn-dark">dark</button>
+                <button type="button" class="btn btn-link">link</button>
+            </div>
+        </div>
+        <!-- 按钮标签 -->
+        <div class="row border p-3 rounded mt-3">
+            <div class="col">
+                <a href="javascript:void(0)" class="btn btn-primary">link</a>
+                <button type="submit" class="btn btn-primary">button</button>
+                <input type="button" value="input" class="btn btn-primary">
+                <input type="submit" value="submit" class="btn btn-primary">
+                <input type="reset" value="reset" class="btn btn-primary">
+            </div>
+        </div>
+        <!-- 外框按钮 -->
+        <div class="row border p-3 rounded mt-3">
+            <div class="col">
+                <button type="button" class="btn btn-outline-primary">primary</button>
+                <button type="button" class="btn btn-outline-secondary">secondary</button>
+                <button type="button" class="btn btn-outline-success">success</button>
+                <button type="button" class="btn btn-outline-danger">danger</button>
+                <button type="button" class="btn btn-outline-warning">warning</button>
+                <button type="button" class="btn btn-outline-info">info</button>
+                <button type="button" class="btn btn-outline-light">light</button>
+                <button type="button" class="btn btn-outline-dark">dark</button>
+            </div>
+        </div>
+        <!-- 按钮大小 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <button type="button" class="btn  btn-success btn-lg">大按钮</button>
+                <button type="button" class="btn btn-success">正常按钮</button>
+                <button type="button" class="btn btn-success btn-sm">小按钮</button>
+            </div>
+        </div>
+        <!-- 块级按钮 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <button type="button" class="btn  btn-success btn-lg btn-block">大按钮</button>
+                <button type="button" class="btn btn-success btn-block">正常按钮</button>
+                <button type="button" class="btn btn-success btn-sm btn-block">小按钮</button>
+            </div>
+        </div>
+        <!-- 启用状态, 按钮默认即是启用状态 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <button type="button" class="btn btn-success">启用状态</button>
+                <a href="javascript:void(0)" class="btn btn-success">启用状态</a>
+                <input type="button" class="btn btn-secondary active" checked value="启用状态">
+            </div>
+        </div>
+        <!-- 停用状态 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <button type="button" class="btn btn-success" disabled>停用状态</button>
+                <a href="javascript:void(0)" tabindex="-1" class="btn btn-success disabled">停用状态</a>
+                <input type="button" class="btn btn-secondary" disabled value="停用状态">
+            </div>
+        </div>
+        <!-- 按钮切换状态 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <button type="button" class="btn btn-success" data-toggle="button">切换状态</button>
+            </div>
+        </div>
+        <!-- 群组当选按钮 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                        <input type="radio" name="options" id="option1" checked>active
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option2">radio
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="options" id="option3">radio
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!-- JS切换状态 -->
+        <div class="row border rounded p-3 mt-3">
+            <div class="col">
+                <button type="button" class="btn btn-success" data-toggle="button" id="mybtn">JS切换状态</button>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        $('#mybtn').button('toggle');
+    </script>
+</body>
+
+</html>

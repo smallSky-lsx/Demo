@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1;
+        }
+        .ad-news {
+            width: 499px;
+            margin: 0 auto;
+        }
+        .ad-news .tabbox .tabItem {
+            float: left;
+            width: 124px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #666;
+            cursor: pointer;
+        }
+        .ad-news .tabbox .tabItem+.tabItem {
+            border-left: 1px solid #000;
+        }
+        .ad-news .content .conItem {
+            display: none;
+            height: 300px;
+            text-align: center;
+        }
+        .ad-news .tabbox .selected, .ad-news .content .selected {
+            display: block;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ad-news" id="ad-news">
+        <div class="tabbox clearfix">
+            <div class="tabItem selected" data-mark="pe">体育</div>
+            <div class="tabItem" data-mark="pasttime">娱乐</div>
+            <div class="tabItem" data-mark="news">新闻</div>
+            <div class="tabItem" data-mark="composite">综合</div>
+        </div>
+        <div class="content">
+            <div class="conItem selected" id="pe">我是体育模块</div>
+            <div class="conItem" id="pasttime">我是娱乐模块</div>
+            <div class="conItem" id="news">我是新闻模块</div>
+            <div class="conItem" id="composite">我是综合模块</div>
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        $id('ad-news').children[0].onmouseover = ((function(activeClass) {
+            var changeItem = function(currEle, allEles) {
+                Array.prototype.forEach.call(allEles, function(ele) {
+                    // 删除所有项的activeClass类
+                    ele.classList.remove(activeClass);
+                });
+                // 追加当前项的activeClass类
+                currEle.classList.add(activeClass);
+            }
+            return function(e) {
+                e = e || window.event;
+                var targetEle = e.target || e.srcElement, //获取当前tab项
+                    allTabEles = this.children; //获取所有tab项
+                // Tab变化
+                /*Array.prototype.forEach.call(allTabEles, function(ele) {
+                    // 删除Tab中所有项selected类
+                    ele.classList.remove('selected');
+                });
+                // 将当前Tab项追加selected类
+                targetEle.classList.add('selected');*/
+                changeItem(targetEle, allTabEles);
+
+                // 相应模块变化
+                var markId = targetEle.dataset['mark'], //获取id
+                    currEle = $id(markId), //获取相应模块元素
+                    allConEles = this.nextElementSibling.children; //获取所有模块元素
+                /*Array.prototype.forEach.call(allConEles, function(ele) {
+                    // 隐藏所有内容项
+                    ele.classList.remove('selected');
+                });
+                // 显示对应模块内容项
+                currEle.classList.add('selected');*/
+                changeItem(currEle, allConEles);
+            };
+        }))('selected');
+    </script>
+</body>
+
+</html>

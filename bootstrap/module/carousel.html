@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap轮播图</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 只有幻灯片 -->
+        <div class="row">
+            <div class="col">
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 包含控制项 -->
+        <div class="row mt-5">
+            <div class="col">
+                <div class="carousel slide" data-ride="carousel" id="controls">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <!-- 添加控制项 -->
+                    <a href="#controls" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#controls" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 包含指示器 -->
+        <div class="row mt-5">
+            <div class="col">
+                <div class="carousel slide" data-ride="carousel" id="indicators">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <!-- 添加控制项 -->
+                    <a href="#indicators" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#indicators" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <!-- 添加指示器 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#indicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#indicators" data-slide-to="1"></li>
+                        <li data-target="#indicators" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 包含字幕 -->
+        <div class="row mt-5">
+            <div class="col">
+                <div class="carousel slide" data-ride="carousel" id="marquee">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-1</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-2</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-3</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加控制项 -->
+                    <a href="#marquee" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#marquee" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <!-- 添加指示器 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#marquee" data-slide-to="0" class="active"></li>
+                        <li data-target="#marquee" data-slide-to="1"></li>
+                        <li data-target="#marquee" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 交叉淡入淡出 -->
+        <div class="row mt-5">
+            <div class="col">
+                <div class="carousel slide carousel-fade" data-ride="carousel" id="fade">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                    <!-- 添加控制项 -->
+                    <a href="#fade" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#fade" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 通过data-选项调整轮播图功能 -->
+        <div class="row mt-5">
+            <div class="col">
+                <!-- 
+                    data-interval   默认值为5000    表示自动轮播延迟时间  若为false，不能自动轮播      可以在carousel-item中设置
+                    data-keyboard   轮播是否能使用键盘左右键控制  默认值为false   
+                    data-pause      鼠标进入是否停止轮播
+                    data-ride       是否自动轮播
+                    data-wrap       是否连续轮播
+                 -->
+                <div id="options" class="carousel slide" data-ride="carousel" data-interval="2000" data-keyboard="true" data-pause="hover" data-wrap="true">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-1</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-2</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-3</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加控制项 -->
+                    <a href="#options" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#options" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <!-- 添加指示器 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#options" data-slide-to="0" class="active"></li>
+                        <li data-target="#options" data-slide-to="1"></li>
+                        <li data-target="#options" data-slide-to="2"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <!-- 通过JS提供方法控制轮播图功能 -->
+        <div class="row mt-5">
+            <div class="col">
+                <div id="methods" class="carousel slide mb-3">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../images/1.jpg" alt="" class="d-block w-100">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-1</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/2.jpg" alt="" class="img-fluid">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-2</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../images/3.jpg" alt="" class="img-fluid">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lorem ipsum dolor sit.-3</h5>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod animi dolores esse, nobis, eius ea.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 添加控制项 -->
+                    <a href="javascript:;" class="carousel-control-prev prev-btn">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="javascript:;" class="carousel-control-next next-btn">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <!-- 添加指示器 -->
+                    <ol class="carousel-indicators indicators-btn">
+                        <li class="active"></li>
+                        <li></li>
+                        <li></li>
+                    </ol>
+                </div>
+                <button type="button" class="btn btn-primary mr-3 start">start</button>
+                <button type="button" class="btn btn-primary pause">pause</button>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+        // 初始化轮播图
+        $('.start').click(function() {
+            // 初始化轮播时间
+            $('#methods').carousel({
+                interval: 2000
+            });
+            // 初始化从左到右播放
+            $('#methods').carousel('cycle');
+        });
+
+        // 暂停轮播
+        $('.pause').click(function() {
+            $('#methods').carousel('pause');
+        });
+
+        // 上一个
+        $('.prev-btn').click(function() {
+            $('#methods').carousel('prev');
+        });
+
+        // 下一个
+        $('.next-btn').click(function() {
+            $('#methods').carousel('next');
+        });
+
+        // 指示器
+        $('.indicators-btn li').each(function(index, element) {
+            $(element).click(function() {
+                $('#methods').carousel(index);
+            });
+        });
+
+        // 事件
+        $('#methods').on('slide.bs.carousel', function(e) { // 轮播开始切换时触发
+            console.log('开始走');
+            console.log(
+                e.direction, // 当前轮播走的方向
+                e.relatedTarget, // 当前轮播的DOM元素
+                e.from, // 当前轮播索引值
+                e.to // 下一个轮播索引值
+            );
+        });
+        $('#methods').on('slid.bs.carousel', function(e) { // 轮播结束切换时触发
+            console.log('走完啦');
+        });
+    </script>
+</body>
+
+</html>

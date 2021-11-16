@@ -1,0 +1,119 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-02-26 23:19:28
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-02-27 00:02:29
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+.tab {
+    width: 400px;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+}
+.tab-title {
+    font-size: 0;
+}
+.tab-title-item {
+    display: inline-block;
+    width: calc(100%/3);
+    color: #fff;
+    background-color: #ddd;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+.tab-title-item:focus,
+.tab-title-item:hover {
+    background-color: #888;
+}
+.tab-title-item:not(:last-of-type) {
+    border-right: 1px solid #eee;
+}
+.tab-content {
+    position: relative;
+    height: 200px;
+}
+.tab-content-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.tab-content-item:nth-of-type(1) {
+    z-index: 3;
+    background-color: #f00;
+}
+.tab-content-item:nth-of-type(2) {
+    z-index: 2;
+    background-color: #0f0;
+}
+.tab-content-item:nth-of-type(3) {
+    z-index: 1;
+    background-color: #00f;
+}
+.tab-content-item:target {
+    z-index: 4;
+}
+/* ========================== */
+.tab-toggle {
+    width: 400px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+}
+.toggle {
+    position: relative;
+    height: 200px;
+    font-size: 0;
+}
+.toggle-title {
+    display: inline-block;
+    width: calc(100%/3);
+    color: #fff;
+    background-color: #ddd;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+    box-sizing: border-box;
+}
+.toggle-title:not(:last-of-type) {
+    border-right: 1px solid #eee;
+}
+.toggle-title:hover,
+.toggle-title:focus {
+    background-color: #888;
+}
+.toggle-title:focus+.toggle-content {
+    z-index: 4;
+}
+.toggle-content {
+    position: absolute;
+    top: 26px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #fff;
+}
+.toggle-content:nth-of-type(1) {
+    z-index: 3;
+    background-color: #f00;
+}
+.toggle-content:nth-of-type(2) {
+    z-index: 2;
+    background-color: #0f0;
+}
+.toggle-content:nth-of-type(3) {
+    z-index: 1;
+    background-color: #00f;
+}

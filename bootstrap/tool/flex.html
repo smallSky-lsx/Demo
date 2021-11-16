@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bootstrap flex</title>
+    <link rel="stylesheet" href="lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 启动felx -->
+        <div class="d-flex p-2 bg-secondary text-white">I'm a flexbox container!</div>
+        <div class="d-inline-flex p-2 mt-3 bg-secondary text-white">I'm a flexbox container!</div>
+        <div class="row p-2 mt-3 bg-secondary text-white no-gutters">
+            I'm a flebox container!
+        </div>
+        <!-- 设置主轴方向  -->
+        <!-- .flex-row -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-row">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .flex-row-reverse -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-row-reverse">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .flex-column -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-column">
+            <div class="bg-success p-2 rounded border w-25">item-1</div>
+            <div class="bg-success p-2 rounded border w-25">item-2</div>
+            <div class="bg-success p-2 rounded border w-25">item-3</div>
+        </div>
+        <!-- .flex-column-reverse -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-column-reverse">
+            <div class="bg-success p-2 rounded border w-25">item-1</div>
+            <div class="bg-success p-2 rounded border w-25">item-2</div>
+            <div class="bg-success p-2 rounded border w-25">item-3</div>
+        </div>
+        <!-- 主轴对齐    .justify-content-* -->
+        <!-- .justify-content-start -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 justify-content-start">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .justify-content-center -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 justify-content-center">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .justify-content-end -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 justify-content-end">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .justofy-content-around -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 justify-content-around">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .justify-content-between -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 justify-content-between">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- 侧轴单行对齐方式: .align-items -->
+        <!-- .align-items-stretch -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 align-items-stretch" style="height: 150px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .align-items-start -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 align-items-start" style="height: 150px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .align-items-center -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 align-items-center" style="height: 150px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .align-items-end -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 align-items-end" style="height: 150px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .align-items-baseline -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 align-items-baseline" style="height: 150px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border mt-3">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- flex子项自身对齐 .align-self-* -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2" style="height: 150px">
+            <div class="bg-success p-2 rounded border align-self-auto">item-1</div>
+            <div class="bg-success p-2 rounded border align-self-stretch">item-2</div>
+            <div class="bg-success p-2 rounded border align-self-start">item-3</div>
+            <div class="bg-success p-2 rounded border align-self-center">item-4</div>
+            <div class="bg-success p-2 rounded border align-self-baseline">item-5</div>
+            <div class="bg-success p-2 rounded border align-self-end">item-6</div>
+        </div>
+        <!-- 侧轴多行对齐    .align-content-* -->
+        <!-- .align-content-stretch -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 flex-wrap align-content-stretch" style="height: 200px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+            <div class="bg-success p-2 rounded border">item-4</div>
+            <div class="bg-success p-2 rounded border">item-5</div>
+            <div class="bg-success p-2 rounded border">item-6</div>
+            <div class="bg-success p-2 rounded border">item-7</div>
+            <div class="bg-success p-2 rounded border">item-8</div>
+            <div class="bg-success p-2 rounded border">item-9</div>
+            <div class="bg-success p-2 rounded border">item-10</div>
+            <div class="bg-success p-2 rounded border">item-11</div>
+            <div class="bg-success p-2 rounded border">item-12</div>
+            <div class="bg-success p-2 rounded border">item-13</div>
+            <div class="bg-success p-2 rounded border">item-14</div>
+            <div class="bg-success p-2 rounded border">item-15</div>
+            <div class="bg-success p-2 rounded border">item-16</div>
+        </div>
+        <!-- .align-content-start -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-wrap align-content-start" style="height: 200px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+            <div class="bg-success p-2 rounded border">item-4</div>
+            <div class="bg-success p-2 rounded border">item-5</div>
+            <div class="bg-success p-2 rounded border">item-6</div>
+            <div class="bg-success p-2 rounded border">item-7</div>
+            <div class="bg-success p-2 rounded border">item-8</div>
+            <div class="bg-success p-2 rounded border">item-9</div>
+            <div class="bg-success p-2 rounded border">item-10</div>
+            <div class="bg-success p-2 rounded border">item-11</div>
+            <div class="bg-success p-2 rounded border">item-12</div>
+            <div class="bg-success p-2 rounded border">item-13</div>
+            <div class="bg-success p-2 rounded border">item-14</div>
+            <div class="bg-success p-2 rounded border">item-15</div>
+            <div class="bg-success p-2 rounded border">item-16</div>
+        </div>
+        <!-- .align-content-center -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-wrap align-content-center" style="height: 200px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+            <div class="bg-success p-2 rounded border">item-4</div>
+            <div class="bg-success p-2 rounded border">item-5</div>
+            <div class="bg-success p-2 rounded border">item-6</div>
+            <div class="bg-success p-2 rounded border">item-7</div>
+            <div class="bg-success p-2 rounded border">item-8</div>
+            <div class="bg-success p-2 rounded border">item-9</div>
+            <div class="bg-success p-2 rounded border">item-10</div>
+            <div class="bg-success p-2 rounded border">item-11</div>
+            <div class="bg-success p-2 rounded border">item-12</div>
+            <div class="bg-success p-2 rounded border">item-13</div>
+            <div class="bg-success p-2 rounded border">item-14</div>
+            <div class="bg-success p-2 rounded border">item-15</div>
+            <div class="bg-success p-2 rounded border">item-16</div>
+        </div>
+        <!-- .align-content-end -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-wrap align-content-end" style="height: 200px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+            <div class="bg-success p-2 rounded border">item-4</div>
+            <div class="bg-success p-2 rounded border">item-5</div>
+            <div class="bg-success p-2 rounded border">item-6</div>
+            <div class="bg-success p-2 rounded border">item-7</div>
+            <div class="bg-success p-2 rounded border">item-8</div>
+            <div class="bg-success p-2 rounded border">item-9</div>
+            <div class="bg-success p-2 rounded border">item-10</div>
+            <div class="bg-success p-2 rounded border">item-11</div>
+            <div class="bg-success p-2 rounded border">item-12</div>
+            <div class="bg-success p-2 rounded border">item-13</div>
+            <div class="bg-success p-2 rounded border">item-14</div>
+            <div class="bg-success p-2 rounded border">item-15</div>
+            <div class="bg-success p-2 rounded border">item-16</div>
+        </div>
+        <!-- .align-content-around -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-wrap align-content-around" style="height: 200px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+            <div class="bg-success p-2 rounded border">item-4</div>
+            <div class="bg-success p-2 rounded border">item-5</div>
+            <div class="bg-success p-2 rounded border">item-6</div>
+            <div class="bg-success p-2 rounded border">item-7</div>
+            <div class="bg-success p-2 rounded border">item-8</div>
+            <div class="bg-success p-2 rounded border">item-9</div>
+            <div class="bg-success p-2 rounded border">item-10</div>
+            <div class="bg-success p-2 rounded border">item-11</div>
+            <div class="bg-success p-2 rounded border">item-12</div>
+            <div class="bg-success p-2 rounded border">item-13</div>
+            <div class="bg-success p-2 rounded border">item-14</div>
+            <div class="bg-success p-2 rounded border">item-15</div>
+            <div class="bg-success p-2 rounded border">item-16</div>
+        </div>
+        <!-- .align-content-between -->
+        <div class="d-flex mt-3 bg-secondary text-white p-2 flex-wrap align-content-between" style="height: 200px">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+            <div class="bg-success p-2 rounded border">item-4</div>
+            <div class="bg-success p-2 rounded border">item-5</div>
+            <div class="bg-success p-2 rounded border">item-6</div>
+            <div class="bg-success p-2 rounded border">item-7</div>
+            <div class="bg-success p-2 rounded border">item-8</div>
+            <div class="bg-success p-2 rounded border">item-9</div>
+            <div class="bg-success p-2 rounded border">item-10</div>
+            <div class="bg-success p-2 rounded border">item-11</div>
+            <div class="bg-success p-2 rounded border">item-12</div>
+            <div class="bg-success p-2 rounded border">item-13</div>
+            <div class="bg-success p-2 rounded border">item-14</div>
+            <div class="bg-success p-2 rounded border">item-15</div>
+            <div class="bg-success p-2 rounded border">item-16</div>
+        </div>
+        <!-- 分配剩余空间(.flex-fill)等价于 .col -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded border flex-fill">item-1</div>
+            <div class="bg-success p-2 rounded border flex-fill">item-2</div>
+            <div class="bg-success p-2 rounded border flex-fill">item-3</div>
+        </div>
+        <!-- flex子项伸缩 -->
+        <!-- .flex-grow-1|0 -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded border flex-grow-1">item-1</div>
+            <div class="bg-success p-2 rounded border">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .flex-shrink-1|0 -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded border w-100">item-1</div>
+            <div class="bg-success p-2 rounded border flex-shrink-0">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .ml-auto -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border ml-auto">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .mr-auto -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded border">item-1</div>
+            <div class="bg-success p-2 rounded border mr-auto">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+        <!-- .mt-auto -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 flex-column" style="height: 200px">
+            <div class="bg-success p-2 rounded border w-25">item-1</div>
+            <div class="bg-success p-2 rounded border w-25 mt-auto">item-2</div>
+            <div class="bg-success p-2 rounded border w-25">item-3</div>
+        </div>
+        <!-- .mb-auto -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 flex-column" style="height: 200px">
+            <div class="bg-success p-2 rounded border w-25">item-1</div>
+            <div class="bg-success p-2 rounded border w-25 mb-auto">item-2</div>
+            <div class="bg-success p-2 rounded border w-25">item-3</div>
+        </div>
+        <!-- .flex-nowrap -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 flex-nowrap">
+            <div class="bg-success p-2 rounded border w-50 flex-shrink-0">item-1</div>
+            <div class="bg-success p-2 rounded border w-50 flex-shrink-0">item-2</div>
+            <div class="bg-success p-2 rounded border w-25 flex-shrink-0">item-3</div>
+        </div>
+        <!-- .flex-wrap -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 flex-wrap">
+            <div class="bg-success p-2 rounded border w-50 flex-shrink-0">item-1</div>
+            <div class="bg-success p-2 rounded border w-50 flex-shrink-0">item-2</div>
+            <div class="bg-success p-2 rounded border w-25 flex-shrink-0">item-3</div>
+        </div>
+        <!-- .flex-wrap-reverse -->
+        <div class="d-flex mt-5 bg-secondary text-white p-2 flex-wrap-reverse">
+            <div class="bg-success p-2 rounded border w-50 flex-shrink-0">item-1</div>
+            <div class="bg-success p-2 rounded border w-50 flex-shrink-0">item-2</div>
+            <div class="bg-success p-2 rounded border w-25 flex-shrink-0">item-3</div>
+        </div>
+        <!-- flex子项排序 .order-->
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded bordero order-3">item-1</div>
+            <div class="bg-success p-2 rounded border order-2">item-2</div>
+            <div class="bg-success p-2 rounded border order-1">item-3</div>
+        </div>
+        <div class="d-flex mt-5 bg-secondary text-white p-2">
+            <div class="bg-success p-2 rounded bordero order-last">item-1</div>
+            <div class="bg-success p-2 rounded border order-first">item-2</div>
+            <div class="bg-success p-2 rounded border">item-3</div>
+        </div>
+    </div>
+</body>
+
+</html>

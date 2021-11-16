@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: #000;
+            /* link+visited */
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        .btnlogin {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 999;
+        }
+        .cover .modal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 512px;
+            height: 280px;
+            border: 1px solid #ebebeb;
+            background-color: #fff;
+            box-shadow: 0 0 20px #ddd;
+            z-index: 1000;
+        }
+        .modal .modal-head {
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            margin-top: 10px;
+            text-align: center;
+            font-size: 18px;
+            user-select: none;
+            cursor: move;
+        }
+        .modal .modal-head .btnClose {
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 12px;
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #ebebeb;
+            border-radius: 50%;
+        }
+        .modal-head .btnClose a {
+        	cursor: pointer;
+        }
+        /* 表单元素初始化 */
+        .modal-content .login-item {
+        	font-size: 14px;
+        	margin: 20px 0;
+        }
+        .modal-content .login-item label {
+        	float: left;
+        	width: 100px;
+        	height: 35px;
+        	line-height: 35px;
+        	text-align: right;
+        	margin-right: 10px;
+        }
+        .modal-content .login-item input {
+        	float: left;
+        	width: 350px;
+        	height: 35px;
+        	line-height: 35px;
+        	border: 1px solid #ebebeb;
+        	text-indent: 5px;
+        	border-radius: 5px;
+        }
+        .modal-content .login-item input:focus {
+        	outline-color: #f40;
+        }
+        .modal-content .btnlogin {
+        	margin-top: 30px;
+        }
+        .modal-content .btnlogin button {
+        	width: 256px;
+        	height: 40px;
+        	line-height: 40px;
+        	font-size: 14px;
+        	border: 1px solid #ebebeb;
+        	background-color: #fff;
+        	cursor: pointer;
+        	outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btnlogin">
+        <a href="javascript:void(0)" id="loginLink">点击，弹出登录框</a>
+    </div>
+    <div class="cover" id="cover">
+        <div class="modal" id="modalLogin">
+            <div class="modal-head">登录会员<span class="btnClose"><a href="javascript:void(0);" id="btnClose" ondragstart="return false">关闭</a></span></div>
+            <div class="modal-content">
+                <div class="login-item clearfix">
+                    <label for="username">用户名：</label>
+                    <input type="text" id="username" name="uname" placeholder="请输入用户名">
+                </div>
+                <div class="login-item clearfix">
+                    <label for="password">登录密码：</label>
+                    <input type="password" id="password" name="pwd" placeholder="请输入登录密码">
+                </div>
+                <div class="btnlogin">
+                    <button type="submit" id="btnLogin">登录会员</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 1. 获取元素
+        var cover = $id('cover'),
+            loginLink = $id('loginLink'),
+            btnClose = $id('btnClose');
+        // 2.1 点击显示cover
+        loginLink.onclick = function(e) {
+            cover.style.display = 'block';
+            cancelDefault(e);
+        };
+        // 2.2 点击关闭cover
+        btnClose.onclick = function(e) {
+            cover.style.display = 'none';
+            cancelDefault(e);
+        }
+        // 3. 拖拽
+        cover.children[0].children[0].onmousedown = function(e) {
+            e = e || window.event;
+            // 获取在元素中固定位置
+            var modal = this.parentNode,
+                fixedX = e.clientX - modal.offsetLeft,
+                fixedY = e.clientY - modal.offsetTop;
+            document.onmousemove = function(e) {
+                e = e || window.event;
+                var moveLeft = e.clientX - fixedX,
+                    moveTop = e.clientY - fixedY;
+                modal.style.left = moveLeft + 'px';
+                modal.style.top = moveTop + 'px';
+                cancelSelection(); //取消页面文本选中状态
+            };
+            document.onmouseup = function() {
+                this.onmousemove = null;
+            }
+        };
+        // 取消元素事件默认行为
+        function cancelDefault(e) {
+            e = e || window.event;
+            if (e.preventDefault) {
+                e.preventDefault(); //标准浏览器
+            } else {
+                e.returnValue = false; //兼容IE678
+                return false; //仅支持事件处理器
+            }
+        }
+        // 取消页面选中文本状态
+        function cancelSelection() {
+            if (window.getSelection) { //标准浏览器
+                window.getSelection().removeAllRanges(); //标准浏览器，取消页面选中文本的状态
+                // window.getSelection().toString();//标准浏览器，获取页面选中文本的内容
+            } else {
+                document.selection.empty(); //兼容IE678
+                // document.selection.createRange().text;//兼容IE678，获取页面选中文本的内容
+            }
+        }
+    </script>
+</body>
+
+</html>

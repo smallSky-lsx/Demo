@@ -1,0 +1,136 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-02-11 16:30:04
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-02-11 22:12:59
+*/
+
+.shopping {
+    width: 1000px;
+    margin: 100px auto;
+}
+/* 商品 */
+.product,
+.cart {
+    width: 100%;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+.shopping tr+tr {
+    border-top: 1px dashed #ddd;
+}
+.product tr:hover {
+    background-color: #fffbf0;
+}
+.shopping td {
+    padding: 15px 0;
+}
+.product td:nth-of-type(1), .cart td:nth-of-type(1) {
+    width: 180px;
+}
+.product td:nth-of-type(1) img, .cart td:nth-of-type(1) img {
+    background-color: #f4f4f4;
+    border: 1px solid #eaeaea;
+}
+.product td:nth-of-type(2) {
+    width: 300px;
+    text-align: left;
+}
+.product td:nth-of-type(2) p {
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+.product td:nth-of-type(2) .color {
+    user-select: none;
+    font-size: 0;
+}
+.product td:nth-of-type(2) .color span {
+    display: inline-block;
+    width: 54px;
+    height: 26px;
+    margin-right: 10px;
+    line-height: 24px;
+    border: 1px solid #ddd;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    color: #666;
+    box-sizing: border-box;
+}
+.product td:nth-of-type(2) .color .active {
+    border: 2px solid #b4a078;
+    line-height: 22px;
+    background: url('../images/ico_02.gif') no-repeat right bottom;
+}
+.product td:nth-of-type(3) {
+    width: 200px;
+    color: #d90808;
+}
+.product td:nth-of-type(4) {
+    width: 200px;
+    font-size: 0;
+}
+.product td:nth-of-type(4) span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    user-select: none;
+}
+.product td:nth-of-type(4) strong {
+    display: inline-block;
+    width: 58px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+.product td:nth-of-type(5) {
+    width: 200px;
+}
+.product td:nth-of-type(5) button {
+    height: 50px;
+    padding: 0 20px;
+    font-size: 14px;
+    background-color: #cb4a61;
+    color: #fff;
+    cursor: pointer;
+}
+/* 购物车 */
+.cart {
+    margin-top: 30px;
+}
+.cart thead {
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+}
+.cart thead th {
+    vertical-align: middle;
+    height: 50px;
+}
+.cart thead th span, .cart thead th strong {
+    vertical-align: middle;
+}
+.cart thead th strong {
+    font-size: 24px;
+    color: #D90808;
+}
+.cart tbody {
+    font-size: 14px;
+    color: #999;
+}
+.cart td:nth-of-type(6) {
+    width: 200px;
+}
+.cart td:nth-of-type(6) button {
+    height: 30px;
+    padding: 0 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}

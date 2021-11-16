@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放器</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="video-player">
+        <video src="media/open.mp4" poster="imgs/placeholder.jpg"></video>
+        <div class="menu">
+            <button class="play">播放</button>
+            <span class="time">00:00/00:00</span>
+            <div class="progress-bar">
+                <div class="play-len"></div>
+                <div class="buffer-len"></div>
+                <i class="circle"></i>
+            </div>
+            <div class="quick-play">倍速</div>
+            <div class="quick-play-items">
+                <span class="item" data-quick="0">正常</span>
+                <span class="item" data-quick="1">x1.25</span>
+                <span class="item" data-quick="2">x1.5</span>
+                <span class="item" data-quick="3">x2.0</span>
+            </div>
+            <div class="add-volume">加音量</div>
+            <div class="reduce-volume">减音量</div>
+            <div class="full-screen">全屏</div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

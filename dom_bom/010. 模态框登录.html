@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .headtop {
+            height: 30px;
+            line-height: 30px;
+            background-color: #036663;
+        }
+        .headtop a {
+            margin-left: 30px;
+            font-size: 14px;
+        }
+        .modal {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            /*盒子宽度、高度(content+padding+border)*/
+            width: 400px;
+            height: 300px;
+            border: 5px solid #eee;
+            background-color: #fff;
+            z-index: 1000;
+            display: none;
+        }
+        .modal .modal-head {
+            height: 25px;
+            line-height: 25px;
+            border-bottom: 1px solid #369;
+            color: #fff;
+            background-color: #7c9299;
+            cursor: move;
+            user-select: none;
+            /*CSS层面，禁用选中*/
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headtop"><a href="javascript:void(0);" id="btnReg">注册信息</a></div>
+    <div class="modal" id="modal">
+        <div class="modal-head clearfix">
+            <span class="fl">注册信息(可以拖拽)</span>
+            <a href="javascript:void(0)" class="fr" id="btnClose" ondragstart="return false">【关闭】</a>
+        </div>
+        <div class="modal-content"></div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 1. 获取元素
+        var modal = $id('modal');
+        var btnReg = $id('btnReg');
+        var btnClose = $id('btnClose');
+        // 2.1 点击(注册信息)，显示modal
+        btnReg.onclick = function(e) {
+            modal.style.display = 'block';
+            cancelDefault(e);
+        };
+        // 禁止a元素拖拽
+        btnReg.ondragstart = function() {
+            return false;
+        };
+        // 2.2 点击(【关闭】)，隐藏modal
+        btnClose.onclick = function(e) {
+            modal.style.display = '';
+            cancelDefault(e);
+        };
+        // 3. 鼠标按下+移动+松开
+        modal.children[0].onmousedown = function(e) {
+            e = e || window.event;
+            var fixedY = e.clientY - modal.offsetTop,
+                fixedX = e.clientX - modal.offsetLeft;
+            // console.log(fixedX, fixedY);
+            document.onmousemove = function(e) {
+                e = e || window.event;
+                var moveX = e.clientX - fixedX,
+                    moveY = e.clientY - fixedY;
+                modal.style.left = moveX + 'px';
+                modal.style.top = moveY + 'px';
+                // 取消页面文本选中状态
+                cancelSelection();
+            };
+            document.onmouseup = function() {
+                this.onmousemove = null;
+            };
+        };
+        // JS层面，取消页面文本的选中状态
+        function cancelSelection() {
+            if (window.getSelection) {
+                window.getSelection().removeAllRanges();
+            } else {
+                document.selection.empty();
+            }
+        }
+        // 取消元素事件默认行为
+        function cancelDefault(e) {
+            e = e || window.event;
+            if (e.preventDefault) {
+                e.preventDefault(); //标准浏览器
+            } else {
+                e.returnValue = false; //IE678兼容
+                return false; //仅适用于事件处理器，不适用于事件处理器
+            }
+        }
+    </script>
+</body>
+
+</html>

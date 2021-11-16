@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap输入框组</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container p-2">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label for="uname" class="input-group-text">@</label>
+            </div>
+            <input type="text" class="form-control" placeholder="Username" id="uname">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Username" id="uname1">
+            <div class="input-group-append">
+                <label for="uname1" class="input-group-text">@</label>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Recipient's username">
+            <div class="input-group-append">
+                <span class="input-group-text">@example.com</span>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="text" class="form-control">
+            <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-append">
+                <span class="input-group-text">With textarea</span>
+            </div>
+            <textarea name="txt" id="txt" class="form-control"></textarea>
+        </div>
+        <!-- 大小 -->
+        <div class="input-group mt-5 input-group-sm">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Small</span>
+            </div>
+            <input type="text" name="txt1" id="txt1" class="form-control" placeholder="small">
+        </div>
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Default</span>
+            </div>
+            <input type="text" name="txt2" id="txt2" class="form-control" placeholder="default">
+        </div>
+        <div class="input-group mt-3 input-group-lg">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Large</span>
+            </div>
+            <input type="text" name="txt3" id="txt3" class="form-control" placeholder="large">
+        </div>
+        <!-- 复选框和单选按钮 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" name="cb" id="cb">
+                </div>
+            </div>
+            <input type="text" name="txt3" id="txt3" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt4" id="txt4" class="form-control">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <input type="checkbox" name="cb1" id="cb1">
+                </div>
+            </div>
+        </div>
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="radio" name="rd" id="rd">
+                </div>
+            </div>
+            <input type="text" name="txt4" id="txt4" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt5" id="txt5" class="form-control">
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <input type="radio" name="rd1" id="rd1">
+                </div>
+            </div>
+        </div>
+        <!-- 多附加组件 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+            <input type="text" name="txt6" id="txt6" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt7" id="txt7" class="form-control">
+            <div class="input-group-append">
+                <span class="input-group-text">$</span>
+                <span class="input-group-text">0.00</span>
+            </div>
+        </div>
+        <!-- 按钮插件 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-secondary">Button</button>
+            </div>
+            <input type="text" name="txt7" id="txt7" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt8" id="txt8" class="form-control">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary">Button</button>
+            </div>
+        </div>
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-secondary">Button</button>
+                <button type="button" class="btn btn-outline-secondary">Button</button>
+            </div>
+            <input type="text" name="txt9" id="txt9" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt10" id="txt10" class="form-control">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary">Button</button>
+                <button type="button" class="btn btn-outline-secondary">Button</button>
+            </div>
+        </div>
+        <!-- 带下拉菜单的按钮 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Dropdown</button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                    <a href="#" class="dropdown-item">Lorem, ipsum.</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                </div>
+            </div>
+            <input type="text" name="txt11" id="txt11" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt12" id="txt12" class="form-control">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">Dropdown</button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                    <a href="#" class="dropdown-item">Lorem, ipsum.</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                </div>
+            </div>
+        </div>
+        <!-- 分段按钮 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-secondary">Dropdown</button>
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                    <a href="#" class="dropdown-item">Lorem, ipsum.</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                </div>
+            </div>
+            <input type="text" name="txt13" id="txt13" class="form-control">
+        </div>
+        <div class="input-group mt-3">
+            <input type="text" name="txt14" id="txt14" class="form-control">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary">Dropdown</button>
+                <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                    <a href="#" class="dropdown-item">Lorem, ipsum.</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Lorem.</a>
+                </div>
+            </div>
+        </div>
+        <!-- 自定义表单 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <label for="selnum" class="input-group-text">Options</label>
+            </div>
+            <select name="selnum" id="selnum" class="custom-select">
+                <option value="0">One</option>
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+                <option value="4">Fouth</option>
+            </select>
+        </div>
+        <div class="input-group mt-3">
+            <select name="selnum1" id="selnum1" class="custom-select">
+                <option value="0">One</option>
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+                <option value="4">Fouth</option>
+            </select>
+            <div class="input-group-append">
+                <label for="selnum1" class="input-group-text">Options</label>
+            </div>
+        </div>
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary">button</button>
+            </div>
+            <select name="selnum2" id="selnum2" class="custom-select">
+                <option value="0">One</option>
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+                <option value="4">Fouth</option>
+            </select>
+        </div>
+        <div class="input-group mt-3">
+            <select name="selnum3" id="selnum3" class="custom-select">
+                <option value="0">One</option>
+                <option value="1">First</option>
+                <option value="2">Second</option>
+                <option value="3">Third</option>
+                <option value="4">Fouth</option>
+            </select>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary">button</button>
+            </div>
+        </div>
+        <!-- 文件控件 -->
+        <div class="input-group mt-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="upload" id="upload">
+                <label class="custom-file-label" for="upload">Choose file</label>
+            </div>
+        </div>
+        <div class="input-group mt-3">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="upload1" id="upload1">
+                <label class="custom-file-label" for="upload1">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text">Upload</span>
+            </div>
+        </div>
+        <div class="input-group mt-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-outline-secondary">button</button>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="upload" id="upload">
+                <label class="custom-file-label" for="upload">Choose file</label>
+            </div>
+        </div>
+        <div class="input-group mt-3">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="upload1" id="upload1">
+                <label class="custom-file-label" for="upload1">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary">button</button>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

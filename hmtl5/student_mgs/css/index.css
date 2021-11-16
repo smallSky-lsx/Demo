@@ -1,0 +1,247 @@
+/* -- element reset start -- */
+body,
+ul,
+header,
+p,
+table,
+caption,
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    font-weight: normal;
+    line-height: 1;
+}
+:root {
+    font-size: 14px;
+    color: #333;
+}
+ul {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+/* -- element reset end -- */
+
+/* -- header start -- */
+.wrapper header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 4.5rem;
+    color: #fff;
+    background-image: linear-gradient(to right, #333, #111, #aaa);
+    z-index: 1000;
+}
+.wrapper header::after,
+.wrapper .aside-menu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('../imgs/bg.png');
+    opacity: 0.4;
+}
+.wrapper header .logo {
+    height: 100%;
+    margin-left: 3rem;
+    display: flex;
+    align-items: center;
+}
+.wrapper header .logo img {
+    width: 3rem;
+    height: 3rem;
+}
+.wrapper header .logo-font {
+    font-size: 1.7rem;
+    font-weight: bold;
+    text-shadow: 4px 2px 6px #ccc;
+    margin-left: 1rem;
+    animation: font-jumping .7s infinite alternate;
+}
+.wrapper header .logo-font:nth-of-type(1) {
+    animation-delay: 0s;
+}
+.wrapper header .logo-font:nth-of-type(2) {
+    animation-delay: .25s;
+}
+.wrapper header .logo-font:nth-of-type(3) {
+    animation-delay: .5s;
+}
+.wrapper header .logo-font:nth-of-type(4) {
+    animation-delay: .75s;
+}
+@keyframes font-jumping {
+    from {
+        transform: translateY(0);
+        text-shadow: 4px 2px 6px #ccc;
+    }
+    to {
+        transform: translateY(-1.4rem);
+        text-shadow: 4px 6px 6px #ccc;
+    }
+}
+.wrapper header .btn {
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: auto 0;
+    border: 1px solid #fff;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1024;
+    transition: all .5s ease-in-out;
+    display: none;
+}
+.wrapper header .btn-line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+    background-color: #fff;
+}
+.wrapper header .btn:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+.wrapper header .btn:hover .btn-line {
+    animation: line-rotating 2s infinite;
+}
+@keyframes line-rotating {
+    0% {
+        transform: rotate(0) translateZ(0);
+    }
+    25% {
+        transform: rotate(45deg) translateZ(0);
+    }
+    50% {
+        transform: rotate(0) translateZ(0);
+    }
+    75% {
+        transform: rotate(-45deg) translateZ(0);
+    }
+}
+.wrapper header .drop-list {
+    position: absolute;
+    left: 0;
+    top: 4.5rem;
+    width: 100vw;
+    padding: 30px;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom, #333, #222, #111);
+    display: none;
+}
+.wrapper header .list-item {
+    line-height: 40px;
+    color: #ccc;
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+}
+.wrapper header .list-item:hover {
+    color: #fff;
+}
+/* -- header end -- */
+
+/* -- aside-menu start -- */
+.wrapper .aside-menu {
+    position: fixed;
+    top: 4.5rem;
+    left: 0;
+    width: 200px;
+    min-height: 100vh;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom, #333, #222, #111);
+    z-index: 999;
+}
+.wrapper .aside-menu .title {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: bold;
+}
+.wrapper .aside-menu .aside-list {
+    position: relative;
+    color: #ccc;
+    font-weight: bold;
+    margin-top: 2rem;
+    text-align: center;
+    z-index: 1024;
+}
+.wrapper .aside-menu .list-item {
+    line-height: 40px;
+    cursor: pointer;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.wrapper .aside-menu .list-item.show-list {
+    background-color: rgba(255, 255, 255, .4);
+}
+.wrapper .aside-menu .list-item:hover {
+    color: #fff;
+}
+/* -- aside-menu end -- */
+
+/* -- tab-content start -- */
+.wrapper .tab-content {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-top: 4.5rem;
+    padding-left: 200px;
+    background-color: rgba(0, 0, 0, .1);
+}
+.wrapper .tab-content .tab-content-item {
+    position: absolute;
+    padding: 20px;
+    display: none;
+}
+.wrapper .tab-content .tab-content-item.show-tab {
+    display: block;
+}
+
+/* -- tab-content end -- */
+
+/* -- media query start -- */
+@media all and (max-width:768px) {
+    .wrapper header {
+        min-width: 400px;
+    }
+    .wrapper header .logo {
+        position: absolute;
+        right: 3rem;
+    }
+    .wrapper header .btn {
+        display: block;
+    }
+    .wrapper .aside-menu {
+        display: none;
+    }
+    .wrapper .tab-content {
+        padding-left: 0;
+    }
+}
+@media all and (min-width:768px) {
+    .wrapper header .drop-list {
+        display: none !important;
+    }
+}
+/* -- media query end -- */

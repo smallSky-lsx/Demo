@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        table {
+    		width: 400px;
+    		margin: 0 auto;
+    		border-collapse: collapse;
+    		border-spacing: 0;
+    	}
+    	table, th, td {
+    		padding: 10px;
+    		border: 1px solid #000;
+    	}
+    	thead>tr {
+    		background-color: #09c;
+    	}
+    	tbody tr td:first-child,
+    	tbody tr td:last-child {
+    		text-align: center;
+    	}
+        tbody tr:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="selAll"></th>
+                <th>商品</th>
+                <th>价钱</th>
+            </tr>
+        </thead>
+        <tbody id="items">
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>IPhone8</td>
+                <td>8000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>ipad Pro</td>
+                <td>5000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>ipad Air</td>
+                <td>2000</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td>Apple Watch</td>
+                <td>2000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <button type="button" id="btnReverse">反选</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <script>
+        /**
+         * 全选：
+         * 1. 每个选项的checked都设置为true。 * 2. 所有选项中有一个选项checked为false，取消全选按钮选中状态。
+         * 反选：
+         * 1. 每个选项的checked为true，变为false。
+         * 2. 全选按钮也要跟着变化。
+         */
+        // 实现全选
+        // a. 获取元素
+        var selAll = document.getElementById('selAll');
+        var tbody = document.getElementById('items');
+        var selItems = tbody.getElementsByTagName('input');
+        var btnReverse = document.getElementById('btnReverse');
+        // b. 注册事件-全选
+        selAll.onchange = function() {
+            var allState = this.checked;
+            for (var i = 0, len = selItems.length; i < len; i++) {
+                selItems[i].checked = allState;
+            }
+            listenerAllSel(); // 当没有商品时，无法全选
+        };
+        // c. 实时监听全选状态
+        function listenerAllSel() {
+            // 所有选项的checked为true，全选按钮选中
+            // 所有选项中有一个选项的checked为false，取消全选按钮选中
+            selAll.checked = (selItems.length === 0) ? false : Array.prototype.every.call(selItems, function(ele) {
+                return ele.checked;
+            });
+            // Array.prototype.every();
+            // 1. 针对于数组或类数组
+            // 2. 数组中每一项满足条件，返回true。注意：length为0，则返回true。
+            // 3. 数组中查找到有一项不满足条件，立即返回false。
+            // Array.prototype.some();
+            // 1. 针对于数组或类数组
+            // 2. 数组中查找到有一项满足条件，立即返回true。注意：length为0，则返回false。
+            // 3. 数组中都不满足条件，返回false。
+        }
+        // d. 注册事件-反选
+        btnReverse.onclick = function() {
+            Array.prototype.forEach.call(selItems, function(ele) {
+                ele.checked = !ele.checked;
+            });
+            // Array.prototype.forEach();
+            // 1. 针对于数组或类数组
+            // 2. 循环遍历数组中的每一项(未删除或已初始化)，返回值始终为undefined。
+            // 实时监听全选按钮
+            listenerAllSel();
+        };
+        // e. 监听单项选中状态
+        // 方式一：每一选项注册onchange事件
+        /*Array.prototype.forEach.call(selItems, function(ele) {
+            ele.onchange = function() {
+                listenerAllSel();
+            };
+            // onchange事件，表单事件。在表单内容或选项状态发生改变，并失去焦点时触发
+        });*/
+        // 方式二(推荐)：事件委托：每个选项无需都注册事件，利用事件冒泡完成
+        tbody.onclick = function(e) {
+            // 事件源，为触发事件的元素
+            e = e || window.event;
+            var targetEle = e.target || e.srcElement;
+            if (targetEle.type === 'checkbox') { //此处可以在input元素，自定义属性作为区分标识
+                listenerAllSel();
+            }
+        };
+    </script>
+</body>
+
+</html>

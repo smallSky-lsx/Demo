@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3d rotate picture</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <img src="imgs/1.jpg" alt="" width="200px">
+        <img src="imgs/2.jpg" alt="" width="200px">
+        <img src="imgs/3.jpg" alt="" width="200px">
+        <img src="imgs/4.jpg" alt="" width="200px">
+        <img src="imgs/5.jpg" alt="" width="200px">
+        <img src="imgs/6.jpg" alt="" width="200px">
+        <img src="imgs/7.jpg" alt="" width="200px">
+        <img src="imgs/8.jpg" alt="" width="200px">
+        <img src="imgs/9.jpg" alt="" width="200px">
+        <img src="imgs/10.jpg" alt="" width="200px">
+        <img src="imgs/11.jpg" alt="" width="200px">
+        <img src="imgs/12.jpg" alt="" width="200px">
+    </div>
+        <script>
+            document.body.onmousemove = function(e) {
+                this.style.perspectiveOrigin = e.pageX + 'px ' + e.pageY + 'px';
+            };
+        </script>
+</body>
+
+</html>

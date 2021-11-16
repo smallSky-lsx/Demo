@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>学习案例</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <!-- 
+        --JS版-学生管理系统(后台管理系统)--
+        技术：html+css+js
+        功能：学生信息新增、学生信息编辑、学生信息删除、学生信息展示
+        模块：
+            1. 学生列表：信息展示、编辑、删除
+            2. 新增学生：新增
+        实体：学生，字段(学号、姓名、性别、邮箱、年龄、手机号、住址)
+        数据接口：异步获取
+     -->
+    <div class="header">
+        <div class="logo">
+            渡一教育
+        </div>
+    </div>
+    <div class="menu" id="menu">
+        <dl>
+            <dt class="title">学生管理</dt>
+            <dd class="dd selected" data-id="stu-list">学生列表</dd>
+            <dd class="dd" data-id="stu-add">新增学生</dd>
+        </dl>
+    </div>
+    <div class="main">
+        <div class="stu-list stu-show" id="stu-list">
+            <table class="stu-table">
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>邮箱</th>
+                        <th>年龄</th>
+                        <th>手机号</th>
+                        <th>住址</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>0001</td>
+                        <td>张三</td>
+                        <td>男</td>
+                        <td>111111@qq.com</td>
+                        <td>18</td>
+                        <td>13232323232</td>
+                        <td>哈尔滨</td>
+                        <td>
+                            <button class="btn edit" data-func="edit">编辑</button>
+                            <button class="btn remove" data-func="del" data-sno="0001">删除</button>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="stu-add" id="stu-add">
+            <form name="stu-add">
+                <div>
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div>
+                    <label for="">性别</label>
+                    <input type="radio" checked id="male" name="sex" value="0">
+                    <label for="male" class="sex">男</label>
+                    <input type="radio" name="sex" id="female" value="1">
+                    <label for="female" class="sex">女</label>
+                </div>
+                <div>
+                    <label for="email">邮箱</label>
+                    <input type="text" id="email" name="email">
+                </div>
+                <div>
+                    <label for="sNo">学号</label>
+                    <input type="text" name="sNo" id="sNo">
+                </div>
+                <div>
+                    <label for="birth">出生年</label>
+                    <input type="text" name="birth" id="birth">
+                </div>
+                <div>
+                    <label for="phone">手机号</label>
+                    <input type="text" name="phone" id="phone">
+                </div>
+                <div>
+                    <label for="address">住址</label>
+                    <input type="text" name="address" id="address">
+                </div>
+                <div class="btn">
+                    <button type="submit" id="submit-stu">提交</button>
+                    <button type="reset">重置</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="cover" id="cover">
+        <form name="stu-edit" class="modal">
+            <div>
+                <label for="ename">姓名</label>
+                <input type="text" id="ename" name="name">
+            </div>
+            <div>
+                <label for="">性别</label>
+                <input type="radio" checked id="emale" name="sex" value="0">
+                <label for="emale" class="sex">男</label>
+                <input type="radio" name="sex" id="efemale" value="1">
+                <label for="efemale" class="sex">女</label>
+            </div>
+            <div>
+                <label for="eemail">邮箱</label>
+                <input type="text" id="eemail" name="email">
+            </div>
+            <div>
+                <label for="esNo">学号</label>
+                <input type="text" readonly name="sNo" id="esNo">
+            </div>
+            <div>
+                <label for="ebirth">出生年</label>
+                <input type="text" name="birth" id="ebirth">
+            </div>
+            <div>
+                <label for="ephone">手机号</label>
+                <input type="text" name="phone" id="ephone">
+            </div>
+            <div>
+                <label for="eaddress">住址</label>
+                <input type="text" name="address" id="eaddress">
+            </div>
+            <div class="btn">
+                <button type="submit" id="alter-stu">修改</button>
+                <button type="reset">重置</button>
+            </div>
+        </form>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

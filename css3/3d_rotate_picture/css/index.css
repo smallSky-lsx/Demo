@@ -1,0 +1,75 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-03-06 23:46:18
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-03-07 09:59:35
+*/
+img {
+    vertical-align: top;
+}
+body {
+    perspective-origin: center top;
+    perspective: 1300px;
+    transform-style: preserve-3d;
+}
+.wrapper {
+    position: relative;
+    width: 850px;
+    height: 400px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    animation: rotatePictrue 60s steps(8, end) infinite both
+}
+.wrapper img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.wrapper img:nth-of-type(1) {
+    transform: rotateY(90deg) translateZ(200px);
+}
+.wrapper img:nth-of-type(2) {
+    transform: rotateY(180deg) translateZ(200px);
+}
+.wrapper img:nth-of-type(3) {
+    transform: rotateY(270deg) translateZ(200px);
+}
+.wrapper img:nth-of-type(4) {
+    transform: rotateY(360deg) translateZ(200px);
+}
+.wrapper img:nth-of-type(5) {
+    transform: rotateY(45deg) translateZ(400px);
+}
+.wrapper img:nth-of-type(6) {
+    transform: rotateY(90deg) translateZ(400px);
+}
+.wrapper img:nth-of-type(7) {
+    transform: rotateY(135deg) translateZ(400px);
+}
+.wrapper img:nth-of-type(8) {
+    transform: rotateY(180deg) translateZ(400px);
+}
+.wrapper img:nth-of-type(9) {
+    transform: rotateY(225deg) translateZ(400px);
+}
+.wrapper img:nth-of-type(10) {
+    transform: rotateY(270deg) translateZ(400px);
+    animation-duration: 45s;
+}
+.wrapper img:nth-of-type(11) {
+    transform: rotateY(315deg) translateZ(400px);
+}
+.wrapper img:nth-of-type(12) {
+    transform: rotateY(360deg) translateZ(400px);
+}
+@keyframes rotatePictrue {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}

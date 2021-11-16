@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        select {
+        	float: left;
+            width: 80px;
+            min-height: 100px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        select:focus {
+            outline: 0;
+            outline-offset: 0;
+        }
+        .btn {
+        	float: left;
+        	width: 50px;
+        	margin-top: 3px;
+        	text-align: center;
+        }
+        .btn button {
+        	width: 40px;
+        	text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <select name="competence" id="competence" multiple>
+        <option value="001">删除</option>
+        <option value="002">增加</option>
+        <option value="003">修改</option>
+        <option value="004">查询</option>
+    </select>
+    <div class="btn">
+        <button type="button" id="btnAlltor" data-sign="all">==&gt;</button>
+        <button type="button" id="btnAlltol" data-sign="all">&lt;==</button>
+        <button type="button" id="btnSeltor" data-sign="sel">=&gt;</button>
+        <button type="button" id="btnSeltol" data-sign="sel">&lt;=</button>
+    </div>
+    <select name="uCompetence" id="uCompetence" multiple=""></select>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        var moveCompetence = function(compe, uCompe) {
+            var competence = $id(compe), //系统权限组
+                uCompetence = $id(uCompe); //用户权限组
+            var all = function(item) {
+                return true;
+            };
+            var sel = function(item) {
+                return item.selected;
+            };
+            return function() {
+                console.log(this.dataset.sign);
+                var callback = (this.dataset.sign === 'all') ? all : sel;
+                var midArr = Array.from(competence.options).filter(callback); //数组存储DOM元素地址
+                console.log(midArr);
+                midArr.length && midArr.forEach(function(item) {
+                    item.selected = false; //取消选中状态
+                    uCompetence.appendChild(item); //移动选项
+                });
+            };
+        };
+        // 给用户添加所有权限
+        /*$id('btnAlltor').onclick = function() {
+            // DOM元素在DOM树仅可占据一个位置。
+            // 将DOM树中元素，移动到DOM树其他位置。先从DOM树上移除，然后再添加到DOM树新位置。
+            // children获取的是实时更新集合
+            // 将DOM元素的地址存储在数组中，便于操作
+            var competence = $id('competence'), //系统权限组
+                uCompetence = $id('uCompetence'), //用户权限组
+                midArr = Array.from(competence.options); //数组存储DOM元素地址
+            console.log(midArr);
+            midArr.forEach(function(item) {
+                item.selected = false; //取消选中状态
+                uCompetence.appendChild(item); //移动选项 
+            });
+        };*/
+        // 'competence' ==> 'uCompetence'
+        $id('btnAlltor').onclick = moveCompetence('competence', 'uCompetence');
+        // 移除用户所有权限
+        /*$id('btnAlltol').onclick = function() {
+            var competence = $id('competence'),
+                uCompetence = $id('uCompetence'),
+                midArr = Array.from(uCompetence.options);
+            console.log(midArr);
+            midArr.forEach(function(item) {
+                item.selected = false; //取消选中状态
+                competence.appendChild(item);
+            });
+        };*/
+        // 'competence' <== 'uCompetence'
+        $id('btnAlltol').onclick = moveCompetence('uCompetence', 'competence');
+        // 给用户添加一个或多个权限
+        /*$id('btnSeltor').onclick = function() {
+            var competence = $id('competence'),
+                uCompetence = $id('uCompetence'),
+                midArr = Array.from(competence.options).filter(function(item) {
+                    return item.selected;
+                });
+            console.log(midArr);
+            midArr.forEach(function(item) {
+                item.selected = false; //取消选中状态
+                uCompetence.appendChild(item);
+            });
+        };*/
+        // 'competence' => 'uCompetence'
+        $id('btnSeltor').onclick = moveCompetence('competence', 'uCompetence');
+        // 移除用户一个或多个权限
+        /*$id('btnSeltol').onclick = function() {
+            var competence = $id('competence'),
+                uCompetence = $id('uCompetence'),
+                midArr = Array.from(uCompetence.options).filter(function(item) {
+                    return item.selected;
+                });
+            console.log(midArr);
+            midArr.forEach(function(item) {
+                item.selected = false; //取消选中状态
+                competence.appendChild(item);
+            });
+        };*/
+        // 'competence' <= 'uCompetence'
+        $id('btnSeltol').onclick = moveCompetence('uCompetence', 'competence');
+    </script>
+</body>
+
+</html>

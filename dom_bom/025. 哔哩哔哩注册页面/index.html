@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习案例</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reg.css">
+
+</head>
+
+<body>
+    <!-- 1. 分析结构 -->
+    <!-- 2. 书写结构 -->
+    <div class="reg-form">
+        <h2 class="reg-title"><span>注册</span></h2>
+        <div class="reg-area">
+            <div class="reg-item haserror">
+                <input type="text" placeholder="账号">
+                <span class="error">该昵称已被他人使用</span>
+            </div>
+            <div class="reg-item">
+                <input type="password" placeholder="密码(6-16个字符组成，区分大小写)">
+                <span class="error">密码强度不够</span>
+            </div>
+            <div class="reg-item">
+                <div class="select clearfix">
+                    <div class="select-item fl">
+                        <div class="sel-title">
+                            中国大陆
+                        </div>
+                        <ul class="sel-list">
+                            <li>Lorem.</li>
+                            <li class="selected">中国大陆</li>
+                            <li>Id.</li>
+                            <li>Delectus?</li>
+                            <li>Nostrum.</li>
+                            <li>Officia.</li>
+                            <li>Eos?</li>
+                            <li>Porro!</li>
+                            <li>Nostrum?</li>
+                            <li>Reprehenderit!</li>
+                            <li>Fugiat?</li>
+                            <li>Mollitia.</li>
+                            <li>Eum?</li>
+                            <li>Eveniet!</li>
+                            <li>Neque.</li>
+                            <li>Asperiores.</li>
+                            <li>In.</li>
+                            <li>Totam!</li>
+                            <li>Quo?</li>
+                            <li>Perspiciatis!</li>
+                        </ul>
+                    </div>
+                    <div class="telephone fl">
+                        <input type="text" placeholder="填写常用的手机号">
+                    </div>
+                </div>
+            </div>
+            <div class="reg-item">
+                <input type="text" placeholder="请输入短信验证码">
+                <button type="button" class="btn-sncode">点击获取</button>
+            </div>
+            <div class="readme">
+                <label>
+                    <input type="checkbox" checked>
+                    <span class="dfn-checkbox"></span>
+                    <span>我已同意
+                        <a href=""> 《哔哩哔哩弹幕网用户使用协议》 </a>
+                        和
+                        <a href=""> 《哔哩哔哩弹幕网账号中心规范》</a>
+                    </span>
+                </label>
+            </div>
+            <div class="reg-item">
+                <button type="submit" class="fill" disabled>注册</button>
+            </div>
+            <div class="tip">
+                <a href="">已有账号，直接登录&gt;</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        #container {
+            position: relative;
+            width: 600px;
+            margin: 20px auto;
+            height: 400px;
+            background-color: #d3d3d3;
+        }
+        /* 盒子默认宽高、大小 */
+        #container .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+        <!-- 面向过程开发 -->
+        // 根据元素id，获取元素
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 1. 获取元素
+        // 固定参数
+        var params = {
+            container: $id('container'), //容器
+            width: 20, //宽度
+            height: 20, //高度
+            sclass: 'box' //默认样式
+        };
+        params.col = Math.floor(params.container.clientWidth / params.width) - 1; //水平
+        params.row = Math.floor(params.container.clientHeight / params.height) - 1; //垂直
+        // 2. 随机生成小方块位置、以及背景颜色
+        // 2.1 生成指定范围随机整数:[min, max]
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        // 2.2 随机生成小方块位置
+        function getRandomPos(row, col) {
+            return {
+                x: getRandomInt(0, row),
+                y: getRandomInt(0, col)
+            };
+        }
+        // 2.3 随机生成小方块背景颜色
+        function getRandomBgc(min, max) {
+            return 'rgb(' + getRandomInt(min, max) + ',' + getRandomInt(min, max) + ',' + getRandomInt(min, max) + ')';
+        }
+        // 3. 生成小方块并附加样式
+        function generatorSquare(params) {
+            var square = document.createElement('div');
+            square.classList.add(params.sclass); //添加小方块默认样式
+            square.style.width = params.width+'px';
+            square.style.height = params.height+'px';
+            params.container.appendChild(square);
+            return function() {
+                // 位置、背景随机生成部分
+                var pos = getRandomPos(params.row, params.col); //获取位置
+                square.style.top = pos.x * params.width + 'px';
+                square.style.left = pos.y * params.height + 'px';
+                square.style.backgroundColor = getRandomBgc(0, 255);
+            };
+        }
+        // 4. 初始化-生成十个小方块
+        function init(params, count) {
+            // 生成十个小方块
+            var arr = []; //存储参数随机生成部分
+            for (var i = 0; i < count; i++) {
+                arr.push(generatorSquare(params));
+            }
+            // 生成随机参数
+            var randomParam = function() {
+                arr.forEach(function(ele) {
+                    ele();
+                });
+            };
+            randomParam(); //在启动后，立即生成随机参数
+            // 定时随机生成位置、背景颜色
+            window.setInterval(randomParam, 1000);
+        }
+        init(params, 10);
+    </script>
+</body>
+
+</html>

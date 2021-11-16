@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>聊天机器人</title>
+    <style>
+        body, p, textarea {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-size: 14px;
+        }
+        textarea {
+            resize: none;
+            outline: none;
+            overflow-y: auto;
+            border: none;
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .robot {
+            width: 450px;
+            height: 80vh;
+            margin: 30px auto;
+            background-color: #F5F5F5;
+            border: 1px solid #D9D9D9;
+            box-sizing: border-box;
+        }
+        .robot-header {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+            background-color: #808080;
+        }
+        .robot-main {
+            height: calc(100% - 40px - 100px);
+            overflow-y: auto;
+        }
+        .robot-main .mine,
+        .robot-main .other {
+            margin: 10px;
+        }
+        .robot-main .mine .tpic, .robot-main .other .tpic {
+            width: 30px;
+            height: 30px;
+            background-size: 100% 100%;
+        }
+        .robot-main .mine .tpic {
+            float: right;
+            margin-left: 10px;
+            background-image: url(./imgs/tx1.jpg);
+        }
+        .robot-main .other .tpic {
+            float: left;
+            margin-right: 10px;
+            background-image: url(./imgs/tx2.jpg);
+        }
+        .robot-main .mine .info, .robot-main .other .info {
+            position: relative;
+            line-height: 20px;
+            max-width: 55%;
+            padding: 5px 10px;
+            border-radius: 2px;
+        }
+        .robot-main .mine .info {
+            float: right;
+            background-color: #98e165;
+        }
+        .robot-main .other .info {
+            float: left;
+            background-color: #fff;
+        }
+        .robot-main .mine .info::after, .robot-main .other .info::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+        }
+        .robot-main .mine .info::after {
+            right: -5px;
+            border-right: none;
+            border-left-color: #98E165;
+        }
+        .robot-main .other .info::after {
+            left: -5px;
+            border-left: none;
+            border-right-color: #fff;
+        }
+        .robot-footer {
+            position: relative;
+            height: 100px;
+            padding: 10px 15px 40px;
+            border-top: 1px solid #D9D9D9;
+            background-color: #fff;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .robot-footer .text {
+            width: 100%;
+            height: 100%;
+            font: 500 14px/24px 'SimSun';
+
+        }
+        .robot-footer .btn {
+            position: absolute;
+            right: 40px;
+            bottom: 5px;
+            height: 26px;
+            padding: 0 10px;
+            font-size: 14px;
+            background-color: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            cursor: pointer;
+        }
+        .robot-footer .btn:hover {
+            background-color: #129611;
+            color: #fff;
+        }
+        .robot-footer .btn:focus {
+            outline: 0;
+        }
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="robot">
+        <div class="robot-header">
+            <span class="title">小溪</span>
+        </div>
+        <div class="robot-main">
+            <div class="mine clearfix">
+                <span class="tpic"></span>
+                <p class="info">给我讲个故事呗</p>
+            </div>
+            <div class="other clearfix">
+                <span class="tpic"></span>
+                <p class="info">我就不</p>
+            </div>
+        </div>
+        <div class="robot-footer">
+            <textarea name="info" id="info" class="text"></textarea>
+            <button id="btn" class="btn">发送(S)</button>
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+
+        function ajax(options) {
+            /**
+             * options = {
+             *       url:'',//请求接口
+             *       type: '',//请求方式, 未传递，默认为get请求
+             *       data: '',//传递的数据
+             *       isAsync: true,//异步发送请求，未传递默认为异步发送请求
+             *       success: function(data){},//请求成功，并接收到数据
+             *       fail: function(){}//请求失败，未获取到数据
+             * };
+             */
+            // 参数处理
+            var url = options.url || '',
+                type = options.type || 'get',
+                data = options.data || '',
+                isAsync = options.isAsync || true,
+                success = options.success,
+                fail = options.fail;
+            // 生成xhr对象
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActiveXObject('Microsoft.XMLHTTP');
+            }
+            // 监听xhr.readyState变化：1~4
+            xhr.onreadystatechange = function() {
+                if (this.readyState === 4) {
+                    // 请求成功，并已接收数据
+                    if (this.status === 200) {
+                        //网络请求成功
+                        success && success(JSON.parse(this.responseText));
+                    }
+                }
+            };
+            // 监听错误
+            xhr.onerror = function(err) {
+                fail && fail(new Error(err));
+            };
+            type = type.toUpperCase();
+            if (type == 'GET') {
+                // GET请求
+                xhr.open(type, url + '?' + data, isAsync); //与请求连接
+                xhr.send(); //发送请求
+            } else if (type === 'POST') {
+                // POST请求
+                xhr.open(type, url, isAsync);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); //设置POST请求，键值对编码
+                xhr.send(data);
+            }
+        }
+    </script>
+    <script>
+        // 监听键盘事件
+        var oInput = $id('info'),
+            oBtn = $id('btn');
+        // 自动获取焦点
+        oInput.focus();
+        oInput.onkeyup = function(e) {
+            if (e.keyCode === 13) {
+                oBtn.click();
+            }
+        };
+        // 监听"发送"点击事件
+        oBtn.onclick = function() {
+            var val = oInput.value.trim();
+            if (val) {
+                // 渲染到页面
+                renderDom('mine', val);
+                // 请求输入框文本
+                oInput.value = '';
+                // 机器人回复
+                replayData('other', val);
+            }
+        };
+        // 渲染到页面
+        function renderDom(classname, txt) {
+            var oRobotMain = document.querySelector('.robot-main');
+            var oDiv = document.createElement('div');
+            oDiv.className = 'clearfix ' + classname;
+            oDiv.innerHTML = `<span class="tpic"></span>
+                <p class="info">${txt}</p>`;
+            oRobotMain.appendChild(oDiv);
+            // 将滚动条，滚动到底部
+            var scrollLen = oRobotMain.scrollHeight - oRobotMain.clientHeight;
+            // 方式一：
+            // oRobotMain.scrollTo(0, scrollLen);
+            // 方式二：
+            oRobotMain.scrollTop = scrollLen;
+        }
+        // 机器人回复
+        function replayData(classname, txt) {
+            ajax({
+                url: 'https://developer.duyiedu.com/edu/turing/chat',
+                data: 'text=' + txt,
+                success: function(data) {
+                    renderDom(classname, data.text);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 兼容window.getComputedStyle
+        function getEleStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+        $id('box').onclick = function() {
+            !this.flag && startMove(this, 'left', 1000);
+        };
+
+        function startMove(ele, attr, targetValue) {
+            //清除定时器
+            function closeTimer(mark, callback) {
+                if (mark) {
+                    // console.log('关闭定时器');
+                    clearInterval(ele.timerId); //关闭定时器
+                    ele.timerId = null;
+                    callback && callback();
+                }
+            }
+            // 清除定时器
+            closeTimer(ele.timerId);
+            var a = 2, //加速度
+                speed = -50, //初速度
+                currentValue = parseFloat(getEleStyle(ele, attr)); //当前值
+            (currentValue != targetValue) && (ele.timerId = setInterval(function() {
+                ele.flag = true; //上锁
+                speed += a; //当前速度
+                currentValue += speed; //当前值
+                console.log(currentValue, targetValue, speed);
+                if (Math.abs(targetValue - currentValue) <= Math.abs(speed)) {
+                    closeTimer(true);
+                    currentValue = targetValue;
+                    ele.flag = false;
+                }
+                ele.style[attr] = currentValue + 'px';
+
+            }, 30));
+        }
+    </script>
+</body>
+
+</html>

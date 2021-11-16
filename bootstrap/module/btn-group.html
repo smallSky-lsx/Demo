@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap按钮组</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 将一些组合，形参按钮群组 -->
+        <div class="row border p-3 rounded">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary">left</button>
+                <button type="button" class="btn btn-secondary">center</button>
+                <button type="button" class="btn btn-secondary">right</button>
+            </div>
+        </div>
+        <!-- 按钮工具列 -->
+        <div class="row border p-3 rounded mt-3">
+            <div class="col">
+                <div class="btn-toolbar">
+                    <div class="btn-group mr-3">
+                        <button type="button" class="btn btn-primary">1</button>
+                        <button type="button" class="btn btn-primary">2</button>
+                        <button type="button" class="btn btn-primary">3</button>
+                        <button type="button" class="btn btn-primary">4</button>
+                    </div>
+                    <div class="btn-group mr-3">
+                        <button type="button" class="btn btn-primary">5</button>
+                        <button type="button" class="btn btn-primary">6</button>
+                        <button type="button" class="btn btn-primary">7</button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary">8</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border p-3 rounded mt-3">
+            <div class="col">
+                <div class="btn-toolbar">
+                    <div class="btn-group mr-3">
+                        <button type="button" class="btn btn-primary">1</button>
+                        <button type="button" class="btn btn-primary">2</button>
+                        <button type="button" class="btn btn-primary">3</button>
+                        <button type="button" class="btn btn-primary">4</button>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="btnGroupAddon">@</label>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Input group example" id="btnGroupAddon">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 群组按钮大小 -->
+        <div class="row border p-3 rounded mt-3 d-block">
+            <div class="btn-group btn-group-lg mr-3">
+                <button type="button" class="btn btn-secondary">left</button>
+                <button type="button" class="btn btn-secondary">middle</button>
+                <button type="button" class="btn btn-secondary">right</button>
+            </div>
+            <div class="btn-group mr-3">
+                <button type="button" class="btn btn-secondary">left</button>
+                <button type="button" class="btn btn-secondary">middle</button>
+                <button type="button" class="btn btn-secondary">right</button>
+            </div>
+            <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-secondary">left</button>
+                <button type="button" class="btn btn-secondary">middle</button>
+                <button type="button" class="btn btn-secondary">right</button>
+            </div>
+        </div>
+        <!-- 群组按钮中的下拉菜单 -->
+        <div class="row border p-3 rounded mt-3">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary">1</button>
+                <button type="button" class="btn btn-secondary">2</button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">dropdown</button>
+                    <div class="dropdown-menu">
+                        <a href="javascript:void(0)" class="dropdown-item">left</a>
+                        <a href="javascript:void(0)" class="dropdown-item">right</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 垂直按钮 -->
+        <div class="row border p-3 rounded mt-3">
+            <div class="btn-group-vertical">
+                <button type="button" class="btn btn-secondary">1</button>
+                <button type="button" class="btn btn-secondary">2</button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">dropdown</button>
+                    <div class="dropdown-menu">
+                        <a href="javascript:void(0)" class="dropdown-item">left</a>
+                        <a href="javascript:void(0)" class="dropdown-item">right</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

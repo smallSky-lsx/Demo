@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap其他工具</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border bg-secondary p-2 text-white sticky-top">
+        粘性置顶有效，作为body的直接子元素
+    </div>
+    <div class="container">
+        <!-- 浮动 -->
+        <div class="row text-white">
+            <div class="col">
+                <div class="bg-secondary float-left">左浮动</div>
+                <div class="bg-secondary float-right">右浮动</div>
+                <div class="bg-secondary float-none">不浮动</div>
+            </div>
+        </div>
+        <!-- 清除浮动 -->
+        <div class="col border p-1 mt-5 text-white text-center clearfix">
+            <div class="float-left bg-success" style="width: 100px;height:50px">1</div>
+            <div class="float-right bg-success" style="width: 100px;height:50px">2</div>
+        </div>
+        <!-- 关闭图标 -->
+        <div class="row mt-5 p-1">
+            <div class="row">
+                <button type="button" class="close">
+                    <span>&times;</span>
+                </button>
+            </div>
+        </div>
+        <!-- 图像替换 -->
+        <div class="row mt-5 p-1">
+            <div class="row">
+                <h1 class="text-hide" style="background-image: url(http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg);width: 50px;height: 50px">Bootstrap</h1>
+            </div>
+        </div>
+        <!-- 内容溢出 -->
+        <div class="row mt-5 p-1">
+            <div class="row">
+                <p class="border overflow-auto" style="width: 200px;height: 100px;">南京建筑欧美他们女生鲜花处于生物诺基亚你，先进性尝试依靠老师面议点此算是告诉我一张站内，说话商业电源连载服务器维护。</p>
+                <p class="border overflow-hidden ml-5" style="width: 200px;height: 100px;">这样股份有限公司有着怎么，后来概念买卖一边塑料所在放弃适合自我精选仿佛传输早已第，一身给予力度技巧电器高级计算紧张下午父母主义，报纸软件突破机场帮忙加盟欧洲拍摄厂家组织推荐使，最低你说开发商网通矛盾观察传来公安药物上一页下来你自，不错常见重庆双方人群提示信息，并没有歌手这次还可以老板令人计划不了名单落。</p>
+            </div>
+        </div>
+        <!-- 定位属性 -->
+        <div class="row mt-5 p-1">
+            <div class="row">
+                <div class="border bg-danger p-3 position-static">未定位</div>
+                <div class="border bg-danger p-3 position-relative">相对定位</div>
+                <div class="border bg-danger p-3 position-absolute">绝对定位</div>
+                <div class="border bg-danger p-3 position-fixed">固定定位</div>
+                <div class="border bg-danger p-3 position-sticky">粘性定位</div>
+            </div>
+        </div>
+        <!-- 固定到顶部、固定到底部 -->
+        <div class="row mt-5 p-1">
+            <div class="row">
+                <div class="border bg-secondary p-2 text-white fixed-top w-25">固定到顶部</div>
+                <div class="border bg-secondary p-2 text-white fixed-bottom w-25">固定到底部</div>
+                <div class="border bg-secondary p-2 text-white sticky-top">
+                    粘性置顶无效，必须作为body的直接子元素
+                </div>
+            </div>
+        </div>
+        <!-- 阴影 -->
+        <div class="row mt-5 p-1">
+            <div class="col">
+                <div class="border bg-light mb-3 p-2 rounded shadow-none">no shadow</div>
+                <div class="border bg-white mb-3 p-2 rounded shadow-sm">sm shadow</div>
+                <div class="border bg-white mb-3 p-2 rounded shadow">shadow</div>
+                <div class="border bg-white mb-3 p-2 rounded shadow-lg">lg shadow</div>
+            </div>
+        </div>
+        <!-- 尺寸-宽度 -->
+        <div class="row mt-5 p-1">
+            <div class="col text-white">
+                <div class="bg-secondary py-2 w-25">w-25</div>
+                <div class="bg-secondary py-2 w-50">w-50</div>
+                <div class="bg-secondary py-2 w-75">w-75</div>
+                <div class="bg-secondary py-2 w-100">w-100</div>
+                <div class="bg-secondary py-2 w-auto">w-auto</div>
+            </div>
+            <div class="col-4 mt-2 bg-success">
+                <div class="bg-secondary py-2 mw-100" style="width: 200%">mw-100</div>
+            </div>
+        </div>
+        <!-- 尺寸-高度 -->
+        <div class="row mt-5 justify-content-around bg-info" style="height: 200px">
+            <div class="col-2 bg-secondary h-25">h-25</div>
+            <div class="col-2 bg-secondary h-50">h-50</div>
+            <div class="col-2 bg-secondary h-75">h-75</div>
+            <div class="col-2 bg-secondary h-100">h-100</div>
+            <div class="col-2 bg-secondary h-auto">h-auto</div>
+        </div>
+        <div class="row mt-3 bg-info" style="height: 50px;">
+            <div class="w-25 bg-secondary mh-100" style="height: 100px">mh-100</div>
+        </div>
+        <!-- 文本对齐 -->
+        <div class="row mt-5">
+            <div class="col p-2 bg-success text-white">
+                <p class="text-left">Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, excepturi.</p>
+                <p class="text-center">Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, excepturi.</p>
+                <p class="text-right">Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, excepturi.</p>
+                <p class="text-justify">Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Accusantium, excepturi.</p>
+            </div>
+        </div>
+        <!-- 文本不换行，一行显示 -->
+        <div class="row mt-5">
+            <div class="col p-2 bg-success text-white">
+                <p class="border w-50 text-nowrap">Lorem, ipsum dolor sit amet, consectetur adipisicing elit. Minus, voluptatum, architecto. Eius ex fugit, praesentium.</p>
+            </div>
+        </div>
+        <!-- 单行文本溢出处理 -->
+        <div class="row mt-5">
+            <div class="col p-2 bg-success text-white">
+                <p class="border w-50 text-truncate">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam nam sit cum incidunt, non enim!</p>
+            </div>
+        </div>
+        <!-- 文本转换 -->
+        <div class="row mt-5">
+            <div class="col p-2 bg-success text-white">
+                <p class="text-lowercase">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, similique.</p>
+                <p class="text-uppercase">Quam reprehenderit aut libero minus perspiciatis omnis dolores numquam laborum.</p>
+                <p class="text-capitalize">Tempora, incidunt molestiae ab molestias aliquid? Labore, illum. Consequuntur, eos!</p>
+            </div>
+        </div>
+        <!-- 字体粗细 -->
+        <div class="row mt-5">
+            <div class="col p-2 bg-success text-white">
+                <p class="font-weight-bold">Lorem ipsum dolor sit, amet.</p>
+                <p class="font-weight-normal">Possimus, veniam libero consequuntur? Modi?</p>
+                <p class="font-weight-light">Cumque, architecto laboriosam eius reprehenderit.</p>
+                <p class="font-italic">Lorem ipsum, dolor sit amet.</p>
+                <p class="text-monospace">Lorem ipsum, dolor sit amet.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

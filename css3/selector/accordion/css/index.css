@@ -1,0 +1,61 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-02-26 22:54:18
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-02-26 23:29:14
+*/
+body, dl, dt, dd, h2 {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+.accordion {
+    width: 250px;
+    margin: 50px auto;
+    padding: 5px 0 10px;
+    background-color: #3598DB;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+.accordion .title {
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    border-bottom: 1px solid #2685C5;
+}
+.accordion .title a,
+.menu-dt a {
+    display: block;
+    height: 100%;
+}
+.menu-dt {
+    height: 34px;
+    line-height: 34px;
+    padding-left: 20px;
+    font-size: 14px;
+}
+.menu-dt:not(:last-of-type) {
+    border-bottom: 1px solid #2685C5;
+}
+.menu-dd {
+    background-color: #333;
+    transition: height .5s ease-in;
+}
+.menu-dd .dd-item {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    padding-left: 20px;
+}
+.menu-dd .dd-item:hover,
+.menu-dd .dd-item:focus {
+    background-color: #ccc;
+    border-left: 4px solid #3598DB;
+}
+.menu-dd:not(:target) {
+    display: none;
+    height: 0;
+}

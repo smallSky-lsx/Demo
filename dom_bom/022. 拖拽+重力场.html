@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #ffa500;
+            border-radius: 50%;
+        }
+        .small-square {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle" id="circle"></div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 浏览器可视区域
+        function getClient() {
+            // IE9+等最新浏览器
+            if (window.innerWidth != null) {
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                };
+            }
+            // 标准模式浏览器：已声明DTD
+            if (document.compatMode === 'CSS1Compat') {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                };
+            }
+            // 混杂模式浏览器：未声明DTD
+            return {
+                width: document.body.clientWidth,
+                height: document.body.clientHeight
+            };
+        }
+        // 取消选中页面文本状态
+        function cancelSelection() {
+            if (window.getSelection) {
+                window.getSelection().removeAllRanges();
+            } else {
+                document.selection.empty();
+            }
+        }
+        // 拖拽+重力场
+        // 注意：在拖拽时，禁止物体自由运动(清除定时器)
+        $id('circle').onmousedown = function(e) {
+            clearInterval(this.timerId);
+            e = e || window.event;
+            var lastX = this.offsetLeft, //初始水平位置
+                lastY = this.offsetTop, //初始垂直位置
+                iSpeedX = 0, //初始水平速度
+                iSpeedY = 0, //初始垂直速度
+                fixedX = e.clientX - lastX,
+                fixedY = e.clientY - lastY,
+                that = this;
+            document.onmousemove = function(e) {
+                e = e || window.event;
+                var leftV = e.clientX - fixedX,
+                    topV = e.clientY - fixedY;
+                // 在拖拽时创建小方块，查看运动轨迹、运动快慢
+                var oSpan = document.createElement('span');
+                oSpan.classList.add('small-square');
+                oSpan.style.left = leftV + 'px';
+                oSpan.style.top = topV + 'px';
+                document.body.appendChild(oSpan);
+                // 求水平、垂直初速度
+                iSpeedX = leftV - lastX; //求水平初速度
+                iSpeedY = topV - lastY; //求垂直初速度
+                lastX = leftV; //记录上一次触发事件水平位置
+                lastY = topV; //记录上一次触发事件垂直位置
+                that.style.left = leftV + 'px';
+                that.style.top = topV + 'px';
+                // 取消鼠标选中页面文本
+                cancelSelection();
+            };
+            document.onmouseup = function() {
+                this.onmouseup = null;
+                this.onmousemove = null;
+                // 停止拖拽时，水平、垂直方向的初速度如何求？
+                startMove(that, iSpeedX, iSpeedY);
+            };
+        };
+        // 模拟重力场：多方向运动+碰撞检测+重力加速度+碰撞能量损耗
+        function startMove(ele, iSpeedX, iSpeedY, callback) {
+            // 检测是否清除定时器
+            function closeTimer(mark, callback) {
+                if (mark) {
+                    clearInterval(ele.timerId);
+                    ele.timerId = null;
+                    callback && callback();
+                }
+            }
+            closeTimer(true);
+            iSpeedX = iSpeedX || 0; //水平方向初速度
+            iSpeedY = iSpeedY || 0; //垂直方向初速度
+            var g = 3, //重力加速度恒定，方向始终向下
+                lose = 0.8, //碰撞能力损耗
+                currentX = ele.offsetLeft, //水平方向当前值
+                currentY = ele.offsetTop, //垂直方向当前值
+                crashBottom = getClient().height - ele.offsetHeight, //底部碰撞临界点
+                crashTop = 0, //顶部碰撞临界点
+                crashLeft = 0, //左墙碰撞临界点
+                crashRight = getClient().width - ele.offsetWidth; //右墙碰撞临界点
+            // 检测是否发生碰撞
+            function isCrash(direction, callback, crashCValue) { //注意：值传递
+                if (callback()) {
+                    if (direction === 'y') { //水平方向
+                        iSpeedY *= -1;
+                        currentY = crashCValue;
+                    } else { //垂直方向
+                        iSpeedX *= -1;
+                        currentX = crashCValue;
+                    }
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }
+            }
+            //物体向下运动(为正)、向左运动(为正)，向上运动(为负)、向右运动(为负)
+            ele.timerId = setInterval(function() {
+                // 权重加速度，改变垂直方向运动速度
+                iSpeedY += g;
+                // 多方向运动，矢量
+                currentX += iSpeedX;
+                currentY += iSpeedY;
+
+                // 碰撞检测：底部+顶部、左墙+右墙
+                /*if (currentY >= crashBottom) { //底部碰撞检测
+                    console.log('底部碰撞');
+                    iSpeedY *= -1; //反向运动
+                    currentY = crashBottom;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }*/
+                isCrash('y', function() {
+                    return currentY >= crashBottom;
+                }, crashBottom);
+                /*if (currentY <= crashTop) { //顶部碰撞检测
+                    console.log('顶部碰撞');
+                    iSpeedY *= -1; //反向运动
+                    currentY = crashTop;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }*/
+                isCrash('y', function() {
+                    return currentY <= crashTop;
+                }, crashTop);
+                /*if (currentX >= crashRight) { //右墙碰撞检测
+                    console.log('右墙碰撞');
+                    iSpeedX *= -1;
+                    currentX = crashRight;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }*/
+                isCrash('x', function() {
+                    return currentX >= crashRight;
+                }, crashRight);
+                /*if (currentX <= crashLeft) { //左墙碰撞检测
+                    console.log('左墙碰撞');
+                    iSpeedX *= -1;
+                    currentX = crashLeft;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }*/
+                isCrash('x', function() {
+                    return currentX <= crashLeft;
+                }, crashLeft);
+                // 停止运动检测:水平方向速度和垂直方向速度为0，且物体停在底部
+                Math.abs(iSpeedX) < 1 && (iSpeedX = 0);
+                Math.abs(iSpeedY) < 1 && (iSpeedY = 0);
+                if (iSpeedX === 0 && iSpeedY === 0 && crashBottom === currentY) {
+                    closeTimer(true, callback);
+                    console.log('清除定时器');
+                }
+                ele.style.left = currentX + 'px';
+                ele.style.top = currentY + 'px';
+            }, 30);
+        }
+    </script>
+</body>
+
+</html>

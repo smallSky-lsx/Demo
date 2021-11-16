@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            caption-side: top;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        thead>tr {
+            background-color: #d3d3d3;
+            height: 40px;
+        }
+        tbody>tr {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="tdata">
+        <caption>学生成绩表</caption>
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+    <script>
+        // 后台获取的数据
+        var datas = {
+            ttitle: '学生期中考试成绩表(A)',
+            htitle: ['姓名', '科目', '成绩', '操作'],
+            data: [{
+                    name: 'zs',
+                    subject: '语文',
+                    score: 90
+                },
+                {
+                    name: 'ls',
+                    subject: '数学',
+                    score: 80
+                },
+                {
+                    name: 'ws',
+                    subject: '英语',
+                    score: 99
+                },
+                {
+                    name: 'ld',
+                    subject: '英语',
+                    score: 100
+                },
+                {
+                    name: 'hd',
+                    subject: '数学',
+                    score: 60
+                },
+                {
+                    name: 'cd',
+                    subject: '语文',
+                    score: 70
+                }
+            ]
+        };
+        // 向页面绘制
+        datas && (function(data) {
+            var $id = function(id) {
+                return document.getElementById(id);
+            }
+            var parseData = function(ele) {
+                var resultArr = [];
+                for (var key in ele) {
+                    resultArr.push('<td>' + ele[key] + '</td>');
+                }
+                resultArr.push('<td><a href="javascript:void(0);" data-delete="1">删除</a></td>');
+                return '<tr>' + resultArr.join('') + '</tr>';
+            };
+            // 页面标题
+            var table = $id('tdata');
+            var tChilds = table.children;
+            tChilds[0].innerText = data.ttitle;
+            // 页面表头
+            var thead = tChilds[1];
+            var thdatas = datas.htitle; //获取展示表头数据
+            thdatas = thdatas.map(function(ele) {
+                return '<th>' + ele + '</th>';
+            });
+            thead.innerHTML = '<tr>' + thdatas.join('') + '</tr>';
+            // 页面数据
+            var tbody = tChilds[2];
+            var tdatas = datas.data; //获取展示数据
+            tdatas = tdatas.map(parseData);
+            tbody.innerHTML = tdatas.join('');
+            // 删除操作
+            tbody.onclick = function(e) {
+                e = e || window.event;
+                var targetEle = e.target || e.srcElement;
+                if (targetEle.dataset.delete === '1') {
+                    this.removeChild(targetEle.parentNode.parentNode);
+                }
+            };
+        }(datas));
+    </script>
+</body>
+
+</html>

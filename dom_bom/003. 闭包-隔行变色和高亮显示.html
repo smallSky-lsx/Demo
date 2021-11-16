@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <ul id="mv">
+        <li>西施</li>
+        <li>貂蝉</li>
+        <li>王昭君</li>
+        <li>杨玉环</li>
+        <li>芙蓉姐姐</li>
+    </ul>
+    <script>
+        function $(id) {
+            return document.getElementById(id);
+        }
+        var mv = $('mv');
+        var lis = mv.getElementsByTagName('li');
+        // 隔行变色
+        Array.prototype.forEach.call(lis, function(ele, index) {
+            // 奇数红色，偶数蓝色
+            ele.style.backgroundColor = (index % 2 === 0) ? '#00f' : '#f00';
+        });
+        /**
+         * onmouseenter不会产生事件冒泡，不能进行事件委托
+         * onmouseover会产生事件冒泡，能进行事件委托
+         */
+        // 闭包解决问题
+        var changeBgc = function(targetBgc) {
+            var originBgc;
+            return function(e) {
+                e = e || window.event;
+                var targetEle = e.target || e.srcElement;
+                if (targetEle.tagName === 'LI') {
+                    console.log(e.type);
+                    var flag = (e.type === 'mouseover');
+                    flag && (originBgc = targetEle.style.backgroundColor);//此处只能获取行内样式设置的背景颜色
+                    console.log(originBgc);
+                    targetEle.style.backgroundColor = flag ? targetBgc : originBgc;
+                }
+            };
+        };
+        /*mv.onmouseover = function(e) {
+            e = e || window.event;
+            var targetEle = e.target || e.srcElement;
+            originBgc = targetEle.style.backgroundColor;
+            targetEle.style.backgroundColor = '#ff0';
+        };*/
+        mv.onmouseover = changeBgc('#ff0');
+        mv.onmouseout = mv.onmouseover;
+        // 先进去再出来
+    </script>
+</body>
+
+</html>

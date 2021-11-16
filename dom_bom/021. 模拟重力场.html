@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        .circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #FFA500;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle" id="circle"></div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 浏览器可视区域
+        function getClient() {
+            // IE9+等最新浏览器
+            if (window.innerWidth != null) {
+                return {
+                    width: window.innerWidth,
+                    height: window.innerHeight
+                };
+            }
+            // 标准模式浏览器：已声明DTD
+            if (document.compatMode === 'CSS1Compat') {
+                return {
+                    width: document.documentElement.clientWidth,
+                    height: document.documentElement.clientHeight
+                };
+            }
+            // 混杂模式浏览器：未声明DTD
+            return {
+                width: document.body.clientWidth,
+                height: document.body.clientHeight
+            };
+        }
+        // circle元素注册onclick
+        $id('circle').onclick = function() {
+            !this.flag && startMove(this);
+        };
+        // 模拟重力场：多方向运动+碰撞检测+重力加速度+碰撞能量损耗
+        function startMove(ele, callback) {
+            // 清除定时器
+            function closeTimer(mark, callback) {
+                if (mark) {
+                    clearInterval(ele.timerId);
+                    ele.timerId = null;
+                    callback && callback();
+                }
+            }
+            closeTimer(ele.timerId);
+            var iSpeedX = 6, //水平方向初速度
+                iSpeedY = 8, //垂直方向初速度
+                g = 3, //重力加速度恒定，方向始终向下
+                lose = 0.8, //碰撞能力损耗
+                currentX = ele.offsetLeft, //水平方向当前值
+                currentY = ele.offsetTop, //垂直方向当前值
+                crashBottom = getClient().height - ele.offsetHeight, //底部碰撞临界点
+                crashTop = 0, //顶部碰撞临界点
+                crashLeft = 0, //左墙碰撞临界点
+                crashRight = getClient().width - ele.offsetWidth; //右墙碰撞临界点
+            //物体向下运动(为正)、向左运动(为正)，向上运动(为负)、向右运动(为负)
+            (currentY != crashBottom) && (ele.timerId = setInterval(function() {
+                ele.flag = true;
+                // 权重加速度，改变垂直方向运动速度
+                iSpeedY += g;
+                // 多方向运动，矢量
+                currentX += iSpeedX;
+                currentY += iSpeedY;
+
+                // 碰撞检测：底部+顶部、左墙+右墙
+                if (currentY >= crashBottom) { //底部碰撞检测
+                    console.log('底部碰撞');
+                    iSpeedY *= -1; //反向运动
+                    currentY = crashBottom;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }
+                if (currentY <= crashTop) { //顶部碰撞检测
+                    console.log('顶部碰撞');
+                    iSpeedY *= -1; //反向运动
+                    currentY = crashTop;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }
+                if (currentX >= crashRight) { //右墙碰撞检测
+                    console.log('右墙碰撞');
+                    iSpeedX *= -1;
+                    currentX = crashRight;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }
+                if (currentX <= crashLeft) { //左墙碰撞检测
+                    console.log('左墙碰撞');
+                    iSpeedX *= -1;
+                    currentX = crashLeft;
+                    // 碰撞能量损耗
+                    iSpeedX *= lose;
+                    iSpeedY *= lose;
+                }
+                // 停止运动检测:水平方向速度和垂直方向速度为0，且物体停在底部
+                Math.abs(iSpeedX) < 1 && (iSpeedX = 0);
+                Math.abs(iSpeedY) < 1 && (iSpeedY = 0);
+                if (iSpeedX === 0 && iSpeedY === 0 && crashBottom === currentY) {
+                    closeTimer(true, callback);
+                    ele.flag = false;
+                    console.log('清除定时器');
+                }
+                ele.style.left = currentX + 'px';
+                ele.style.top = currentY + 'px';
+            }, 30));
+        }
+    </script>
+</body>
+
+</html>

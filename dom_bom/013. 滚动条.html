@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1;
+        }
+        .fl {
+            float: left;
+        }
+        .fr {
+            float: right;
+        }
+        img {
+            vertical-align: top;
+        }
+        a img {
+            border: 0;
+        }
+        .container {
+            position: relative;
+            width: 250px;
+            height: 410px;
+            padding: 10px;
+            margin: 50px;
+            border: 1px solid #d0d0d0;
+            overflow: hidden;
+        }
+        .showScroll {
+            padding-right: 28px;
+        }
+        .container .scroll {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 18px;
+            height: 100%;
+            border: 0 solid #f1f1f1;
+            border-width: 20px 0;
+            box-sizing: border-box;
+            background-color: #f1f1f1;
+            display: none;
+        }
+        .showScroll .scroll {
+            display: block;
+        }
+        .container .scroll::before,
+        .container .scroll::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            width: 0;
+            height: 0;
+            border: 4px solid transparent;
+        }
+        .container .scroll::before {
+            top: -12px;
+            border-bottom-color: #a3a3a3;
+            border-top: 0;
+        }
+        .container .scroll::after {
+            bottom: -12px;
+            border-top-color: #505050;
+            border-bottom: 0;
+        }
+        /* 滚动条滚动时 */
+        .container .activeBefore::before {
+            border-bottom-color: #505050;
+        }
+        /* 滚动条到达底部时 */
+        .container .blurAfter::after {
+            border-top-color: #a3a3a3;
+        }
+        .container .scroll .bar {
+            position: relative;
+            left: 2px;
+            top: 0;
+            width: 14px;
+            height: 50px;
+            background-color: #c1c1c1;
+            cursor: pointer;
+        }
+        .container .scroll .bar:hover {
+            background-color: #a8a8a8;
+        }
+        .container .scroll .bar:active {
+            background-color: #787878;
+        }
+        .container .content {
+            position: relative;
+            left: 0;
+            top: 0;
+            font: 14px/22px "PingFangSC-Regular";
+            text-indent: 2em;
+            text-align: justify;
+            /*两端对齐*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="scroll">
+            <div class="bar"></div>
+        </div>
+        <div class="content">
+            文章千古事，得失寸心知这句诗是唐代诗人杜甫的名句。出自：《题偶》，原诗节选如下：文章千古事，得失寸心知。作者皆殊列，名声岂浪垂。译文：写诗做文章都是千古之事，而其中甘苦得失只有作者自己心里知道。各位作者都是不同地位的人，怎么会空有虚名呢？这两句话表达杜甫晚年对诗歌创作的见解，带有总结性质。上句“千古事”是指留传久远，关系重大，下句“寸心知”是说对于文章，作者本人的理解感知最为明白。这两句诗虽是以议论入诗，但对仗工整，语言高度概括，而且切中肯綮，含蕴丰富，很有哲理性。唐·杜甫《偶题》文章千古事，得失寸心知。作者皆殊列，名声岂浪垂。骚人嗟不见，汉道盛于斯。前辈飞腾入，馀波绮丽为。后贤兼旧列，历代各清规。法自儒家有，心从弱岁疲。永怀江左逸，多病邺中奇。騄骥皆良马，骐驎带好儿。车轮徒已斫，堂构惜仍亏。漫作潜夫论，虚传幼妇碑。缘情慰漂荡，抱疾屡迁移。经济惭长策，飞栖假一枝。尘沙傍蜂虿，江峡绕蛟螭。萧瑟唐虞远，联翩楚汉危。圣朝兼盗贼，异俗更喧卑。郁郁星辰剑，苍苍云雨池。两都开幕府，万宇插军麾。南海残铜柱，东风避月支。音书恨乌鹊，号怒怪熊罴。稼穑分诗兴，柴荆学土宜。故山迷白阁，秋水隐黄陂。不敢要佳句，愁来赋别离。
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 获取元素计算后样式属性值，字符串
+        function getEleStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                // 标准浏览器
+                return window.getComputedStyle(ele)[attr];
+            }
+            // 兼容IE678
+            return ele.currentStyle[attr];
+
+        }
+        // 取消页面选中文本状态
+        function cancelSelection() {
+            if (window.getSelection) {
+                // 标准浏览器
+                window.getSelection().removeAllRanges();
+            } else {
+                // 兼容IE678
+                document.selection.empty();
+            }
+        }
+        // 1. 获取元素
+        var container = $id('container'),
+            scroll = container.children[0],
+            content = container.children[1],
+            bar = scroll.children[0];
+        // console.log(container, scroll, content, bar);
+        // 2. 检测是否显示滚动条
+        var containerHeight = parseInt(getEleStyle(container, 'height')), //container可视区域高度：width
+            contentHeight = content.scrollHeight, //内容高度
+            contentCanMoveLen = contentHeight - containerHeight; // 内容看不到的高度
+        // console.log(containerHeight, contentHeight);
+        if (containerHeight < contentHeight) {
+            // 显示滚动条
+            container.classList.add('showScroll');
+            var scrollHeight = scroll.clientHeight,
+                barHeight = containerHeight / contentHeight * scrollHeight,
+                barCanMoveLen = scrollHeight - barHeight; //bar能移动的最大长度
+            // console.log(scrollHeight, barHeight, barCanMoveLen);
+            bar.style.height = barHeight + 'px';
+        }
+        // 3. 拖动滚动条
+        bar.onmousedown = function(e) {
+            e = e || window.event;
+            var that = this,
+                fixedY = e.pageY - this.offsetTop;
+            // console.log(fixedY, this.offsetTop);
+            document.onmousemove = function(e) {
+                e = e || window.event;
+                var moveY = e.pageY - fixedY;
+                // 边界处理、scroll中伪元素样式变化
+                if (moveY <= 0) {
+                    moveY = 0;
+                    scroll.classList.remove('activeBefore');
+                } else {
+                    scroll.classList.add('activeBefore');
+                }
+                if (moveY >= barCanMoveLen) {
+                    moveY = barCanMoveLen;
+                    scroll.classList.add('blurAfter');
+                } else {
+                    scroll.classList.remove('blurAfter');
+                }
+                // bar垂直移动
+                that.style.top = moveY + 'px';
+                // content垂直向上滚动
+                var contentMoveLen = -contentCanMoveLen / barCanMoveLen * moveY;
+                content.style.top = contentMoveLen + 'px';
+                // 取消页面选中文本状态
+                cancelSelection();
+            };
+            document.onmouseup = function() {
+                this.onmousemove = null;
+            };
+        };
+    </script>
+</body>
+
+</html>

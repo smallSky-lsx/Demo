@@ -1,0 +1,54 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-03-05 13:31:18
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-03-05 13:31:36
+*/
+.type-writing {
+    position: relative;
+
+    display: inline-block;
+
+    height: 50px;
+    margin: 50px;
+
+    font-family: monospace;
+    font-size: 50px;
+    line-height: 50px;
+}
+.type-writing::before {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 90%;
+    border-left: 2px solid #000;
+
+    content: '';
+    animation: cursor 1s steps(1, end) infinite both,
+        inputTxt 12s steps(12, end) forwards;
+
+    background-color: #fff;
+}
+@keyframes cursor {
+    0% {
+        /* 初始状态 */
+        border-left-color: rgba(0, 0, 0, 1);
+    }
+    50% {
+        border-left-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+        /* 最终状态 */
+        border-left-color: rgba(0, 0, 0, 1);
+    }
+}
+@keyframes inputTxt {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}

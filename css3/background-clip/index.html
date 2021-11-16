@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background-clip</title>
+</head>
+<style>
+    .box {
+        position: absolute;
+        /* 在不清楚容器宽高时刻使用calc */
+        top: calc(50% - 200px);
+        left: calc(50% - 150px);
+        background-image: url(imgs/pic3.jpeg);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        font-size: 50px;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+        transition: background-position .5s ease;
+    }
+    .box:hover {
+        background-position: center;
+    }
+</style>
+
+<body>
+</body>
+
+</html>

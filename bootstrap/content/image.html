@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap图片</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+    body {
+        padding-bottom: 1000px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 响应式图片 .img-fluid -->
+        <div class="row">
+            <div class="col"><img src="images/1.jpg" class="img-fluid" alt=""></div>
+        </div>
+        <!-- 缩略图 .img-thumbnail,给图片添加圆角 .rounded -->
+        <div class="row mt-5">
+            <div class="col-3"><img src="images/1.jpg" class="img-thumbnail" alt=""></div>
+            <div class="col"><img src="images/1.jpg" class="img-fluid rounded" alt=""></div>
+        </div>
+        <!-- 图片对齐
+            1. 浮动对齐
+            2. align-*对齐
+            3. 转换为block 自适应margin
+         -->
+        <!-- 设置左右浮动对齐 -->
+        <div class="row mt-5">
+            <div class="col">
+                <img src="images/1.jpg" class="float-left rounded" class="" width="200" alt="">
+                <img src="images/2.jpg" class="float-right rounded" class="" width="200" alt="">
+            </div>
+        </div>
+        <!-- .d-block mx-auto对齐 -->
+        <div class="row mt-3">
+            <div class="col">
+                <img src="images/1.jpg" class="d-block rounded mx-auto" width="200" alt="">
+            </div>
+        </div>
+        <!-- .text-*对齐 -->
+        <div class="row mt-3">
+            <div class="col text-center">
+                <img src="images/1.jpg" class="rounded" width="200" alt="">
+            </div>
+        </div>
+        <!-- picture标签，解决图片适配 -->
+        <div class="row mt-5">
+            <div class="col">
+                <picture>
+                    <source srcset="images/1.jpg" media="(min-width:1200px)">
+                    <source srcset="images/2.jpg" media="(min-width:992px)">
+                    <source srcset="images/3.jpg" media="(min-width:768px)">
+                    <img src="images/4.jpg" class="rounded img-fluid" alt="">
+                </picture>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

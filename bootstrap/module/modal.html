@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap模态框</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row pt-3">
+            <div class="col">
+                <button type="button" class="btn btn-primary" data-target="#modal" data-toggle="modal">基本modal</button>
+                <button type="button" class="btn btn-primary" data-target="#modal1" data-toggle="modal">滚动长内容</button>
+                <button type="button" class="btn btn-primary" data-target="#modal2" data-toggle="modal">垂直居中</button>
+                <button type="button" class="btn btn-primary" data-target="#modal3" data-toggle="modal">工具提示和弹出提示框</button>
+                <button type="button" class="btn btn-primary" data-target="#modal4" data-toggle="modal">栅格系统</button>
+                <button type="button" class="btn btn-primary" data-target="#modal5" data-toggle="modal" data-whatever="li">1-同一模态框不同内容</button>
+                <button type="button" class="btn btn-primary" data-target="#modal5" data-toggle="modal" data-whatever="liu">2-同一模态框不同内容</button>
+                <button type="button" class="btn btn-primary" data-target="#modal5" data-toggle="modal" data-whatever="zhang">3-同一模态框不同内容</button>
+                <button type="button" class="btn btn-primary" data-target="#modal6" data-toggle="modal" data-whatever="zhang">超大尺寸</button>
+                <button type="button" class="btn btn-primary" data-target="#modal7" data-toggle="modal" data-whatever="zhang">大尺寸</button>
+                <button type="button" class="btn btn-primary" data-target="#modal8" data-toggle="modal" data-whatever="zhang">默认尺寸</button>
+                <button type="button" class="btn btn-primary" data-target="#modal9" data-toggle="modal" data-whatever="zhang">小尺寸</button>
+            </div>
+        </div>
+    </div>
+    <!-- modal需做为body元素的直接子元素 -->
+    <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 滚动长内容 -->
+    <div class="modal fade" id="modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Inventore quaerat vero repellendus commodi dolorum necessitatibus laudantium provident, voluptatem id soluta aliquam numquam quidem incidunt ducimus, reprehenderit sed, a recusandae iure.</p>
+                    <p>Provident, quaerat asperiores distinctio ratione suscipit. Tempore totam reprehenderit quia voluptatem repudiandae libero culpa, quaerat doloribus nihil nisi sunt. Impedit reprehenderit consectetur eum voluptates maiores, perferendis dignissimos nam blanditiis, dolorem.</p>
+                    <p>Deserunt quod accusamus dicta impedit minus velit in, autem voluptatem reiciendis a ipsa aspernatur totam, itaque. Libero, iste! Reprehenderit maxime commodi placeat dignissimos, suscipit? Dolorum et fuga ab minima, neque!</p>
+                    <p>Accusantium officiis provident praesentium eum exercitationem porro culpa magnam alias dolor ad adipisci voluptatibus doloremque aliquid rem sint distinctio fuga, labore magni blanditiis quidem incidunt. Suscipit est a provident sequi.</p>
+                    <p>Corrupti fugiat consectetur libero eveniet error accusamus amet deleniti, dicta eaque voluptate harum dolorum voluptatem autem quos a aut soluta quibusdam. Laborum ut tempora, omnis voluptatem distinctio ad, placeat quis.</p>
+                    <p>Labore unde aut repellat eligendi error itaque, vero excepturi. Aut eos laboriosam temporibus cumque ducimus fugit autem eligendi obcaecati officia dolores, modi illum cum quis cupiditate non consequatur. Excepturi, dignissimos.</p>
+                    <p>Harum assumenda minima, numquam itaque doloremque quia deserunt, hic iure magnam, aliquam pariatur, voluptatem velit. Ea nemo mollitia officiis vitae sit quibusdam repellat molestias nisi quam sunt ipsum maiores, quis.</p>
+                    <p>Sit optio dolorum expedita molestias nam unde modi cumque rem laudantium suscipit assumenda pariatur nostrum, cupiditate reprehenderit a ea nulla dicta veniam repellat aut quod eaque. Quo facere illum quam.</p>
+                    <p>Non dolore molestiae distinctio at laboriosam adipisci tempora eveniet voluptates, omnis laudantium, porro perferendis, aspernatur, nobis cumque! Blanditiis corporis tempore eos ratione maxime, distinctio aut, tempora, vero minima hic repellendus.</p>
+                    <p>Et nisi quaerat rem. Temporibus nemo nam consequuntur, reiciendis laborum quam alias consectetur illo harum obcaecati minima illum necessitatibus dolorum. At facere iure eaque itaque molestiae perspiciatis quia, enim, ipsam.</p>
+                    <p>Aliquid blanditiis, excepturi nostrum, necessitatibus ullam accusamus magnam. Blanditiis vitae obcaecati minima, molestias incidunt excepturi, dolor ad consectetur impedit perferendis et commodi. Nisi provident asperiores nesciunt modi, iure eligendi necessitatibus.</p>
+                    <p>Fugit animi quibusdam iure expedita quos at cupiditate, ab excepturi minima minus eos repellat ipsam eius fugiat magni velit earum totam dicta odio quam consequatur beatae, rerum. Mollitia, numquam, commodi.</p>
+                    <p>Quas vitae, et error odit labore ipsa ratione iure. Magni odio vel pariatur similique, perferendis, quasi illo fugit ea repudiandae veritatis voluptatum, ratione consectetur, dolor ad molestiae velit voluptas laborum!</p>
+                    <p>Repellendus quibusdam assumenda ea dolores totam cupiditate unde magnam veritatis consectetur modi laborum, tempore deleniti, nam vel corporis maxime qui illum officia rerum sint! Sed quae praesentium temporibus, quas ullam?</p>
+                    <p>Facere mollitia unde, porro odit, vitae nulla adipisci autem minus qui nemo aliquid corporis consequatur minima voluptate saepe possimus dolor dolore. Vero illo, dolorem aperiam veniam dolore consequuntur explicabo culpa.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 垂直居中 -->
+    <div class="modal fade" id="modal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <p>垂直居中模态框</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 工具提示和弹出提示框， 在modal关闭时都关闭 -->
+    <div class="modal fade" id="modal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Popover in a modal</h5>
+                    <p>This <a href="#" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+                    <hr>
+                    <h5>Tooltips in a modal</h5>
+                    <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 栅格系统 -->
+    <div class="modal fade" id="modal4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 bg-warning py-2"></div>
+                            <div class="col-4 bg-success py-2"></div>
+                            <div class="col-4 bg-danger py-2"></div>
+                        </div>
+                        <div class="row  mt-2">
+                            <div class="col bg-secondary py-2"></div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-warning py-2 border"></div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-warning py-2 border"></div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-warning py-2 border"></div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-warning py-2 border"></div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-warning py-2 border"></div>
+                            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-warning py-2 border"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 不同的modal内容 -->
+    <div class="modal fade" id="modal5">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#">
+                        <div class="form-group">
+                            <label for="recipient-name" class=col-form-label>Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class=col-form-label>Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 超大尺寸 -->
+    <div class="modal fade" id="modal6">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 大尺寸 -->
+    <div class="modal  fade" id="modal7">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 正常尺寸 -->
+    <div class="modal" id="modal8">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 小尺寸 -->
+    <div class="modal" id="modal9">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script>
+        // 同一modal，不同的显示内容
+        $('#modal5').on('show.bs.modal', function(e) { // 在modal开始显示时展示
+            var msg = $(e.relatedTarget).data('whatever');
+            var modal = $(this);
+            modal.find('.modal-title').text('New message to -' + msg);
+            modal.find('.modal-body input').val(msg);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background-color: #f00;
+        }
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: #0f0;
+        }
+        #box3 {
+            width: 100px;
+            height: 100px;
+            background-color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        var arr = [$id('box1'), $id('box2'), $id('box3')];
+        arr.forEach(function(item) {
+            item.addEventListener('click', function(e) { //事件处理函数，是由系统调用，传递事件触发时生成的event对象
+                e = e || window.event;
+                var targetEle = e.target || e.srcElement; //获取真正触发事件的对象
+                console.log(targetEle);
+                console.log(this); //获取事件处理程序所属的对象
+                console.log(e.currentTarget); //获取事件处理函数所属的对象，等价于this
+                console.log(e.eventPhase); //获取事件阶段，1表示事件捕获阶段，2表示事件目标阶段，3表示事件冒泡阶段
+                console.log(e.type); //获取事件名称，字符串，不带on
+                console.log(e.clientX); //获取可视区域水平方向位置
+                console.log(e.clientY); //获取可视区域垂直方向位置
+                console.log(e.screenX); //获取屏幕水平方向位置
+                console.log(e.screenY); //获取屏幕垂直方向位置
+                console.log(e.pageX); //获取文档水平方向位置，不兼容IE678
+                console.log(e.pageY); //获取文档垂直方向位置，不兼容IE678
+                console.log(e.which); //获取ASCII码值
+                console.log(e.keyCode); //获取键值码，ASCII码值
+                console.log(e.altKey); //获取是否按alt键，布尔值
+                console.log(e.ctrlKey); //获取是否按ctrl键，布尔值
+                console.log(e.shiftKey); //获取是否按shift键，布尔值
+                console.log(e.cancelBubble); //设置为true，可阻止事件冒泡，兼容IE678
+                console.log(e.returnValue); //设置为false，可取消元素事件默认行为，兼容IE678
+                console.log(e.target); //获取真正触发事件的对象，不兼容IE678
+                console.log(e.srcElement); //获取真正触发事件的对象，兼容IE678
+                e.preventDefault(); //取消元素事件默认行为，不兼容IE678
+                e.stopPropagation(); //阻止事件冒泡，不兼容IE678
+                return false; //取消元素事件默认行为，仅可用于事件处理器：对象.事件属性 = 事件处理程序;
+            }, false);
+        });
+    </script>
+</body>
+
+</html>

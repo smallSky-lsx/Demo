@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap导航</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-bottom: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- ul...li -->
+        <ul class="nav">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <!-- nav -->
+        <nav class="nav mt-3">
+            <a href="#" class="nav-link active">Lorem.</a>
+            <a href="#" class="nav-link">Placeat.</a>
+            <a href="#" class="nav-link">Iste.</a>
+            <a href="#" class="nav-link disabled">Ex.</a>
+        </nav>
+        <!-- 水平对齐方式， 默认为左对齐-->
+        <ul class="nav mt-3 justify-content-center">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <ul class="nav mt-3 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <!-- 垂直排列 -->
+        <ul class="nav mt-3 flex-column flex-sm-row">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <nav class="nav mt-3 flex-column">
+            <a href="#" class="nav-link active">Lorem.</a>
+            <a href="#" class="nav-link">Placeat.</a>
+            <a href="#" class="nav-link">Iste.</a>
+            <a href="#" class="nav-link disabled">Ex.</a>
+        </nav>
+        <!-- Tab -->
+        <ul class="nav nav-tabs mt-3">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <nav class="nav nav-tabs mt-3">
+            <a href="#" class="nav-link active">Lorem.</a>
+            <a href="#" class="nav-link">Placeat.</a>
+            <a href="#" class="nav-link">Iste.</a>
+            <a href="#" class="nav-link disabled">Ex.</a>
+        </nav>
+        <ul class="nav nav-pills mt-3">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <nav class="nav nav-pills mt-3">
+            <a href="#" class="nav-link active">Lorem.</a>
+            <a href="#" class="nav-link">Placeat.</a>
+            <a href="#" class="nav-link">Iste.</a>
+            <a href="#" class="nav-link disabled">Ex.</a>
+        </nav>
+        <!-- 填充和对齐 -->
+        <!-- flex: 1 1 auto; -->
+        <ul class="nav nav-pills mt-3 nav-fill">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <nav class="nav nav-pills nav-fill mt-3">
+            <a href="#" class="nav-item nav-link active">Lorem.</a>
+            <a href="#" class="nav-item nav-link">Placeat.</a>
+            <a href="#" class="nav-item nav-link">Iste.</a>
+            <a href="#" class="nav-item nav-link disabled">Ex.</a>
+        </nav>
+        <!-- flex: 1 1 0; -->
+        <ul class="nav nav-pills mt-3 nav-justified">
+            <li class="nav-item"><a href="#" class="nav-link active">Lorem.</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Sequi?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Quibusdam?</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Culpa!</a></li>
+        </ul>
+        <nav class="nav nav-pills nav-justified mt-3">
+            <a href="#" class="nav-item nav-link active">Lorem.</a>
+            <a href="#" class="nav-item nav-link">Placeat.</a>
+            <a href="#" class="nav-item nav-link">Iste.</a>
+            <a href="#" class="nav-item nav-link disabled">Ex.</a>
+        </nav>
+        <!-- 带下拉菜单的分页标签 -->
+        <ul class="nav nav-tabs mt-3">
+            <li class="nav-item"><a href="#" class="nav-link active">Active</a></li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Action</a>
+                    <a href="#" class="dropdown-item">Another action</a>
+                    <a href="#" class="dropdown-item">Lorem, ipsum dolor.</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Lorem, ipsum.</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">link</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Disabled</a></li>
+        </ul>
+        <ul class="nav nav-pills mt-3">
+            <li class="nav-item"><a href="#" class="nav-link active">Active</a></li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item">Action</a>
+                    <a href="#" class="dropdown-item">Another action</a>
+                    <a href="#" class="dropdown-item">Lorem, ipsum dolor.</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Lorem, ipsum.</a>
+                </div>
+            </li>
+            <li class="nav-item"><a href="#" class="nav-link">link</a></li>
+            <li class="nav-item"><a href="#" class="nav-link disabled">Disabled</a></li>
+        </ul>
+        <!-- 动态Tab -->
+        <div class="mytab mt-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active" data-toggle="tab">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link" data-toggle="tab">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link" data-toggle="tab">Contact</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="home">调整方法注明回到协助国家可怜只有遵守分为南京鼠标理论不需要大，浏览设计目前最快便是普通大量并且成人比赛结构平时更大政府出版，本身游客你要体内看起来快捷之间一段时间自信更，群众数学吉林知名越来越保健天空机构价格有限责任，大型类别显然建材具体敌人事务练习活力外贸来看新型，起来在这个一座构成现象标题还不下来身上生存申请歌。</div>
+                <div class="tab-pane fade" id="profile">商业药品鼠标娱乐中华人民没有任，很难楼上第一个也许此刻证书成熟，估计人气也许如有动作后悔纷纷有限公司营养传播字符规律强调维护。</div>
+                <div class="tab-pane fade" id="contact">走了学术销售手术性能我，红色需求先进毕业生联通活动礼物学校加工南京杀人一流中华好多有，暂时感到自我版权所有，地球等待主演英语浏览器固定把它申请欢迎光临更，相关内容有所视频仿佛暂无内心出租那个，网上我去多年日子教授搜狐哪里魅力本类美好保持满意个人可见类型，一对动态一半然后见面所属一句没人对她后悔设备新技术想起能不，中介伟大预览陕西男子标题厂商政府这个又是每日又是失去将，那种工人影响数据周边农民有权惊人简历配置几乎某个打击是以我。</div>
+            </div>
+        </div>
+        <div class="mytab mt-3">
+            <nav class="nav nav-tabs">
+                <a href="#home1" class="nav-link nav-item active" data-toggle="tab">Home</a>
+                <a href="#profile1" class="nav-link nav-item" data-toggle="tab">Profile</a>
+                <a href="#contact1" class="nav-link nav-item" data-toggle="tab">Contact</a>
+            </nav>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="home1">调整方法注明回到协助国家可怜只有遵守分为南京鼠标理论不需要大，浏览设计目前最快便是普通大量并且成人比赛结构平时更大政府出版，本身游客你要体内看起来快捷之间一段时间自信更，群众数学吉林知名越来越保健天空机构价格有限责任，大型类别显然建材具体敌人事务练习活力外贸来看新型，起来在这个一座构成现象标题还不下来身上生存申请歌。</div>
+                <div class="tab-pane fade" id="profile1">商业药品鼠标娱乐中华人民没有任，很难楼上第一个也许此刻证书成熟，估计人气也许如有动作后悔纷纷有限公司营养传播字符规律强调维护。</div>
+                <div class="tab-pane fade" id="contact1">走了学术销售手术性能我，红色需求先进毕业生联通活动礼物学校加工南京杀人一流中华好多有，暂时感到自我版权所有，地球等待主演英语浏览器固定把它申请欢迎光临更，相关内容有所视频仿佛暂无内心出租那个，网上我去多年日子教授搜狐哪里魅力本类美好保持满意个人可见类型，一对动态一半然后见面所属一句没人对她后悔设备新技术想起能不，中介伟大预览陕西男子标题厂商政府这个又是每日又是失去将，那种工人影响数据周边农民有权惊人简历配置几乎某个打击是以我。</div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-3">
+                <nav class="nav nav-pills flex-column">
+                    <a href="#home2" class="nav-link nav-item active" data-toggle="pill">Home</a>
+                    <a href="#profile2" class="nav-link nav-item" data-toggle="pill">Profile</a>
+                    <a href="#contact2" class="nav-link nav-item" data-toggle="pill">Contact</a>
+                </nav>
+            </div>
+            <div class="col-9">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="home2">调整方法注明回到协助国家可怜只有遵守分为南京鼠标理论不需要大，浏览设计目前最快便是普通大量并且成人比赛结构平时更大政府出版，本身游客你要体内看起来快捷之间一段时间自信更，群众数学吉林知名越来越保健天空机构价格有限责任，大型类别显然建材具体敌人事务练习活力外贸来看新型，起来在这个一座构成现象标题还不下来身上生存申请歌。</div>
+                    <div class="tab-pane fade" id="profile2">商业药品鼠标娱乐中华人民没有任，很难楼上第一个也许此刻证书成熟，估计人气也许如有动作后悔纷纷有限公司营养传播字符规律强调维护。</div>
+                    <div class="tab-pane fade" id="contact2">走了学术销售手术性能我，红色需求先进毕业生联通活动礼物学校加工南京杀人一流中华好多有，暂时感到自我版权所有，地球等待主演英语浏览器固定把它申请欢迎光临更，相关内容有所视频仿佛暂无内心出租那个，网上我去多年日子教授搜狐哪里魅力本类美好保持满意个人可见类型，一对动态一半然后见面所属一句没人对她后悔设备新技术想起能不，中介伟大预览陕西男子标题厂商政府这个又是每日又是失去将，那种工人影响数据周边农民有权惊人简历配置几乎某个打击是以我。</div>
+                </div>
+            </div>
+        </div>
+        <!-- JS方法和事件 -->
+        <div class="mytab mt-3" id="mytab">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#home3" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile3" class="nav-link">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact3" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="home3">调整方法注明回到协助国家可怜只有遵守分为南京鼠标理论不需要大，浏览设计目前最快便是普通大量并且成人比赛结构平时更大政府出版，本身游客你要体内看起来快捷之间一段时间自信更，群众数学吉林知名越来越保健天空机构价格有限责任，大型类别显然建材具体敌人事务练习活力外贸来看新型，起来在这个一座构成现象标题还不下来身上生存申请歌。</div>
+                <div class="tab-pane fade" id="profile3">商业药品鼠标娱乐中华人民没有任，很难楼上第一个也许此刻证书成熟，估计人气也许如有动作后悔纷纷有限公司营养传播字符规律强调维护。</div>
+                <div class="tab-pane fade" id="contact3">走了学术销售手术性能我，红色需求先进毕业生联通活动礼物学校加工南京杀人一流中华好多有，暂时感到自我版权所有，地球等待主演英语浏览器固定把它申请欢迎光临更，相关内容有所视频仿佛暂无内心出租那个，网上我去多年日子教授搜狐哪里魅力本类美好保持满意个人可见类型，一对动态一半然后见面所属一句没人对她后悔设备新技术想起能不，中介伟大预览陕西男子标题厂商政府这个又是每日又是失去将，那种工人影响数据周边农民有权惊人简历配置几乎某个打击是以我。</div>
+            </div>
+        </div>
+    </div>
+    <script src="../lib/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../lib/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script>
+        // 初始化
+        $('#mytab .nav .nav-item:last-of-type .nav-link').tab('show');
+        // 点击事件
+        $('#mytab .nav').on('click', '.nav-link', function(e){
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    </script>
+</body>
+
+</html>

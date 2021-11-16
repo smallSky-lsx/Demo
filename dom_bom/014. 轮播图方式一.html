@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body, ul, ol {
+            margin: 0;
+            padding: 0;
+        }
+        ul, ol {
+            list-style: none;
+        }
+        img {
+            vertical-align: top;
+        }
+        a img {
+            border: 0;
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .clearfix {
+            *zoom: 1;
+        }
+        .container {
+            position: relative;
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+        }
+        .container .slideShow {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .container .slideShow ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600%;
+        }
+        .container .slideShow .showImg {
+            float: left;
+        }
+        .container .controller {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            user-select: none;
+        }
+        .container .controller .cItem {
+            float: left;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background-color: #fff;
+            cursor: pointer;
+        }
+        .container .controller .cItem+.cItem {
+            margin-left: 10px;
+        }
+        .container .controller .active {
+            background-color: #ff0;
+        }
+        .container .lrBtn {
+            display: none;
+        }
+        .container .lrBtn .leftBtn,
+        .container .lrBtn .rightBtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font: bold 30px/40px '黑体';
+            cursor: pointer;
+            color: #fff;
+            background-color: #000;
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+            border: 1px solid #fff;
+            user-select: none;
+        }
+        .container .lrBtn .leftBtn {
+            left: 7px;
+        }
+        .container .lrBtn .rightBtn {
+            right: 7px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container" ondragstart="return false">
+        <div class="slideShow">
+            <ul>
+                <li class="showImg"><a href="#"><img src="imgs/wf1.jpg" alt="" width="500" height="200"></a></li>
+                <li class="showImg"><a href="#"><img src="imgs/wf2.jpg" alt="" width="500" height="200"></a></li>
+                <li class="showImg"><a href="#"><img src="imgs/wf3.jpg" alt="" width="500" height="200"></a></li>
+                <li class="showImg"><a href="#"><img src="imgs/wf4.jpg" alt="" width="500" height="200"></a></li>
+                <li class="showImg"><a href="#"><img src="imgs/wf5.jpg" alt="" width="500" height="200"></a></li>
+            </ul>
+        </div>
+        <div class="controller">
+            <!-- <ul>
+                <li class="cItem active">1</li>
+                <li class="cItem">2</li>
+                <li class="cItem">3</li>
+                <li class="cItem">4</li>
+                <li class="cItem">5</li>
+            </ul> -->
+        </div>
+        <div class="lrBtn">
+            <span class="leftBtn" data-mark="left">&lt;</span>
+            <span class="rightBtn" data-mark="right">&gt;</span>
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 显示元素
+        function show(ele) {
+            ele.style.display = 'block';
+        }
+        // 隐藏元素
+        function hide(ele) {
+            ele.style.display = 'none';
+        }
+        // 获取元素计算后样式属性值，字符串
+        function getEleStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                // 标准浏览器
+                return window.getComputedStyle(ele)[attr];
+            }
+            // 兼容IE678
+            return ele.currentStyle[attr];
+
+        }
+        // 取消页面选中文本状态
+        function cancelSelection() {
+            if (window.getSelection) {
+                // 标准浏览器
+                window.getSelection().removeAllRanges();
+            } else {
+                // 兼容IE678
+                document.selection.empty();
+            }
+        }
+        // 封装水平缓动动画
+        function animate(ele, targetLen, step) {
+            // 在开启定时器前先关闭定时器，避免定时器叠加
+            if (ele.timerId) {
+                window.clearInterval(ele.timerId);
+                ele.timerId = null;
+            }
+            var currLen = ele.offsetLeft, //当前位置
+                stepLen; //步长
+            // 开启定时器, 并存储ele元素开启的定时器标识,正整数
+            (currLen != targetLen && !ele.flag) && (ele.timerId = window.setInterval(function() {
+                ele.flag = true; //上锁
+                console.log('启动定时器');
+                // 处理步长
+                if (step) {
+                    stepLen = step;
+                    stepLen = currLen < targetLen ? stepLen : -stepLen
+                } else {
+                    stepLen = (targetLen - currLen) / 10;
+                }
+                // 步长大于0，向上取整。步长小于0，向下取整
+                stepLen = stepLen > 0 ? Math.ceil(stepLen) : Math.floor(stepLen);
+                console.log(stepLen);
+                currLen += stepLen;
+                // 检测是否达到目标位置
+                if (Math.abs(targetLen - currLen) < Math.abs(stepLen)) {
+                    // 达到目标位置，行为
+                    window.clearInterval(ele.timerId); //清除定时器
+                    currLen = targetLen;
+                    ele.flag = false;
+                    console.log('关闭定时器', ele.flag);
+                    // 在每个元素动画执行完，再去执行回调函数
+                }
+                ele.style.left = currLen + 'px';
+            }, 30));
+        }
+        /**
+         * 轮播图制作——
+         * 1. 根据图片数量，动态生成小圆点。
+         * 2. 显示与隐藏左右按钮。
+         * 3. 点击小圆点，动画到指定图片。
+         * 4. 点击左右按钮，上一张和下一张。
+         * 5. 自动播放无缝动画。
+         */
+        // 1. 获取元素
+        var container = $id('container'),
+            slideShow = container.children[0],
+            controller = container.children[1],
+            lrBtn = container.children[2],
+            slideUl = slideShow.children[0],
+            slideLis = slideUl.children; //动态集合
+        // 1. 将第一张图片拷贝，添加到末尾
+        var leni = slideLis.length; // 现有li数量记录
+        leni && slideUl.appendChild(slideLis[0].cloneNode(true));
+        // 2. 动态生成小方块
+        var ulEle = document.createElement('ul');
+        for (var i = 0; i < leni; i++) {
+            var liEle = document.createElement('li');
+            liEle.innerText = i + 1;
+            liEle.dataset.mark = 'li';
+            liEle.classList.add('cItem');
+            ulEle.appendChild(liEle);
+        }
+        controller.appendChild(ulEle);
+        var ctrlLis = ulEle.children;
+        ctrlLis[0].classList.add('active');
+        // 3. 鼠标进入container显示，鼠标离开container隐藏
+        container.onmouseenter = function() {
+            show(lrBtn);
+            // 暂停自动播放
+            window.clearInterval(timerId);
+        };
+        container.onmouseleave = function() {
+            hide(lrBtn);
+            // 重新开启定时器
+            timerId = window.setInterval(autoScroll, 1000);
+        };
+        // slideUl.flag = true; //完成目标标识
+        var slide = {
+            singleLen: slideShow.offsetWidth, //单张轮播图长度
+            currNth: 0, //当前轮播图序号
+            count: leni, //轮播图数量
+        };
+
+        // 4. 点击左按钮下一张、点击右按钮上一张
+        lrBtn.onclick = function(e) {
+            e = e || window.event;
+            var targetEle = e.target || e.srcElement,
+                mark = targetEle.dataset.mark;
+            console.log(mark, slideUl.flag);
+            if (mark === 'left') {
+                /*if (slideUl.flag) {
+                    slideUl.flag = false; //上锁
+                    // 轮播图往左移动
+                    slide.currNth++;
+                    if (slide.currNth > slide.count) {
+                        slideUl.style.left = 0;
+                        slide.currNth = 1;
+                    }
+                    animate(slideUl, -slide.currNth * slide.singleLen);
+                    // 小方块背景变化
+                    Array.prototype.forEach.call(ctrlLis, function(ele) {
+                        // 清空所有元素背景
+                        ele.classList.remove('active');
+                    });
+                    // 设置当前元素背景
+                    ctrlLis[slide.currNth % 5].classList.add('active');
+                }*/
+                slideImg(slideUl, slide, ctrlLis, function() {
+                    // 轮播图往左移动
+                    slide.currNth++;
+                    if (slide.currNth > slide.count) {
+                        slideUl.style.left = 0;
+                        slide.currNth = 1;
+                    }
+                });
+            }
+            if (mark === 'right') {
+                /*if (slideUl.flag) {
+                    slideUl.flag = false; //上锁
+                    // 轮播图往右移动
+                    slide.currNth--;
+                    if (slide.currNth < 0) {
+                        slideUl.style.left = -slide.count * slide.singleLen + 'px';
+                        slide.currNth = slide.count - 1;
+                    }
+                    animate(slideUl, -slide.currNth * slide.singleLen);
+                    // 小方块背景变化
+                    Array.prototype.forEach.call(ctrlLis, function(ele) {
+                        // 清空所有元素背景
+                        ele.classList.remove('active');
+                    });
+                    // 设置当前元素背景
+                    ctrlLis[slide.currNth % 5].classList.add('active');
+                }*/
+                slideImg(slideUl, slide, ctrlLis, function() {
+                    // 轮播图往右移动
+                    slide.currNth--;
+                    if (slide.currNth < 0) {
+                        slideUl.style.left = -slide.count * slide.singleLen + 'px';
+                        slide.currNth = slide.count - 1;
+                    }
+                });
+            }
+        };
+        // 4. 点击小圆点，滚动到对应的轮播图
+        controller.onclick = function(e) {
+            e = e || window.event;
+            var targetEle = e.target || e.srcElement,
+                mark = targetEle.dataset.mark;
+            console.log(mark, slideUl.flag);
+            if (mark === 'li') {
+                /*if (slideUl.flag) {
+                    slideUl.flag = false; //上锁
+                    slide.currNth = targetEle.innerText - 1;
+                    animate(slideUl, -slide.singleLen * slide.currNth);
+                    // 小方块背景变化
+                    Array.prototype.forEach.call(ctrlLis, function(ele) {
+                        // 清空所有元素背景
+                        ele.classList.remove('active');
+                    });
+                    // 设置当前元素背景
+                    ctrlLis[slide.currNth % 5].classList.add('active');
+                }*/
+                slideImg(slideUl, slide, ctrlLis, function() {
+                    // 获取对应轮播图序号
+                    slide.currNth = targetEle.innerText - 1;
+                });
+            }
+            cancelSelection();
+        };
+        // 5. 自动向左移动,等价于左按钮
+        function autoScroll() {
+            // 轮播图往左移动
+            slideImg(slideUl, slide, ctrlLis, function() {
+                // 轮播图往左移动
+                slide.currNth++;
+                if (slide.currNth > slide.count) {
+                    slideUl.style.left = 0;
+                    slide.currNth = 1;
+                }
+            });
+        }
+        var timerId = window.setInterval(autoScroll, 2000);
+
+        function slideImg(slideEle, slide, ctrlLis, callback) {
+            if (!slideEle.flag) {
+                // slideEle.flag = false; //上锁
+                // 轮播图往移动
+                callback();
+                animate(slideEle, -slide.currNth * slide.singleLen, 10);
+                // 小方块背景变化
+                Array.prototype.forEach.call(ctrlLis, function(ele) {
+                    // 清空所有元素背景
+                    ele.classList.remove('active');
+                });
+                // 设置当前元素背景
+                ctrlLis[slide.currNth % 5].classList.add('active');
+            }
+            cancelSelection();
+        }
+    </script>
+</body>
+
+</html>

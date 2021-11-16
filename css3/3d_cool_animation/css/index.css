@@ -1,0 +1,84 @@
+/*
+* @Author: Admin_CXx
+* @Date:   2021-03-10 18:48:16
+* @Last Modified by:   Admin_CXx
+* @Last Modified time: 2021-03-11 14:50:04
+*/
+
+body {
+    margin: 0;
+    perspective-origin: center;
+    perspective: 1000px;
+    background-color: #b8e6b3;
+    transition: background-color .3s cubic-bezier(0, 0, 0, 0);
+    overflow: hidden;
+}
+#content {
+    width: 1010px;
+    margin: 25px auto;
+    transform-style: preserve-3d;
+}
+#content .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    transform-style: preserve-3d;
+}
+#content .wrap .box {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 10px 0;
+    transform-style: preserve-3d;
+    transition: transform .2s linear;
+}
+#content .wrap .box div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 110px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, .5);
+    border: 10px solid rgba(0, 0, 0, .1);
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* #content .wrap .box:nth-of-type(1) div {
+    background-color: #f44336;
+    background-image: url('../images/1.png');
+} */
+#content .wrap .box div:nth-of-type(1) {
+    transform: rotateX(0deg) translateZ(65px);
+}
+#content .wrap .box div:nth-of-type(2) {
+    transform: rotateY(90deg) translateZ(65px);
+}
+#content .wrap .box div:nth-of-type(3) {
+    transform: rotateX(90deg) translateZ(65px);
+}
+#content .wrap .box div:nth-of-type(4) {
+    transform: rotateY(-90deg) translateZ(65px);
+}
+#content .wrap .box div:nth-of-type(5) {
+    transform: rotateX(-90deg) translateZ(65px);
+}
+#content .wrap .box div:nth-of-type(6) {
+    transform: rotateX(180deg) translateZ(65px);
+}
+#content .wrap .rotate-top {
+    transform: translateZ(130px) rotateX(-180deg);
+}
+#content .wrap .rotate-right {
+    transform: translateZ(130px) rotateY(-180deg);
+}
+#content .wrap .rotate-bottom {
+    transform: translateZ(130px) rotateX(180deg);
+}
+#content .wrap .rotate-left {
+    transform: translateZ(130px) rotateY(180deg);
+}

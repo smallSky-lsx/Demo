@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        img {
+            vertical-align: top;
+        }
+        a img {
+            border: 0;
+        }
+        .slider {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        .slider .sliderPage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 500%;
+        }
+        .slider .sliderPage .link {
+            float: left;
+        }
+        .slider .sliderPage img {
+            width: 400px;
+            height: 200px;
+        }
+        .slider .sliderBtn .btn {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            margin-top: -15px;
+            line-height: 30px;
+            text-align: center;
+            font: bold 28px '黑体';
+            color: #fff;
+            background-color: #000;
+            cursor: pointer;
+            opacity: 0.1;
+            user-select: none;
+        }
+        .slider .sliderBtn .leftBtn {
+            left: 10px;
+        }
+        .slider .sliderBtn .rightBtn {
+            right: 10px;
+        }
+        .slider:hover .sliderBtn .btn {
+            opacity: 0.3;
+        }
+        .slider .sliderIndex {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 3px;
+            font-size: 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        .slider .sliderIndex .indexItem {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .slider .sliderIndex .active {
+            background-color: #f40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider" id="slider">
+        <div class="sliderPage">
+            <!-- <a class="link" href="javascript:void(0);"><img src="imgs/cat1.jpg" alt=""></a>
+            <a class="link" href="javascript:void(0);"><img src="imgs/cat2.jpg" alt=""></a>
+            <a class="link" href="javascript:void(0);"><img src="imgs/cat3.jpg" alt=""></a>
+            <a class="link" href="javascript:void(0);"><img src="imgs/cat4.jpg" alt=""></a>
+            <a class="link" href="javascript:void(0);"><img src="imgs/cat1.jpg" alt=""></a> -->
+        </div>
+        <div class="sliderBtn">
+            <span class="btn leftBtn">&lt;</span>
+            <span class="btn rightBtn">&gt;</span>
+        </div>
+        <div class="sliderIndex">
+            <!-- <span class="indexItem active"></span>
+            <span class="indexItem"></span>
+            <span class="indexItem"></span>
+            <span class="indexItem"></span> -->
+        </div>
+    </div>
+    <script>
+        // 根据id获取页面唯一元素
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 兼容window.getComputedStyle
+        function getEleStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+        // 元素的单个属性运动：匀速+缓冲(减速)
+        function animateSingle(params, callback) {
+            /**
+             * params {
+             *      ele: ele//运动元素
+             *      target: target,//运动目标
+             *      style: 'width',//运动样式
+             *      step: 7//匀速运动步长，可选.忽略为缓动动画，正值即可
+             * }
+             */
+            // 在开启定时器前先关闭定时器，避免定时器叠加
+            var ele = params.ele,
+                attr = params.style,
+                targetLen = params.target, //目标值
+                currLen = getEleStyle(ele, attr), //当前值
+                stepLen; //步长
+
+            if (attr === 'opacity') {
+                currLen = parseInt(currLen * 100) || 0;
+                targetLen = parseInt(targetLen * 100) || 0;
+            } else {
+                currLen = parseFloat(currLen) || 0;
+                targetLen = parseFloat(targetLen) || 0;
+            }
+            //清除定时器
+            function closeTimer(mark, callback) {
+                if (mark) {
+                    // console.log('关闭定时器');
+                    clearInterval(ele.timerId); //关闭定时器
+                    ele.timerId = null;
+                    callback && callback();
+                }
+            }
+            closeTimer(ele.timerId); //检测是否开启定时器, 定时器标识为正整数
+            // 开启定时器, 并存储ele元素开启的定时器标识,正整数
+            (currLen != targetLen) && (ele.timerId = window.setInterval(function() {
+                var isStop = false; //是否停止运动
+                // console.log('启动定时器', ele.flag);
+                // 处理步长
+                if (params.step) {
+                    stepLen = params.step;
+                    // 传递有效步长，匀速运动
+                    stepLen = currLen < targetLen ? stepLen : -stepLen;
+                } else {
+                    // 传递无效步长，或未传递步长，缓冲运动
+                    stepLen = (targetLen - currLen) / 7;
+                }
+                // 步长大于0，向上取整。步长小于0，向下取整
+                stepLen = stepLen > 0 ? Math.ceil(stepLen) : Math.floor(stepLen);
+                currLen += stepLen;
+                // 检测是否达到目标位置
+                if (Math.abs(targetLen - currLen) < Math.abs(stepLen)) {
+                    // 达到目标位置，行为
+                    isStop = true;
+                    currLen = targetLen;
+                    // ele.flag = false; //可以制作为回调函数传入
+                    // console.log('关闭定时器', ele.flag);
+                    // 在每个元素动画执行完，再去执行回调函数
+                }
+                if (attr === 'opacity') {
+                    ele.style[attr] = currLen / 100;
+                    ele.style['filter'] = 'alpha(' + attr + '=' + currLen + ')';
+                } else if (attr === 'zIndex') {
+                    ele.style[attr] = targetLen;
+                } else {
+                    ele.style[attr] = currLen + 'px';
+                }
+                isStop && closeTimer(true, callback); //关闭定时器，停止运动
+            }, 30));
+        }
+        /**
+         * 根据后台获取的轮播图图片，创建轮播图：
+         * 1. 动态创建轮播图列表。
+         * 2. 动态创建小圆点。
+         * 3. 轮播图运动方向：right -> left、left -> right。
+         * 4. 小圆点相应激活。
+         */
+        var imgArr = ['imgs/cat1.jpg', 'imgs/cat2.jpg', 'imgs/cat3.jpg', 'imgs/cat4.jpg']; //请求的轮播图图片
+        var oSlider = $id('slider'),
+            oSliderPage = oSlider.children[0],
+            oSliderBtn = oSlider.children[1],
+            oSliderIndex = oSlider.children[2],
+            oSliderImgs = oSliderPage.children,
+            oSliderCircles = oSliderIndex.children;
+        // 1. 根据图片数，创建图片列表+小圆点
+        imgArr.push(imgArr[0]); //第一张图片和最后一张图片相同
+        var imglistArr = [], //图片列表
+            circleArr = []; //小圆点
+        for (var i = 0, len = imgArr.length; i < len; i++) {
+            imglistArr.push('<a class="link" href="javascript:void(0)"><img src="' + imgArr[i] + '" alt=""></a>');
+            (i < len - 1) && circleArr.push('<span data-index="' + i + '" class="indexItem"></span>');
+        }
+        oSliderPage.innerHTML = imglistArr.join('');
+        oSliderIndex.innerHTML = circleArr.join('');
+        // 第一个小圆点激活
+        oSliderCircles[0].classList.add('active');
+        var timerId = null, //存储定时器标识(正整数)
+            moveWidth = oSliderImgs[0].offsetWidth, //每次移动的长度
+            sliderCount = oSliderImgs.length - 1, //轮播图图片真实张数
+            lock = true, //锁
+            index = 0; //小圆点索引
+        // 轮播图运动函数, direction：运动方向
+        /**
+         * direction: 
+         * 1. 为undefined(默认)或右按钮(自动播放)(right -> left)
+         * 2. 为左按钮(left -> right)
+         */
+        function autoMove(direction) {
+            // 开启定时器前，先清除定时器
+            if (lock) {
+                lock = false; //上锁
+                clearTimeout(timerId);
+                if (!direction || direction === 'right -> left') {
+                    index++;
+                    animateSingle({
+                        ele: oSliderPage,
+                        style: 'left',
+                        target: oSliderPage.offsetLeft - moveWidth
+                    }, function() {
+                        // 每次运动完，做的事
+                        if (oSliderPage.offsetLeft === -moveWidth * sliderCount) {
+                            oSliderPage.style.left = 0;
+                            index = 0;
+                        }
+                        lock = true; //开锁
+                        circleStyleChange(index);
+                        timerId = setTimeout(autoMove, 2500);
+                    });
+                } else if (direction === 'left -> right') {
+                    if (oSliderPage.offsetLeft === 0) {
+                        oSliderPage.style.left = -moveWidth * sliderCount + 'px';
+                        index = sliderCount;
+                    }
+                    index--;
+                    animateSingle({
+                        ele: oSliderPage,
+                        style: 'left',
+                        target: oSliderPage.offsetLeft + moveWidth
+                    }, function() {
+                        // 运动完
+                        lock = true;
+                        circleStyleChange(index);
+                        timerId = setTimeout(autoMove, 2500);
+                    });
+                }
+            }
+        }
+        // 小圆点相应的变化
+        function circleStyleChange(index) {
+            for (var i = 0, len = oSliderCircles.length; i < len; i++) {
+                oSliderCircles[i].classList.remove('active');
+            }
+            oSliderCircles[index].classList.add('active');
+        }
+        timerId = setTimeout(autoMove, 2500);
+        // 左按钮
+        oSliderBtn.children[0].onclick = function() {
+            autoMove('left -> right');
+        };
+        // 右按钮
+        oSliderBtn.children[1].onclick = function() {
+            autoMove('right -> left');
+        };
+        // 点击小圆点跳转到相应轮播图
+        oSliderIndex.onclick = function(e) {
+            e = e || event;
+            var targetEle = e.target || e.srcElement; //真正触发事件的元素
+            if (targetEle.tagName = 'SPAN') {
+                if (lock) {
+                    index = targetEle.dataset.index; //同步全局index
+                    lock = false; //锁住autoMove播放
+                    clearTimeout(timerId); //清除定时器
+                    animateSingle({
+                        ele: oSliderPage,
+                        style: 'left',
+                        target: -index * moveWidth
+                    }, function() {
+                        // 运动完
+                        lock = true;
+                        circleStyleChange(index);
+                        timerId = setTimeout(autoMove, 2500);
+                    });
+                }
+            };
+        };
+    </script>
+</body>
+
+</html>

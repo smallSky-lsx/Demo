@@ -1,0 +1,8 @@
+body {
+    margin: 0;
+    overflow: hidden;
+}
+#snow {
+    background: #000 url('../imgs/car.jpg') no-repeat center;
+    opacity: 1;
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body, ul, p {
+    		margin: 0;
+    		padding: 0;
+    	}
+    	ul {
+    		list-style: none;
+    	}
+    	img {
+    		vertical-align: top;
+    	}
+    	.clearfix::after {
+    		content: '';
+    		display: block;
+    		clear: both;
+    	}
+    	.waterfall {
+    		width: 980px;
+    		margin: 0 auto;
+    		background-color: #eee;
+    	}
+    	.waterfall .col {
+    		float: left;
+    		width: 25%;
+    	}
+    	.waterfall .col .item {
+    		margin: 20px;
+    	}
+    	.waterfall .col .item img {
+    		width: 100%;
+    	}
+
+    </style>
+</head>
+
+<body>
+    <div class="waterfall">
+        <ul class="clearfix">
+            <li class="col">
+                <!-- <div class="item">
+                    <img src="./imgs/0.png" alt="">
+                    <p class="des">Lorem ipsum dolor sit.</p>
+                </div> -->
+            </li>
+            <li class="col">
+                <!-- <div class="item">
+                    <img src="./imgs/1.png" alt="">
+                    <p class="des">Lorem ipsum, dolor sit.</p>
+                </div> -->
+            </li>
+            <li class="col">
+                <!-- <div class="item">
+                    <img src="./imgs/2.png" alt="">
+                    <p class="des">Lorem ipsum dolor, sit.</p>
+                </div> -->
+            </li>
+            <li class="col">
+                <!-- <div class="item">
+                    <img src="./imgs/3.png" alt="">
+                    <p class="des">Lorem ipsum dolor, sit.</p>
+                </div> -->
+            </li>
+        </ul>
+    </div>
+    <script>
+        // 原生ajax
+        function ajax(options) {
+            /**
+             * options = {
+             * 		urL: 'url',
+             * 		type: 'get',
+             * 		isAsync: true,
+             * 	 	data: '',
+             * 		success: function(data){},
+             * 		fail: function(){}
+             * };
+             */
+            var url = options.url,
+                type = options.type || 'get',
+                data = options.data || '',
+                isAsync = options.isAsync || true,
+                success = options.success,
+                fail = options.fail;
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                xhr = new ActionXObject('Microsoft.XMLHTTP');
+            }
+            // 监听xhr.readyState
+            xhr.onreadystatechange = function() {
+                if (this.readyState === 4) { //请求成功，且已经接收数据
+                    if (this.status === 200) { //网络请求成功
+                        success && success(this.responseText);
+                    }
+                }
+            };
+            // 监听错误
+            xhr.onerror = function(err) {
+                fail && fail(new Error(err));
+            };
+            // 建立连接
+            // 发送请求
+            type = type.toUpperCase();
+            if (type === 'GET') {
+                xhr.open(type, url + '?' + data, isAsync);
+                xhr.send();
+            } else if (type === 'POST') {
+                xhr.open(type, url, isAsync);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(data);
+            }
+        }
+        /**
+         * 0: 建立连接之前
+         * 1: 调用open()方法，建立链接
+         * 2: 连接建立，等待发送数据
+         * 3: 正在发送和接收数据
+         * 4: 整个请求完成，且已经给予回应(数据还不能使用)
+         * 200: 网络请求成功，能使用回应数据
+         */
+    </script>
+    <script type="text/javascript">
+        //获取数据
+        function getData() {
+            ajax({
+                url: './data/imgs.json',
+                success: function(data) {
+                    // 获取数据、渲染数据
+                    renderData(JSON.parse(data));
+                }
+            });
+        }
+        getData();
+        //渲染数据
+        function renderData(data) {
+            var oLis = document.getElementsByClassName('col'),
+                imgShowWidth = oLis[0].offsetWidth - 40;
+            data.forEach(function(item) {
+                var index = getLiMin().minIndex;
+                // src属性的所有资源是异步加载
+                /**
+                 * 等比例：
+                 * 	 imgShowWidth			imgRealWidth
+                 * 	———————————————    =  —————————————————
+                 * 	 imgShowHeight			imgRealHeight
+                 * 	
+                 */
+                // 图片是一张一张渲染
+                var oDiv = document.createElement('div');
+                oDiv.className = 'item';
+                oLis[index].appendChild(oDiv);
+                var oImg = new Image();
+                oImg.src = item.img;
+                oImg.height = imgShowWidth * item.height / item.width;
+                oDiv.appendChild(oImg);
+                var oP = document.createElement('p');
+                oP.innerText = item.desc;
+                oDiv.appendChild(oP);
+            });
+        }
+        // 获取最短列：列高度+索引
+        function getLiMin() {
+            var oLis = Array.prototype.slice.call(document.getElementsByClassName('col')),
+                minIndex = 0,
+                minHeight = oLis[0].offsetHeight;
+            oLis.forEach(function(item, index) {
+                var currentHeight = item.offsetHeight;
+                if (currentHeight < minHeight) {
+                    minHeight = currentHeight;
+                    minIndex = index;
+                }
+            });
+            return {
+                minIndex,
+                minHeight
+            }; //对象同名省略
+        }
+        var timer = null,
+            clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+        //监控滚动条件
+        window.onscroll = function() {
+            /**
+             * 什么时候加载数据：
+             * 最短列高度 < 可视区域高度 + 滚动垂直距离
+             */
+            var colMinHeight = getLiMin().minHeight,
+                scrollHeight = window.pageYOffset || document.documentElement.scrollHeight || document.body.scrollHeight || 0;
+            if (colMinHeight < clientHeight + scrollHeight) {
+                // 延时处理
+                clearTimeout(timer);
+                timer = setTimeout(getData, 500);
+            }
+        };
+    </script>
+</body>
+
+</html>

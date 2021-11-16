@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        body, ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            overflow-x: hidden;
+        }
+        .wrapper {
+            position: relative;
+            width: 1000px;
+            height: 50px;
+            line-height: 50px;
+            margin: 50px auto;
+            text-align: center;
+            color: #fff;
+        }
+        .wrapper .nav .list, .wrapper .bg {
+            float: left;
+            width: 200px;
+            height: 50px;
+            border: 1px solid #000;
+            background-color: #437198;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .wrapper .nav .list+.list {
+            margin-left: -1px;
+        }
+        .wrapper .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #5fea55;
+            opacity: 0.4;
+        }
+        .clearfix::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="wrapper">
+        <ul class="nav clearfix">
+            <li class="list">首页</li>
+            <li class="list">新闻</li>
+            <li class="list">军事</li>
+            <li class="list">汽车</li>
+            <li class="list">娱乐</li>
+        </ul>
+        <div class="bg"></div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // 兼容window.getComputedStyle
+        function getEleStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+        var oWrapper = $id('wrapper');
+        oWrapper.children[0].onmouseover = function(e) {
+            e = e || window.event;
+            var targetEle = e.target || e.srcElement;
+            startMove(oWrapper.children[1], targetEle.offsetLeft);
+        };
+
+        function startMove(ele, targetValue, callback) {
+            closeTimer(ele.timerId);
+            // 关闭定时器
+            function closeTimer(mark, callback) {
+                if (mark) {
+                    clearInterval(ele.timerId);
+                    ele.timerId = null;
+                    callback && callback();
+                }
+            }
+            var currentValue = ele.offsetLeft, //当前值
+                a = 2, //加速度
+                iSpeed = 0, //初速度
+                lose = 0.8; //每次运动速度损伤折扣
+            (currentValue != targetValue) && (ele.timerId = setInterval(function() {
+                ele.flag = true;
+                a = (targetValue - currentValue) / 6; //加速度变化，近小远大
+                iSpeed += a; //当前理想速度
+                iSpeed *= lose; //当前现实速度
+                currentValue += iSpeed; //当前位置值
+                // 检测是否可停止运动：速度小于1，距离目标位置小于1
+                if (Math.abs(iSpeed) < 1 && Math.abs(targetValue - currentValue) < 1) {
+                    console.log('关闭定时器');
+                    closeTimer(true, callback);
+                    currentValue = targetValue;
+                    ele.flag = false;
+                }
+                ele.style.left = currentValue + 'px';
+            }, 50));
+        }
+    </script>
+</body>
+
+</html>

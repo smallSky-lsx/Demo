@@ -1,0 +1,205 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font: 14px 'Microsoft YaHei';
+    color: #b3bcc5;
+    background-color: #eeeeee;
+    overflow: hidden;
+}
+/* --header style start-- */
+.header {
+    height: 50px;
+    line-height: 50px;
+    background-color: #354457;
+}
+.header .logo {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 35px;
+    margin-left: 20px;
+    background: url(../imgs/logo.png) no-repeat left center;
+    background-size: 30px 30px;
+}
+/* --header style end-- */
+/* --menu style start-- */
+.menu {
+    float: left;
+    width: 150px;
+    height: calc(100% - 50px);
+    background-color: #4d5e70;
+}
+.menu .title,
+.menu .dd {
+    height: 35px;
+    line-height: 35px;
+}
+.menu .title {
+    margin-left: 10px;
+    font-weight: bold;
+}
+.menu .dd {
+    padding-left: 40px;
+    cursor: pointer;
+}
+.menu .dd:hover {
+    background-color: #a6afb8;
+    color: #354457;
+}
+.menu .selected {
+    background-color: #dddddd;
+    color: #354457;
+}
+/* --menu style end-- */
+/* --main style start-- */
+.main {
+    margin-left: 150px;
+    height: calc(100% - 50px);
+    min-width: 700px;
+}
+.main .stu-list,
+.main .stu-add {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.main .stu-show {
+    display: block;
+}
+.main .stu-list {
+    overflow-y: scroll;
+}
+.main .stu-list .stu-table {
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+.main .stu-list .stu-table td {
+    padding: 2px 5px;
+}
+.main .stu-list .stu-table thead {
+    font-weight: bold;
+    background-color: #e3e8ee;
+    color: #646987;
+}
+.main .stu-list .stu-table tbody {
+    background-color: #ffffff;
+    color: #000000;
+}
+.main .stu-list .stu-table .btn {
+    padding: 4px 8px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.main .stu-list .stu-table .edit {
+    margin-right: 5px;
+    background-color: #5cb85c;
+}
+.main .stu-list .stu-table .remove {
+    background-color: #d9534f;
+}
+.main .stu-add form,
+.cover .modal {
+    width: 400px;
+    margin: 20px auto;
+    line-height: 30px;
+    font-size: 16px;
+    color: #000000;
+}
+.main .stu-add form label:not(.sex),
+.cover .modal label:not(.sex) {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 5px;
+}
+.main .stu-add form .btn,
+.cover .modal .btn {
+    text-align: center;
+}
+.main .stu-add form button,
+.cover .modal button {
+    padding: 3px 15px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.main .stu-add form input[type=text],
+.cover .modal input[type=text] {
+    line-height: 20px;
+    border: 1px solid #ccc;
+}
+/* --main style end-- */
+/* --cover style start-- */
+.cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+.active {
+    display: block;
+}
+.cover .modal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 250px;
+    padding: 20px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+/* -- cover style end-- */
+/* -- page style start -- */
+.page-wrapper {
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+.page-wrapper li {
+    font-size: 14px;
+    width: 30px;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    padding: 0 2px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+.page-wrapper li:not(.num-page, .page-omit) {
+    width: auto;
+    padding: 0 5px;
+    background-color: #00f;
+}
+.page-wrapper li:not(.num-page):active {
+    background-color: #f40;
+    color: #fff;
+}
+.page-wrapper li.current {
+    background-color: #0f0;
+    color: #fff;
+    font-weight: bold;
+}
+.page-wrapper li.disabled,
+.page-wrapper li.disabled:active {
+    background-color: #888;
+    cursor: not-allowed;
+}
+.page-wrapper li.page-omit {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+/* -- page style end -- */

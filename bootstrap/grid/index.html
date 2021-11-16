@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap栅格系统</title>
+    <link rel="stylesheet" href="../lib/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+    body {
+        margin: 0;
+        height: 8888px;
+    }
+    .row {
+        background-color: #ccc;
+    }
+    .row div {
+        height: 100px;
+        background-color: #080;
+        border: 1px solid #000;
+        color: #fff;
+    }
+    .v-align {
+        height: 100px;
+        background-color: rgba(255, 0, 0, .1);
+    }
+    .v-align div {
+        height: 40px;
+        height: 40px;
+        background-color: rgba(86, 61, 124, 0.15);
+        border: 1px solid rgba(86, 61, 124, 0.2);
+        color: #333;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3">xl表示超大屏，屏幕宽度大于等于1200px，容器的宽度固定为1140px，一行能设置12列。当屏幕宽度小于1200px时，一行仅能设置一列。</div>
+            <div class="col-xl-3"></div>
+            <div class="col-xl-3"></div>
+            <div class="col-xl-3"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-4">lg表示大屏，屏幕宽度大于等于992px，容器的宽度固定为960px，一行能设置12列。当屏幕宽度小于992px时，一行仅能设置一列。</div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">md表示中等屏，屏幕宽度大于等于768px，容器的宽度固定为720px，一行能设置12列。当屏幕宽度小于768px时，一行仅能设置一列。</div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-3">sm表示小屏，屏幕宽度大于等于576px，容器的宽度固定为540px，一行能设置12列。当屏幕宽度小于576px时，一行仅能设置一列。</div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-4">col表示超小屏，屏幕宽度小于576px，一行始终能设置12列。</div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+        <!-- 等宽列，平分宽度，通过.col-{breakpoint}实现 -->
+        <div class="row mt-5">
+            <div class="col">等宽列</div>
+            <div class="col">等宽列</div>
+            <div class="col">等宽列</div>
+            <div class="col">等宽列</div>
+            <div class="col">等宽列</div>
+            <div class="col">等宽列</div>
+        </div>
+        <!-- 多行等宽列，在系统断开的地方添加一个.w-100，强制分割行 -->
+        <div class="row mt-5">
+            <div class="col">等宽列1</div>
+            <div class="col">等宽列2</div>
+            <div class="w-100" style="height: auto;border: none;"></div>
+            <div class="col">等宽列3</div>
+            <div class="col">等宽列4</div>
+        </div>
+        <!-- 设置一个列宽，剩下的自动平分 -->
+        <div class="row mt-5">
+            <div class="col-sm-7">除超小屏外(占一行)，其他屏幕皆占7列</div>
+            <div class="col">在任何屏幕下自动平分剩余宽度</div>
+            <div class="col">在任何屏幕下自动平分剩余宽度</div>
+            <div class="col">在任何屏幕下自动平分剩余宽度</div>
+            <div class="col">在任何屏幕下自动平分剩余宽度</div>
+        </div>
+        <!-- 根据内容调整列的宽度，使用.col-{breakpoint}-auto -->
+        <div class="row mt-5">
+            <div class="col-md-auto">在中等以上屏幕下内容撑开宽度，其他屏幕下占满一行</div>
+            <div class="col">任何屏幕下平分剩余宽度</div>
+            <div class="col-lg-2">在大屏以上屏幕下，占2列，其他屏幕下占一行</div>
+        </div>
+        <!-- 所有屏幕下所占列数不变, 使用.col-* -->
+        <div class="row mt-5">
+            <div class="col-8">在所有屏幕下都占8列</div>
+            <div class="col-4">在所有屏幕下都占4列</div>
+        </div>
+        <!--
+            混合排列或组合模式
+                1. 超大屏下一行显示6个div，一个div占2列；
+                2. 大屏下一行显示4个div，一个div占3列;
+                3. 中等屏下一行显示3个div，一个div占4列;
+                4. 小屏下一行显示2个div，一个div占6列;
+                5. 超小屏下一行显示1个div，一个div占12列;
+        -->
+        <div class="row mt-5">
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">超大屏6个，大屏4个，中等屏3个，小屏2个，超小屏1个</div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12"></div>
+        </div>
+        <!-- 对齐 -->
+        <!--
+            垂直对齐： 仅限于单行有效，作用于行
+            .align-items-{breakpoint}-stretch
+            .align-items-{breakpoint}-start
+            .align-items-{breakpoint}-center
+            .align-items-{breakpoint}-end
+            .align-items-{breakpoint}-baseline
+         -->
+        <div class="row v-align mt-3 .align-items-stretch">
+            <div class="col-1" style="height: auto">stretch</div>
+            <div class="col-2"></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row v-align mt-3 align-items-start">
+            <div class="col-1">flex-start</div>
+            <div class="col-2"></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row v-align mt-3 align-items-center">
+            <div class="col-1">center</div>
+            <div class="col-2"></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row v-align mt-3 align-items-end">
+            <div class="col-1">end</div>
+            <div class="col-2"></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row v-align mt-3 align-items-baseline">
+            <div class="col-1">baseline</div>
+            <div class="col-2 mt-3">baseline</div>
+            <div class="col-3">baseline</div>
+        </div>
+        <!--
+            垂直对齐：仅限于单行，作用于某列
+            .align-self-{breakpoint}-auto
+            .align-self-{breakpoint}-stretch
+            .align-self-{breakpoint}-start
+            .align-self-{breakpoint}-center
+            .align-self-{breakpoint}-end
+            .align-self-{breakpoint}-baseline
+          -->
+        <div class="row v-align mt-5">
+            <div class="col-1 align-self-auto">auto</div>
+            <div class="col-1 align-self-stretch">stretch</div>
+            <div class="col-1 align-self-start">start</div>
+            <div class="col-1 align-self-center">center</div>
+            <div class="col-1 align-self-end">end</div>
+            <div class="col-1 align-self-baseline">baseline</div>
+        </div>
+        <!--
+            垂直对齐：仅限于多行，作用于行
+            .align-content-{breakpoint}-stretch
+            .align-content-{breakpoint}-start
+            .align-content-{breakpoint}-center
+            .align-content-{breakpoint}-around
+            .align-content-{breakpoint}-between
+            .align-content-{breakpoint}-end
+          -->
+        <div class="row v-align mt-5 align-content-stretch">
+            <div class="col-1">stretch</div>
+            <div class="col-2">stretch</div>
+            <div class="col-3" style="height: auto">stretch</div>
+            <div class="col-4">stretch</div>
+            <div class="col-5">stretch</div>
+            <div class="col-6" style="height: auto">stretch</div>
+        </div>
+        <div class="row mt-3 v-align align-content-start">
+            <div class="col-1">flex-start</div>
+            <div class="col-2">flex-start</div>
+            <div class="col-3">flex-start</div>
+            <div class="col-4">flex-start</div>
+            <div class="col-5">flex-start</div>
+            <div class="col-6">flex-start</div>
+        </div>
+        <div class="row mt-3 v-align align-content-end">
+            <div class="col-1">end</div>
+            <div class="col-2">end</div>
+            <div class="col-3">end</div>
+            <div class="col-4">end</div>
+            <div class="col-5">end</div>
+            <div class="col-6">end</div>
+        </div>
+        <div class="row mt-3 v-align align-content-center">
+            <div class="col-1">center</div>
+            <div class="col-2">center</div>
+            <div class="col-3">center</div>
+            <div class="col-4">center</div>
+            <div class="col-5">center</div>
+            <div class="col-6">center</div>
+        </div>
+        <div class="row mt-3 v-align align-content-around">
+            <div class="col-auto">space-around</div>
+            <div class="col-2">space-around</div>
+            <div class="col-3">space-around</div>
+            <div class="col-4">space-around</div>
+            <div class="col-5">space-around</div>
+            <div class="col-6">space-around</div>
+        </div>
+        <div class="row mt-3 v-align align-content-between">
+            <div class="col-auto">space-between</div>
+            <div class="col-2">space-between</div>
+            <div class="col-3">space-between</div>
+            <div class="col-4">space-between</div>
+            <div class="col-5">space-between</div>
+            <div class="col-6">space-between</div>
+        </div>
+        <!--
+                列排序: 使用.order-{breakpoint}-*
+                *取值范围为: [1, 12]
+                .order-{breakpoint}-first
+                .order-{breakpoint}-last
+
+                3.x版本使用: .col-{breakpoint}-push-*
+                            .col-{breakpoint}-pull-*
+            -->
+        <div class="row mt-5">
+            <div class="col">1</div>
+            <div class="col order-2">2</div>
+            <div class="col order-1">3</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">1</div>
+            <div class="col order-lg-1">2</div>
+            <div class="col">3</div>
+        </div>
+        <div class="row mt-3">
+            <div class="col order-last">1</div>
+            <div class="col">2</div>
+            <div class="col order-first">3</div>
+            <div class="col">4</div>
+        </div>
+        <!--
+            列偏移， 使用.offset-{breakpoint}-*
+            没有.offset-0, 有.offset-{breakpoint}-0, 取消列偏移
+            本质： margin-left: 8.333333%*偏移列数;
+          -->
+          <div class="row mt-5">
+              <div class="col-1">第1列</div>
+              <div class="col-2 offset-9">第2列</div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-1 offset-md-2">1</div>
+              <div class="col-2 offset-md-4">2</div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-5 col-md-6">1</div>
+              <div class="col-5 offset-2 col-md-6 offset-md-0">2</div>
+          </div>
+          <!--
+                列间距，
+                左侧间距使用: ml-{breakpoint}-auto
+                右侧间距使用: mr-{breakpoint}-auto
+
+                本质：
+                margin-left: auto!important;
+                margin-right: auto!important;
+            -->
+            <div class="row mt-5">
+                <div class="col-1 ml-auto">1</div>
+                <div class="col-2">2</div>
+                <div class="col-3">3</div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-1 mr-auto">1</div>
+                <div class="col-2">2</div>
+                <div class="col-3">3</div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-1 mr-auto">1</div>
+                <div class="col-2 mr-auto">2</div>
+                <div class="col-3">3</div>
+            </div>
+    </div>
+</body>
+
+</html>

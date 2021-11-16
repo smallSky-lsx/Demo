@@ -1,0 +1,64 @@
+/* 搜索列表样式 */
+
+.wrapper {
+    width: 400px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    margin: 50px auto;
+    border-radius: 5px;
+}
+
+
+/* filterFunc Style */
+
+.wrapper .filterFunc {
+    margin-bottom: 20px;
+}
+
+.wrapper .filterFunc input {
+    height: 25px;
+    width: 225px;
+    padding-left: 10px;
+    border: 1px solid #999;
+    outline: none;
+    border-radius: 4px;
+}
+
+.wrapper .filterFunc .btn {
+    padding: 0 5px;
+    color: #3c8dff;
+    cursor: pointer;
+}
+
+.wrapper .filterFunc .active {
+    color: #fff;
+    background-color: #3c8dff;
+    border-radius: 4px;
+}
+
+
+/* friendList Style */
+
+.wrapper .friendList .item {
+    position: relative;
+    padding: 10px 0 10px 50px;
+    border-bottom: 1px solid #999;
+}
+
+.wrapper .friendList .item img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -18px;
+    width: 36px;
+    height: 36px;
+}
+
+.wrapper .friendList .item .name {
+    margin-bottom: 6px;
+}
+
+.wrapper .friendList .item .des {
+    font-size: 12px;
+    color: #666;
+}

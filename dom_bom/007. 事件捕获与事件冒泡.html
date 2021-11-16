@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+    <title>learing...</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-color: #f00;
+        }
+        #box2 {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background-color: #0f0;
+        }
+        #box3 {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            background-color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3">点击</div>
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        // false，表示在事件冒泡阶段执行事件处理程序
+        // true，表示在事件捕获阶段执行事件处理程序
+        window.addEventListener('click', function() {
+            console.log('window');
+        }, true);
+        document.addEventListener('click', function() {
+            console.log('document');
+        }, true);
+        document.documentElement.addEventListener('click', function() {
+            console.log('html');
+        }, true);
+        document.body.addEventListener('click', function() {
+            console.log('body');
+        }, true);
+        $id('box1').addEventListener('click', function() {
+            console.log('box1');
+        }, true);
+        $id('box2').addEventListener('click', function() {
+            console.log('box2');
+        }, true);
+        $id('box3').addEventListener('click', function() {
+            console.log('box3');
+        }, true);
+
+        /**
+         * 事件捕获：从最顶层元素开始，向下查找到目标元素为止。
+         * window --> document --> html --> body --> ... --> 目标元素
+         * 事件冒泡：从目标元素开始，向上冒泡到顶层元素为止。
+         * 目标元素 --> ... --> body --> html --> document --> window
+         */
+        // 事件处理器，仅有事件冒泡
+    </script>
+</body>
+
+</html>
